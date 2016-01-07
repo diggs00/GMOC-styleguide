@@ -1,0 +1,299 @@
+
+//***********************************************
+//  Start LEFT NAVIGATION
+//***********************************************
+
+
+.wrapper{
+    background: @gray-darkest;
+    //margin-top: 76px;
+    
+    .nav-stacked{
+
+        ul{
+          margin-bottom: 0;
+        }
+
+       li {
+           border-top: 1px solid @gray-darkest;
+           background-color: @gray-darker;
+           vertical-align: middle;
+           height:inherit;
+           overflow: visible;
+
+           &.active  {
+             background-color:@brand-primary;
+             a{
+              font-weight: bold;
+              text-shadow: 0px 0px 8px rgba(150, 150, 150, 1);
+             }
+             div{
+               color:@white;
+             }
+             div[class^="icon-ui-arrowright"]{
+               display:inline;
+
+               @media (max-width: @screen-md) {
+                 display:none;
+               }
+
+             }
+           }
+       }
+
+
+        li:hover   {
+            background-color:@brand-primary;
+            a {
+              text-shadow: 0px 0px 8px rgba(150, 150, 150, 1);
+            }
+            div{
+              color:@white;
+            }
+        }
+
+        a {
+            padding: 12px 0px 10px 13px;
+            font-size: @font-size-small+1;
+            min-height:45px;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: visible !important;
+            font-weight: normal;
+            min-width: 100%;
+
+            //text title div
+            div {
+                color: @gray;
+                position: relative;
+                margin:2px 8px 0 0;
+                vertical-align: middle;
+                margin-left:12px;
+                display:inline;
+                @media (max-width: @screen-md) {
+                    display:none;
+                }
+            }
+
+            //class for display of icon
+            div[class^="icon-"]{
+              font-size: 20px;
+              display: inline-block;
+              text-align: center;
+              width: 25px;
+              margin:0 0 0 3px;
+              vertical-align: middle;
+              display:inline;
+            }
+
+            //class for display of right arrow
+            div[class^="icon-ui-arrowright"]{
+              font-size: (@font-size-small)-2;
+              font-weight: normal;
+              text-shadow: none;
+              text-align: center;
+              width: 25px;
+              margin:5px 0 0 0;
+              vertical-align: middle;
+              float:right;
+              position:relative;
+              display:none;
+            }
+
+
+
+        }
+
+
+        .navHeadline{
+
+            padding:8px 8px 8px 20px;
+            font-weight: bold;
+            color: @gray;
+            background-color:@gray-darkest;
+            text-transform:uppercase;
+            font-size: (@font-size-small)-1;
+            min-height:30px;
+
+            span{
+                @media (max-width: @screen-md) {
+                  display:none;
+                }
+            }
+
+        }
+
+    }
+
+
+    .main-nav-bg{
+
+        width: 261px;
+        height:100%;
+        position: absolute;
+        float: left;
+        border-right: 1px solid @gray-darkest;
+        
+        display: inline;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+
+        @media (max-width: @screen-md) {
+                width:54px;
+            }
+
+        @media (max-width: @screen-sm) {
+                display:none;
+            }
+
+    }
+
+    .main-nav{
+        width: 260px;
+        position: absolute;
+        left: 0;
+        //top: 60px;
+
+        @media (max-width: @screen-md) {
+                width:53px;
+            }
+        @media (max-width: @screen-sm) {
+                display:none;
+            }
+    }
+
+
+
+    .content{
+        background: @white;
+        margin-left: 261px;
+        height:100%;
+        @media (max-width: @screen-md) {
+                margin-left:54px;
+            }
+        @media (max-width: @screen-sm) {
+                margin-left:0px;
+            }
+
+
+    }
+
+
+
+
+}
+
+
+//****************************************
+//  Push sections
+//****************************************
+
+
+//hamburger icon next to nav title
+.navbar_leftNav {
+
+    position: relative;
+    float: left;
+    margin-right: 15px;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    border-color: #ddd;
+    display:none;
+
+    .icon-bar{
+      background-color: #ccc;
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 1px;
+    }
+
+    .icon-bar:nth-last-of-type(-n+2) {
+      margin-top: 4px;
+    }
+
+    @media (max-width: @screen-md) {
+      display:inline;
+    }
+
+}
+
+.wrapper{
+
+    //this class makes the navigation push happen
+    .main-nav-push{
+      width: 260px;
+      display:inline;
+
+      .nav-stacked{
+        a {
+          div {
+            margin:0 0 0 10px;
+            display:inline;
+          }
+          div[class^="icon-"]{
+            margin:0 0 0 0px;
+            display: inline-block;
+          }
+          div[class^="icon-ui-arrowright"]{;
+            display:none;
+          }
+        }
+        .navHeadline{
+          span{
+            display:inline;
+          }
+        }
+
+        li {
+          &.active  {
+            div[class^="icon-ui-arrowright"]{
+              display:none;
+              @media (max-width: @screen-md) {
+                display:inline;
+              }
+            }
+          }
+        }
+
+      }
+    }
+
+    //this class makes the nav-bg push happen
+    .main-nav-bg-push{
+      display:inline;
+      width: 261px;
+    }
+
+    //this class makes the content push happen
+    .content-push{
+
+      @media (max-width: @screen-md) {
+        margin-left: 0;
+        left: 251px;
+        position:relative;
+        display:block;
+      }
+      @media (max-width: @screen-sm) {
+        left: 261px;
+      }
+
+    }
+
+}
+//****************************************
+//  END Push sections
+//****************************************
+
+
+//***********************************************
+//  End LEFT NAVIGATION
+//***********************************************
+
+
+

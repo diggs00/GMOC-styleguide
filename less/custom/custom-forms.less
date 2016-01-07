@@ -1,0 +1,1116 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// Normalize non-controls
+//
+// Restyle and baseline non-control form elements.
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: @line-height-computed;
+  font-size: (@font-size-base * 1.5);
+  line-height: inherit;
+  color: @legend-color;
+  border: 0;
+  border-bottom: 1px solid @legend-border-color;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: @font-size-large;
+  &.disabled {
+     color:@gray;
+ }
+}
+
+
+// Normalize form controls
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+  .box-sizing(border-box);
+}
+
+// Position radios and checkboxes better
+
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9; /* IE8-9 */
+  line-height: normal;
+}
+
+
+
+input[type="radio"] {
+  margin: 0px;
+  margin-top: 1px \9; /* IE8-9 */
+  line-height: normal;
+  margin-right: 5px;
+  margin-left: -15px;
+  margin-top: 1px;
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+
+
+// Set the height of select and file controls to match text inputs
+input[type="file"] {
+  display: block;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+// Fix optgroup Firefox bug per https://github.com/twbs/bootstrap/issues/7611
+select optgroup {
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+}
+
+// Focus for select, file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  .tab-focus();
+}
+
+// Fix for Chrome number input
+// Setting certain font-sizes causes the `I` bar to appear on hover of the bottom increment button.
+// See https://github.com/twbs/bootstrap/issues/8350 for more.
+input[type="number"] {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    height: auto;
+  }
+}
+
+
+// Placeholder
+//
+// Placeholder text gets special styles because when browsers invalidate entire
+// lines if it doesn't understand a selector/
+.form-control {
+  .placeholder();
+}
+
+
+// Common form controls
+//
+// Shared size and type resets for form controls. Apply `.form-control` to any
+// of the following form controls:
+//
+// select
+// textarea
+// input[type="text"]
+// input[type="password"]
+// input[type="datetime"]
+// input[type="datetime-local"]
+// input[type="date"]
+// input[type="month"]
+// input[type="time"]
+// input[type="week"]
+// input[type="number"]
+// input[type="email"]
+// input[type="url"]
+// input[type="search"]
+// input[type="tel"]
+// input[type="color"]
+
+.form-control {
+  display: block;
+  width: 100%;
+  float: left;
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: @padding-base-vertical @padding-base-horizontal;
+  font-size: @font-size-large;
+  line-height: @line-height-base;
+  color: @input-color;
+  vertical-align: middle;
+  background-color: @input-bg;
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
+  .box-shadow(inset 0 1px 5px rgba(204,204,204,.75));
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
+
+  // Reset height for `textarea`s
+  // DBaker: change font size for T&C
+  textarea& {
+    height: auto;
+    font-size: @font-size-base;
+  }
+}
+
+  // DBaker: Allows Jquery Daepicker to act like a 100% form
+.date-form-container {
+  position: relative;
+  padding-right:55px;
+}
+
+
+
+
+  // DBaker: Custom for select dropdowns (kills shadow)
+.form-control-custom {
+  display: block;
+  width: 100%;
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  //padding: 2px @padding-base-horizontal;
+  font-size: @font-size-large;
+  line-height: @line-height-base;
+  color: @input-color;
+  vertical-align: middle;
+  background-color: @input-bg;
+  border: 1px solid @input-border;
+  border-radius: 0px;
+
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
+
+  // Reset height for `textarea`s
+  textarea& {
+    height: auto;
+  }
+}
+
+
+
+
+
+  // DBaker: For a form input with icons inside input field
+.form-control-icon {
+  display: block;
+  width: 100%;
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: @padding-base-vertical 50px @padding-base-vertical @padding-base-horizontal;
+  font-size: @font-size-large;
+  line-height: @line-height-base;
+  color: @input-color;
+  vertical-align: middle;
+  background-color: @input-bg;
+  border: 1px solid @input-border;
+  border-radius: 0px;
+  .box-shadow(inset 0 1px 5px rgba(204,204,204,.75));
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
+
+  // Reset height for `textarea`s
+  textarea& {
+    height: auto;
+  }
+}
+
+
+
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+	margin-bottom: 5px;
+	position: relative;// DB added
+	overflow: hidden;// DB added
+	clear: both;// DB added
+}
+
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+// .radio {
+//   display: block;
+//   min-height: @line-height-computed; // clear the floating input if there is no label text
+//   margin-top: 0px;
+//   margin-bottom: 10px;
+//   padding-left: 0px;
+//   vertical-align: middle;
+//   label {
+//     display: block;
+//     margin-bottom: 0;
+//     font-weight: normal;
+//     cursor: pointer;
+//   }
+// }
+
+
+// .checkbox {
+//   display: block;
+//   min-height: @line-height-computed; // clear the floating input if there is no label text
+//   margin-top: 0px;
+//   margin-bottom: 10px;
+//   padding-left: 0px;
+//   vertical-align: middle;
+//   label {
+//     display: inline;
+//     margin-bottom: 0;
+//     font-weight: normal;
+//     cursor: pointer;
+//   }
+// }
+
+// .checkboxIE {
+//   display: block;
+//   min-height: @line-height-computed; // clear the floating input if there is no label text
+//   margin-top: 0px;
+//   margin-bottom: 10px;
+//   margin-left: 0px;
+//   padding-left: 0px;
+//   vertical-align: middle;
+//   label {
+//     display: inline;
+//     margin-bottom: 0;
+//     font-weight: normal;
+//     cursor: pointer;
+//   }
+// }
+
+
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  float: left;
+  margin-left: -20px;
+}
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline {
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px; // space out consecutive inline controls
+}
+
+// Apply same disabled cursor tweak as for inputs
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"],
+.radio,
+.radio-inline,
+.checkbox,
+.checkbox-inline {
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+
+// Form control sizing
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+
+.input-lg {
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}
+
+
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+
+// Warning
+.has-warning {
+  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
+}
+// Error
+.has-error {
+  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+}
+// Success
+.has-success {
+  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+}
+
+
+// Static form control text
+//
+// Apply class to a `p` element to make any string of text align with labels in
+// a horizontal form layout.
+
+.form-control-static {
+  margin-bottom: 0; // Remove default margin from `p`
+  padding-top: (@padding-base-vertical + 1);
+}
+
+
+// Help text
+//
+// Apply to any element you wish to create light text for placement immediately
+// below a form control. Use for general help, formatting, or instructional text.
+
+.help-block {
+  display: block; // account for any element using help-block
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: @text-color;
+  font-size:11px; // DB: small font size
+}
+
+
+
+// Inline forms
+//
+// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach <768px.
+//
+// Requires wrapping inputs and labels with `.form-group` for proper display of
+// default HTML form controls and our custom form controls (e.g., input groups).
+//
+// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
+
+.form-inline {
+
+  // Kick in the inline
+  @media (min-width: @screen-tablet) {
+    // Inline-block all the things for "inline"
+    .form-group  {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // In navbar-form, allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match (which also avoids
+    // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      float: none;
+      margin-left: 0;
+    }
+  }
+}
+
+
+// Horizontal forms
+//
+// Horizontal forms are built on grid classes and allow you to create forms with
+// labels on the left and inputs on the right.
+
+.form-horizontal {
+
+  // Consistent vertical alignment of labels, radios, and checkboxes
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+  }
+
+  // Make form groups behave like rows
+  .form-group {
+    .make-row();
+  }
+
+  // Only right align form labels here when the columns stop stacking
+  @media (min-width: @screen-tablet) {
+    .control-label {
+      text-align: right;
+    }
+  }
+}
+
+
+//added by jeff for forms
+
+
+  /* FORMS
+   * -------------------------- */
+
+
+.form-bg-gray {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 20px 0px 20px 0px;
+  background-color:@gray-light;
+  overflow: hidden;
+    @media (min-width: @screen-tablet) {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 20px 15px 20px 15px;
+    }
+}
+
+
+.help-block-below{
+  display: block;
+  margin-top:0px;
+  margin-bottom:10px;
+  color: @text-color;
+  font-size:11px;
+}
+
+
+
+
+div.helpQuestion{
+  margin-top:1px;
+}
+
+
+
+.form-control{
+  border-radius:0;
+}
+
+
+
+div.input{
+  margin-right:-20px;
+}
+
+
+
+  // JEFF:/* custom labels */
+
+// label.customCheckLabel{
+//   margin-left:10px;
+//   margin-right:10px;
+//   padding-bottom:0px;
+//   font-weight:normal;
+//   vertical-align: bottom;
+
+// }
+
+// label.customCheckLabelIE{
+//   margin-left:10px;
+//   margin-right:10px;
+//   padding-bottom:0px;
+//   font-weight:normal;
+//   vertical-align: -12%;
+
+// }
+
+
+// label.customRadioLabel{
+//   margin-left:32px;
+//   margin-right:10px;
+//   padding-bottom:0px;
+//   font-weight:normal;
+//   vertical-align: bottom;
+// }
+
+
+//   /* CheckBoxes */
+
+// ul.checkbox li {
+//   border-bottom: @gray-light 1px solid;
+//   margin-bottom: 3px;
+//   padding-bottom: 10px;
+// }
+
+// ul.radio li {
+//   border-bottom: @gray-light 1px solid;
+//   // margin-bottom: 3px;
+//   padding-bottom: 10px;
+//   padding-top: 10px;
+// }
+
+// ul.checkbox.border-bottom-none li,
+// ul.radio.border-bottom-none li {
+//   border-bottom: 0px;
+//   margin-bottom: 0px;
+//   padding-bottom: 0px;
+// }
+
+
+
+// .regular-checkbox {
+//   display: none;
+//   vertical-align:middle;
+// }
+
+// .regular-checkbox + label {
+//   background-color: #ffffff;
+//   border: 1px solid @gray;
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray;
+//   padding: 10px;
+//   border-radius: 0px;
+//   display: inline-block;
+//   position: relative;
+//   vertical-align:middle;
+//   margin-top: 7px;
+// }
+
+// .regular-checkbox + label:active, .regular-checkbox:checked + label:active {
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+// }
+
+// .regular-checkbox:checked + label {
+//   background-color: @white;
+//   border: 1px solid @gray;
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray-light;
+//   color: #99a1a7;
+// }
+
+// .regular-checkbox:checked + label:after {
+//   font-family: 'icon-ui';
+//   font-weight: normal;
+//   content: "\e640";
+//   font-size: 22px;
+//   position: absolute;
+//   top: -6px;
+//   left: 0px;
+//   margin-left:2px;
+//   color: #888888;
+// }
+
+
+
+//   /* Radio */
+// .regular-radio {
+//  vertical-align:middle;
+//  font-weight:normal;
+//  left: 26px;
+//  opacity: 0;
+//  position: relative;
+//  z-index: 5;
+// }
+
+// .regular-radio + label {
+//   -webkit-appearance: none;
+//   background-color: @white;
+//   border: 1px solid @gray;
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0px -15px 10px -12px rgba(0,0,0,0.1);
+//   padding: 10px;
+//   border-radius: 50px;
+//   position: absolute;
+//   vertical-align:middle;
+//   font-weight:normal;
+
+// }
+// .regular-radio:checked + label:after {
+//   content: ' ';
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50px;
+//   position: absolute;
+//   top: 0px;
+//   background: @brand-primary;
+//   box-shadow: inset 0px 0px 0px rgba(0,0,0,0.3);
+//   text-shadow: 0px;
+//   left: 0px;
+//   font-size: 20px;
+//   font-weight:normal;
+// }
+
+// .regular-radio:checked + label {
+//   background-color: @white;
+//   color: @gray;
+//   border: 1px solid @gray;
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+//   font-weight:normal;
+// }
+
+// .regular-radio + label:active, .regular-radio:checked + label:active {
+//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+// }
+
+
+
+  /* Select Dropdowns */
+select {
+  overflow:hidden;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  color: @gray-dark;
+  font-size: 14px;
+  padding: 7px 40px 7px 7px;
+  line-height:12px;
+  cursor:pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  display: inline-block;
+  position:relative;
+}
+
+.select-container {
+  width: 100%;
+  overflow:hidden;
+  background: url("../img/downArrow.jpg") no-repeat right #f0f0f0;
+  border-color:@input-border;
+  border-style:solid;
+  border-width:1px;
+}
+
+.on-selectError .select-container{
+  width: 100%;
+  overflow:hidden;
+  background: url("../img/downArrowError.jpg") no-repeat right;
+  background-color:@red-lighter;
+  border-color:@red;
+  border-style:solid;
+  border-width:1px;
+  color:@red;
+}
+
+
+
+  /* forms error handling */
+.on-error{
+  color:@red;
+}
+
+input.on-error{
+  color:@red;
+  background:@red-lighter;
+}
+
+.on-match{
+  color:@green;
+}
+
+input.on-match{
+  color:@green;
+  background:@green-lighter;
+}
+
+
+
+div.pass{
+  font-size:2em;
+  color: @green;
+  margin-left: -50px;
+  padding-right: 6px;
+  padding-top: 3px;
+  float:right;
+}
+
+div.fail{
+  font-size:2em;
+  color: @red;
+  margin-left: -50px;
+  padding-right: 6px;
+  padding-top: 3px;
+  float:right;
+}
+
+.form-link-right label {
+  margin-bottom: 0px;
+  @media (min-width: @screen-tablet) {
+  margin-bottom: 10px;
+  width: 70%;
+  float: left;
+  }
+}
+
+.form-link-right p {
+  margin-bottom:10px;
+  @media (min-width: @screen-tablet) {
+  text-align: right;
+  display: inline-block;
+  width: 30%;
+
+  }
+}
+
+
+
+// db: Enables an inline form search field with button to right
+.form-search-inline {
+  label {
+    display: block;
+  }
+  button {
+    float: right;
+  }
+}
+
+
+
+.form-search-input {
+  overflow: hidden;
+  padding-right: 10px;
+}
+
+
+
+
+//-------------- DB: CheckBoxes------------------
+// Bootstrap Overrides:
+.checkbox {
+   float: left;
+  display: inline-block;
+  min-height: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  vertical-align: inherit;
+}
+
+ul.checkbox-list li {
+/*   border-bottom: @gray-light 1px solid; */
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+ul.checkbox-list li.border-bottom-none{
+  border-bottom: transparent 0px solid;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+
+
+ul.checkbox-list li:last-child {
+  margin-bottom: 0px;
+}
+
+
+ul.checkbox-list label {
+  cursor: pointer;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: @font-size-large;
+}
+
+.checkbox input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* style the "fake" checkbox */
+.checkbox-value {
+  background-color: #ffffff;
+  border: 1px solid @gray;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray;
+  border-radius: 0px;
+  display: inline-block;
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.25em;
+  vertical-align: -0.5em;
+}
+
+/* style the "fake CHECKED" checkbox */
+input:checked + .checkbox-value:before {
+  font-family: 'icon-ui';
+  font-weight: normal;
+  content: "\e640";
+  font-size: 22px;
+  position: absolute;
+  top: -6px;
+  left: 0px;
+  margin-left:2px;
+  color: #888888;
+}
+
+
+
+
+//-------------- DB: Radios------------------
+// Bootstrap Overrides:
+.radio {
+  display: inline-block;
+  min-height: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  vertical-align: inherit;
+  float: left;
+}
+
+ul.radio-list li {
+/*   border-bottom: @gray-light 1px solid; */
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+ul.radio-list-inline li {
+/*   border-bottom: @gray-light 1px solid; */
+   display: block;
+   margin-bottom: 10px;
+   @media (min-width: @screen-tablet) {
+      display: inline-block;
+      padding-right: 20px;
+   }
+   &:last-child {
+      padding-right: 0px;
+   }
+}
+
+
+
+ul.radio-list li.border-bottom-none{
+  border-bottom: transparent 0px solid;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+ul.radio-list li:last-child {
+  margin-bottom: 0px;
+}
+
+
+ul.radio-list label {
+  cursor: pointer;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: @font-size-large;
+  &.disabled {
+     cursor: default;
+ }
+}
+
+ul.radio-list-inline label {
+  cursor: pointer;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: @font-size-large;
+  &.disabled {
+     cursor: default;
+ }
+}
+
+
+.radio input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* style the "fake" checkbox */
+.radio-value {
+  width: 1.5em;
+  height: 1.5em;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95% auto;
+  border-radius: 50%;
+  border: 1px solid @gray;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray;
+  display: inline-block;
+  position: relative;
+  margin-right: 0.25em;
+  vertical-align: -0.5em;
+
+}
+
+/* style the "fake CHECKED" radio */
+input:checked + .radio-value:before {
+  content: " ";
+  width: 1.4em;
+  height: 1.4em;
+  background: @brand-primary;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95% auto;
+  border-radius: 50%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+
+
+/* ---------------------DB: START: NEW Select Form (javascript for Firefox fix)------------------- */
+
+// select {
+//   color: @gray-dark;
+//   padding: 7px 0 7px 7px;
+//   cursor:pointer;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+// }
+
+/* style the "fake" select */
+// Default State
+.select-container.default {
+  background:  url("../../img/downArrow.jpg") no-repeat right @gray-light;
+  border: 1px solid @input-border;
+  border-radius: 0;
+  position: relative;
+  vertical-align: middle;
+  font-size: @font-size-large;
+  height: 37px;
+  line-height: 2.2em;
+  padding: 0px 44px 0px 10px;
+}
+
+.select-container.default :hover {
+  border-color: @input-color;
+}
+
+.select-container.default .focus {
+  border-color: @input-color;
+}
+
+
+// Error State
+.select-container.on-selectError{
+  background:  url("../../img/downArrowError.jpg") no-repeat right @red-lighter;
+  border: 1px solid @red;
+  border-radius: 0;
+  position: relative;
+  vertical-align: middle;
+  font-size: @font-size-large;
+  height: 37px;
+  line-height: 2.2em;
+  padding: 0px 44px 0px 10px;
+}
+
+.select-container.on-selectError:hover {
+  border-color: @red;
+}
+
+.select-container.on-selectError.focus {
+  border-color: @red;
+}
+
+
+/* Default styles for <select> */
+.select-container.default select {
+  height: 100%;
+  display: block;
+  width: 100%;
+  background-color: @gray-light;
+}
+
+.select-container.on-selectError select {
+  height: 100%;
+  display: block;
+  width: 100%;
+  background-color: @red-lighter;
+  color:@red;
+}
+/* hide and overlay when JavaScript is enabled */
+.select-container select {
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+
+}
+
+
+
+
+.styled-select select {
+   background: transparent;
+   width: 105%;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+
+.styled-select {
+	width: 100%;
+	height: 34px;
+	overflow: hidden;
+	background: url("../img/downArrow.jpg") no-repeat right #f0f0f0;
+	border-color:@input-border;
+	border-style:solid;
+	border-width:1px;
+}

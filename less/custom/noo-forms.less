@@ -1,0 +1,75 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// CHECKBOXES
+// --------------------------------------------------
+
+
+/* CHECKBOXES UNCHECKED style*/
+.noo-checkbox-value {
+  background-color: #ffffff;
+  border: 1px solid @gray;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.25em;
+  vertical-align: -0.5em;
+}
+
+/* CHECKBOXES CHECKED style*/
+input:checked + .noo-checkbox-value:before {
+  font-family: 'icon-ui';
+  font-weight: normal;
+  content: "\e641";
+  font-size: 22px;
+  position: absolute;
+  top: -3px;
+  left: .01em;
+  color: @brand-primary;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+
+// RADIO BUTTONS
+// --------------------------------------------------
+
+/* RADIO BUTTONS NOT SELECTED style*/
+.noo-radio-value {
+  width: 1.5em;
+  height: 1.5em;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95% auto;
+  border-radius: 50%;
+  border: 1px solid @gray;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray;
+  display: inline-block;
+  position: relative;
+  margin-right: 0.25em;
+  vertical-align: -0.5em;
+
+}
+
+/* RADIO BUTTONS SELECTED style*/
+input:checked + .noo-radio-value:before {
+  content: " ";
+  width: 1.4em;
+  height: 1.4em;
+  background: @white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95% auto;
+  border-radius: 50%;
+  border: 6px solid @brand-primary;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}

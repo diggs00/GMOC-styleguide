@@ -1,0 +1,40 @@
+//
+// Typography
+// --------------------------------------------------
+
+
+// Headings
+// -------------------------
+h1.noo { font-size: floor(@font-size-base * 3.1); } // 40px
+h2.noo { font-size: floor(@font-size-base * 1.7); } // 22px
+h3.noo { font-size: floor(@font-size-base * 1.7); } // 22px
+
+
+h3.noo {
+  font-family: @font-family-chevyBold;
+}
+
+
+// Headers
+// -------------------------
+
+.noo-page-header {
+   background-color: @gray-light;
+   h1 {
+      text-transform: Uppercase;
+      padding: 30px 0px;
+      margin: 0px;
+      @media (max-width: @screen-phone) {
+         font-size: 32px;
+      }
+   }
+}
+
+.noo-section-header {
+   background-color: @gray-darker;
+   & h3 {
+      padding: 20px 0px;
+      margin: 0px;
+      color:@white;
+   }
+}

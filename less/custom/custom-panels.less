@@ -1,0 +1,2586 @@
+ //
+// Panels
+// --------------------------------------------------
+
+
+// Base class
+.panel {
+  margin-bottom: 0px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: @panel-border-radius;
+  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+}
+
+
+
+// jeff:this is to override the panel drawer bg color
+.panel-drawer{
+  background-color: #ffffff;
+  border-color:@gray;
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  margin-bottom:30px;
+}
+
+
+// db
+.panel-card {
+  &.vehicle {
+    background-color: @white;
+    border-color:@gray;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+    margin-bottom:0px;
+    img {
+      text-align: center;
+      width: 100%;
+
+      @media (min-width: @screen-desktop) {
+        float: left;
+        width: 50%;
+      }
+    }
+    ul {
+      @media (min-width: @screen-desktop) {
+        padding-left:15px;
+        float: left;
+        width: 50%;
+      }
+    }
+  }
+}
+
+
+// db
+.panel-card {
+  &.image-with-text {
+    background-color: @white;
+    border-color:@gray;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+    margin-bottom:30px;
+
+    .title {
+      border-bottom: 1px solid @gray;
+      overflow: hidden;
+      padding-bottom: 20px;
+      margin-bottom:20px;
+    }
+
+    img {
+      width: 25%;
+      float: left;
+      @media (min-width: @screen-tablet) {
+        float: none;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+    h5 {
+        margin: 0px;
+        padding-left: 10px;
+        float: left;
+        width: 75%;
+      @media (min-width: @screen-tablet) {
+        text-align: center;
+        width: 100%;
+        float: none;
+        padding: 0px;
+      }
+    }
+  }
+}
+
+.panel-card {
+    &.device-vertical {
+        cursor: pointer;
+        background-color: @white;
+        border-color:@gray;
+        box-shadow:none;
+        -webkit-box-shadow:none;
+        display: block;
+        img {
+            float: none;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        &:hover {
+            background-color: @gray-light;
+            border-color: @brand-primary;
+            a {
+                cursor: auto;
+            }
+        }
+    }
+}
+
+
+.panel-card {
+    &.device-horizontal {
+        background-color: @gray-light;
+        border-color: @brand-primary;
+        box-shadow:none;
+        -webkit-box-shadow:none;
+        display: block;
+        img {
+            width: 100%;
+            margin-bottom: 20px;
+            @media (min-width: @screen-tablet) {
+                width: 50%;
+                float: left;
+                margin-bottom: 0px;
+            }
+        }
+        ul {
+            @media (min-width: @screen-tablet) {
+                padding-left:15px;
+                float: left;
+                width: 50%;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+.panel.panel-tertiary {
+  margin-bottom: 30px;
+  background-color: @gray-light;
+  min-height: 225px;
+}
+
+.panel.panel-account {
+  margin-bottom: 30px;
+  min-height: 420px;
+  margin-bottom: 20px;
+
+}
+
+.panel.panel-addVehicle{
+  max-height: 300px;
+  background-color: white;
+}
+
+// Panel contents
+.panel-body {
+  padding: 20px;
+  .clearfix();
+}
+
+
+
+// List groups in panels
+//
+// By default, space out list group content from panel headings to account for
+// any kind of custom content between the two.
+
+.panel {
+  > .list-group {
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-width: 1px 0;
+
+      // Remove border radius for top one
+      &:first-child {
+        .border-top-radius(0);
+      }
+      // But keep it for the last one
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+// Collapse space between when there's no additional content.
+.panel-heading + .list-group {
+  .list-group-item:first-child {
+    border-top-width: 0;
+  }
+}
+
+
+// Tables in panels
+//
+// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
+// watch it go full width.
+
+.panel {
+  > .table {
+    margin-bottom: 0;
+  }
+  > .panel-body + .table {
+    border-top: 1px solid @table-border-color;
+  }
+}
+
+
+// Optional heading
+.panel-heading, .panel-heading-expand {
+  position: relative;
+  padding: 0px;
+  border-bottom: 0px solid transparent;
+  .border-top-radius(@panel-border-radius - 1);
+  a {
+  color:@white;
+  text-decoration: none;
+  }
+  a:hover {
+  color:@white;
+  text-decoration: none;
+  }
+
+
+}
+
+.panel-heading-expand{
+  cursor:pointer;
+}
+
+
+.panel-heading > span {
+  position:absolute;
+  top:50%;
+  font-size: 20px;
+  line-height: 0px;
+}
+
+
+.panel-heading-expand > span {
+  position:absolute;
+  top: 25px;
+  right: 15px;
+  font-size: 20px;
+  line-height: 0px;
+
+}
+
+
+
+
+.panel-tertiary .panel-heading {
+  padding: 15px 20px 0px 20px;
+}
+
+
+
+// Within heading, strip any `h*` tag of it's default margins for spacing.
+.panel-title {
+  color:@white;
+  margin:0px;
+  padding: 15px 20px;
+  > a {
+    color: inherit;
+  }
+}
+
+.panel-title-expand {
+  padding: 15px 20px;
+  color:@gray-dark;
+  margin:0px 30px 0px 0px;
+  > a {
+    color: inherit;
+  }
+  p {
+    margin-bottom: 0px;
+    margin-left: 30px;
+  }
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+}
+
+
+
+.panel-default-icon .panel-title {
+  margin-left: 30px;
+  background-color: @gray-darker;
+  h3 {
+    margin-bottom: 0px;
+    color:@white;
+  }
+}
+
+.panel-primary-icon .panel-title {
+  margin-left: 30px;
+  background-color: @brand-primary;
+  h3 {
+    margin-bottom: 0px;
+    color:@white;
+  }
+}
+
+
+.panel-primary-tool .panel-title {
+    color:@white;
+    h3 {
+        color:@white;
+    }
+}
+
+
+
+
+
+// DB: Makes Title work with icon floated to right
+.panel-title-icon {
+    padding: 15px 20px;
+  margin-right:40px;
+  margin-bottom: 0px;
+  color:@white;
+  > a {
+    color: inherit;
+  }
+}
+
+
+
+
+.panel-tertiary .panel-title {
+    border-bottom:1px solid @gray;
+    padding: 0px 0px 14px 0px;
+}
+
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  padding: 0px;
+  background-color: transparent;
+  border-top: 0px solid @panel-inner-border;
+  .border-bottom-radius(@panel-border-radius - 1);
+}
+
+
+
+
+// Dbaker
+
+.panel-image {
+  padding: 0px;
+  text-align: center;
+  position: relative;
+    @media (min-width: @screen-tablet) {
+    }
+
+  img {
+    @media (min-width: @screen-tablet) {
+      max-height: 194px;
+      display: inline;
+    }
+    @media (min-width: @screen-desktop) {
+      max-height: 160px;
+      display: inline;
+    }
+  }
+
+  .vin {
+    text-transform: uppercase;
+    background-color: @gray-light;
+    padding:5px 10px;
+    position: absolute;
+    top:0px;
+    left: -20px;
+    margin:0px;
+  }
+
+}
+
+
+
+.panel-bg-extend {
+  padding:20px;
+}
+
+
+
+.panel-bg-extend-border {
+  padding: 10px 20px;
+  border-top:1px solid @gray;
+}
+
+.panel-bg-extend-borderbottom {
+  padding: 10px 20px;
+  border-bottom:1px solid @gray;
+// db: list inline with pipe
+   ul li:before {
+    padding-right:0px;
+      @media (min-width: 320px) {
+        padding-right:0px;
+      }
+    }
+
+   ul li:before > li {
+    padding-right:0px;
+      @media (min-width: 320px) {
+        padding-right:05px;
+      }
+    }
+
+  .list-inline-pipe {
+    .list-unstyled();
+    > li {
+      display: block;
+      content: none;
+      padding-left: 0px;
+      @media (min-width: 320px) {
+        display: inline-block;
+      }
+    }
+    > li + li {
+      padding-left: 0px;
+      margin-top:10px;
+      @media (min-width: 320px) {
+        margin-top:0px;
+        padding-left: 5px;
+      }
+    }
+  }
+
+  .list-inline-pipe {
+    .list-unstyled();
+    > li:before {
+      content: none;
+
+      @media (min-width: 320px) {
+        content: "| ";
+        color:@gray;
+      }
+
+    }
+  }
+
+  .list-inline-pipe {
+    .list-unstyled();
+    > li:first-child:before {
+      content: "";
+    }
+  }
+}
+
+// db: list inline with pipe IE fix
+* html .list-inline-pipe li {
+  border-left: 1px solid black;
+  padding: 0 0.4em 0 0.4em;
+  margin: 0 0.4em 0 -0.4em;
+}
+
+
+
+
+
+
+
+
+
+// db: list inline with pipe THIS DOES NOT REMOVE PIPE ON SCREEN SIZE
+
+.list-inline-pipe {
+  .list-unstyled();
+  > li {
+    display: block;
+    content: none;
+    @media (min-width: 475px) {
+      display: inline-block;
+    }
+  }
+  > li + li {
+    padding-left: 5px;
+  }
+}
+
+.list-inline-pipe {
+  .list-unstyled();
+  > li:before {
+    content: none;
+
+    @media (min-width: 475px) {
+      content: "| ";
+    }
+
+  }
+}
+
+.list-inline-pipe {
+  .list-unstyled();
+  > li:first-child:before {
+    content: "";
+  }
+}
+
+// db: list inline with pipe IE fix
+* html .list-inline-pipe li {
+  border-left: 1px solid black;
+  padding: 0 0.4em 0 0.4em;
+  margin: 0 0.4em 0 -0.4em;
+}
+
+
+
+
+
+// Dbaker: horizontal list links for panels
+.panel-bg-extend-border ul.list-inline li + li {
+  margin-bottom: 0px;
+  margin-top: 10px;
+  float:none;
+      @media (min-width: 369px) {
+      float: right;
+      margin-left: 0px;
+      margin-top:0px;
+      // margin: 10px 0px 0px 0px;
+    }
+    @media (min-width: @screen-tablet) {
+      float: none;
+      margin-left: 0px;
+      margin-top:10px;
+      // margin: 10px 0px 0px 0px;
+    }
+    @media (min-width: @screen-lg-desktop) {
+      float: right;
+      margin-top:0px;
+    }
+}
+
+
+
+
+
+// db: Panel for individual items within panel
+.panel-single-content-border {
+  border-bottom:1px solid @gray;
+  padding: 20px 20px 20px 20px;
+  .clearfix();
+  @media (min-width: @screen-tablet) {
+    border-bottom: none;
+    border-right: 1px solid @gray;
+    margin-right:-15px;
+  }
+}
+
+
+.panel-single-content {
+  padding: 20px 20px 20px 20px;
+  .clearfix();
+  @media (min-width: @screen-tablet) {
+  margin-left:-15px;
+  }
+}
+
+
+
+
+// Dbaker: horizontal list links for panels without list-inline applied to ul
+.panel-bg-extend-border ul li button.btn-link {
+  text-align: left;
+}
+
+.panel-bg-extend-border ul li a.btn-link {
+  text-align: left;
+}
+
+
+// .panel-bg-extend-border ul li + li {
+//   margin-bottom: 0px;
+//   margin-top: 10px;
+//   float:none;
+// }
+
+
+
+
+
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.panel-group {
+  // Tighten up margin so it's only between panels
+  .panel {
+    margin-bottom: 0;
+    border-radius: @panel-border-radius;
+    overflow: hidden; // crop contents when collapsed
+    + .panel {
+      margin-top: 5px;
+    }
+  }
+
+  .panel-heading {
+    border-bottom: 0;
+    + .panel-collapse .panel-body {
+      border-top: 1px solid @panel-inner-border;
+    }
+  }
+  .panel-footer {
+    border-top: 0;
+    + .panel-collapse .panel-body {
+      border-bottom: 1px solid @panel-inner-border;
+    }
+  }
+
+  // New subcomponent for wrapping collapsable content for proper animations
+  .panel-collapse {
+
+  }
+}
+
+
+// Contextual variations
+.panel-default {
+  .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+}
+.panel-primary {
+  .panel-variant(@panel-default-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+}
+.panel-secondary {
+  .panel-variant(@panel-default-border; @panel-secondary-text; @panel-secondary-heading-bg; @panel-secondary-border);
+}
+.panel-tertiary {
+  .panel-variant(@panel-default-border; @panel-info-text; @panel-tertiary-heading-bg; @panel-tertiary-border);
+}
+
+.panel-informational {
+  .panel-variant(@panel-default-border; @panel-informational-text; @panel-informational-heading-bg; @panel-informational-border);
+}
+
+
+
+
+
+// Contextual variations with icon left
+.panel-default-icon {
+  .panel-variant-icon(@panel-default-border; @panel-default-icon-text; @panel-default-icon-heading-bg; @panel-default-icon-border);
+}
+.panel-primary-icon {
+  .panel-variant-icon(@panel-default-border; @panel-primary-icon-text; @panel-primary-icon-heading-bg; @panel-primary-icon-border);
+}
+
+// Contextual variations with TOOL
+.panel-primary-tool {
+    .panel-variant-tool(@panel-default-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+}
+
+
+
+// Contextual variations with EXPAND/COLLAPSE
+.panel-default-expand {
+  .panel-variant-expand(@panel-default-border; @panel-default-expand-text; @panel-default-expand-heading-bg; @panel-default-expand-border);
+}
+
+
+
+
+
+
+.panel-success {
+  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+}
+.panel-warning {
+  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+}
+.panel-danger {
+  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
+.panel-info {
+  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+}
+
+
+
+
+// -------------Vehicle Widget----------------
+
+.panel-vehicle-display {
+  padding: 0px;
+  position: relative;
+  border-bottom: 1px solid @gray;
+    @media (min-width: @screen-tablet) {
+      border-bottom: none;
+      margin-right:-15px;
+      border-right: 1px solid @gray;
+    }
+
+  .panel-vehicle-display-title {
+    padding:20px 20px 20px 20px;
+  }
+
+
+  .panel-vehicle-display-image {
+    text-align: center;
+    height:210px;
+    @media (max-width: @screen-sm) {
+      height: 320px;
+    }
+    @media (max-width: @screen-xs) {
+      height: 210px;
+    }
+  }
+
+  img {
+    display: inline;
+    max-height:100%;
+    @media (min-width: @screen-tablet) {
+      // max-height: 194px;
+    }
+    @media (min-width: @screen-desktop) {
+      // max-height: 160px;
+    }
+  }
+}
+
+
+.vin {
+  text-transform: uppercase;
+  background-color: @gray-light;
+  padding:5px 10px;
+  position: absolute;
+  top:5px;
+  left: 0px;
+  margin:0px;
+
+  @media (max-width: @screen-tablet) {
+    top: 20px;
+  }
+
+  @media (max-width: @screen-xs) {
+    top: 5px;
+  }
+}
+
+.panel-vehicle-mileage {
+  padding: 0px;
+  position: relative;
+  margin-left:-15px;
+  @media (max-width: @screen-tablet) {
+    margin-left:0px;
+  }
+}
+
+.panel-vehicle-mileage-icon {
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid @gray;
+    @media (min-width: @screen-tablet) {
+      padding:5px;
+      border-right: none;
+    }
+    @media (min-width: @screen-desktop) {
+      padding:10px;
+      border-right: none;
+    }
+
+  h1 {
+    margin: 0px;
+    line-height: 0px;
+  }
+  h5 {
+    margin: 0px;
+    line-height: 0px;
+    display: inline;
+  }
+}
+
+
+.panel-vehicle-mileage-odometer {
+  text-align: center;
+  margin-left: -30px;
+  margin-right: 0px;
+  padding: 10px;
+    @media (min-width: @screen-tablet) {
+      margin-left:-30px;
+      margin-right: 0px;
+      padding:5px;
+      border-left: 1px solid @gray;
+    }
+    @media (min-width: @screen-desktop) {
+      padding:10px;
+    }
+
+  h3 {
+    font-size: 35px;
+    margin-bottom: 5px;
+    @media (min-width: @screen-tablet) {
+      font-size: 35px;
+      margin: 0px;
+    }
+  }
+
+  p {
+    margin: 0px;
+    line-height: 0px;
+    @media (min-width: @screen-tablet) {
+      margin: 0px;
+      line-height: 0px;
+      display: inline;
+    }
+  }
+}
+
+
+.panel-vehicle-mileage-edit {
+  margin-left:0px;
+  margin-right:0px;
+  // background-color: @gray-light;
+  border-top: 1px solid @gray;
+  padding:20px;
+  overflow: hidden;
+    ul {
+      margin:0px;
+      display: inline-block;
+      zoom: 1; //  IE inline-block fix
+      *display: inline; //  IE inline-block fix
+      width: 50%;
+      float: left;
+        @media (min-width: @screen-tablet) {
+          margin:0px;
+          display: inline-block;
+          zoom: 1; //  IE inline-block fix
+          *display: inline; //  IE inline-block fix
+          width: 100%;
+          float: none;
+        }
+
+        @media (min-width: @screen-desktop) {
+          margin:0px;
+          display: inline-block;
+          zoom: 1; //  IE inline-block fix
+          *display: inline; //  IE inline-block fix
+          width: 50%;
+          float: left;
+        }
+
+    }
+    ul > li:first-child {
+      text-transform: uppercase;
+      margin-bottom: 0px;
+    }
+}
+
+
+// -------------Warranty  Widget----------------
+.panel-warranty-alert {
+  .clearfix();
+  background-color: @gray-light;
+  border: 1px solid @gray;
+  padding:10px;
+  @media (min-width: @screen-tablet) {
+    float: left;
+    text-align: center;
+    width: 40%;
+    margin-right:20px;
+  }
+
+
+  span {
+    margin-bottom: 0px;
+    font-size: 30px;
+    float: left;
+    @media (min-width: @screen-tablet) {
+      float: none;
+    }
+  }
+
+  p {
+    margin-bottom: 0px;
+    margin-top: 7px;
+    margin-left: 40px;
+    @media (min-width: @screen-tablet) {
+      margin-left: 0px;
+
+    }
+  }
+
+}
+
+
+ul.panel-warranty-alert-title {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  @media (min-width: @screen-tablet) {
+  margin-top: 0px;
+  }
+}
+
+
+
+
+.panel-informational ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.panel-informational {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  .panel-body {
+    border-bottom: 1px solid @gray;
+  }
+}
+
+
+// -------------Account finance  Widget----------------
+.panel-finance-item-text {
+  margin-right: 115px;
+
+}
+
+
+
+
+// ------------- OVD Maintenance  Widget----------------
+
+// LEFT PANE
+.panel-maintenance-left {
+  padding: 0px;
+  border-bottom: 1px solid @gray;
+    @media (min-width: @screen-lg-desktop) {
+      border-bottom: none;
+      margin-right:-15px;
+      border-right: 1px solid @gray;
+    }
+}
+
+.tire-pressure-display {
+  position: relative;
+  margin-bottom: 20px;
+    ul {
+      position: relative,
+    }
+
+    li {
+      margin-bottom: 5px;
+        @media (min-width: @screen-lg-desktop) {
+          margin-bottom: 0px;
+        }
+    }
+
+    li p {
+      display: inline;
+        @media (min-width: @screen-lg-desktop) {
+          display: block;
+        }
+    }
+
+    li img {
+      display: inline;
+      width: inherit;
+      @media (min-width: @screen-lg-desktop) {
+        text-align: center;
+      }
+    }
+
+    li.front-left {
+      @media (min-width: @screen-lg-desktop) {
+        position: absolute;
+        text-align: center;
+        top:205px;
+        left:228px;
+      }
+    }
+
+    li.rear-left {
+      @media (min-width: @screen-lg-desktop) {
+        position: absolute;
+        text-align: center;
+        top:150px;
+        left:316px;
+      }
+    }
+
+    li.front-right {
+      @media (min-width: @screen-lg-desktop) {
+        position: absolute;
+        text-align: center;
+        top:60px;
+        left:23px;
+      }
+    }
+
+    li.rear-right {
+      @media (min-width: @screen-lg-desktop) {
+        position: absolute;
+        text-align: center;
+        top:-4px;
+        left:158px;
+      }
+    }
+
+    img {
+      width: 100%;
+      display: none;
+      @media (min-width: @screen-lg-desktop) {
+        display: inline;
+      }
+
+    }
+    p {
+      margin-bottom: 0px;
+    }
+}
+
+
+
+
+// RIGHT PANE
+.panel-maintenance-right {
+  padding: 0px;
+  margin-left:-15px;
+    @media (max-width: @screen-lg-desktop) {
+      margin-left:0px;
+    }
+}
+
+
+.panel-maintenance-subtitle {
+  padding: 20px;
+  border-bottom: 1px solid @gray;
+  background-color: @gray-light;
+    h4 {
+      margin-bottom:0px;
+    }
+}
+
+
+
+
+.panel-maintenance-body {
+  padding: 20px;
+}
+
+
+
+// MIDDLE PANE
+.panel-maintenance-subtitle-middle {
+  padding: 20px;
+  border-bottom: 1px solid @gray;
+  border-top: 1px solid @gray;
+  background-color: @gray-light;
+    h4 {
+      margin-bottom:0px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ------------- OVD Vehicle Details Widget----------------
+
+.ovd-vehicle-system {
+  background-color: @gray-light;
+  @media (max-width: @screen-desktop) {
+    background-color: inherit;
+  }
+}
+
+
+// LEFT PANE
+.panel-nav-tabs {
+  z-index: 50000;
+  position: relative;
+  @media (max-width: @screen-desktop) {
+    display: none;
+  }
+}
+
+.panel-nav-tabs-selector {
+  padding: 20px 20px 0px 20px;
+  @media (min-width: @screen-desktop) {
+    display: none;
+  }
+}
+
+ul.panel-tabs > li{
+  position: relative;
+  display: block;
+  background-color: @gray-light;
+  border-bottom: 1px solid @gray;
+  cursor: pointer;
+  &:hover {
+    background-color: @white;
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid @white;
+      margin-top: -10px;
+    }
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      border-left: 11px solid @gray;
+      margin-top: -11px;
+    }
+  }
+}
+
+
+
+ul.panel-tabs > li.active{
+  background-color: @white;
+  cursor: default;
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid @white;
+    margin-top: -10px;
+  }
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-left: 11px solid @gray;
+    margin-top: -11px;
+  }
+  & a{
+    cursor: default;
+  }
+}
+
+ul.panel-tabs > li > a {
+  padding: 15px;
+  display: block;
+}
+
+ul.panel-tabs > li > a > img {
+  float: left;
+}
+
+ul.panel-tabs > li > a > p {
+  color: @gray-dark;
+  margin: 0px 0px 0px 35px;
+}
+
+
+// RIGHT PANE
+.panel-vehicle-systems-content{
+  padding: 20px;
+  margin-left: 0px;
+  background-color: @white;
+    @media (min-width: @screen-desktop) {
+      margin-left: -30px;
+      padding: 20px 20px 20px 20px;
+      border-left: 1px solid @gray;
+    }
+}
+
+.panel-vehicle-systems-image img {
+  width: 100%;
+}
+
+
+
+
+
+// ------------- Login  Widget----------------
+
+.panel-login-title {
+  padding: 20px;
+  border-bottom: 1px solid @gray;
+  background-color: @gray-light;
+  overflow: hidden;
+
+  ul {
+    margin: 0px 0px 0px 0px;
+    display: inline-block;
+    zoom: 1;
+    @media (min-width: @screen-tablet) {
+        width: 70%;
+    }
+
+    + a.btn-right {
+      @media (min-width: @screen-tablet) {
+          margin-top:0px;
+          float: right;
+      }
+    }
+  }
+
+  h6 {
+    margin-bottom:0px;
+    color: @gray-dark;
+  }
+}
+
+.login {
+  background-color: @white;
+  ul {
+    margin: 0px 0px 0px 0px;
+    display: inline-block;
+    zoom: 1;
+    @media (min-width: @screen-tablet) {
+        width: 70%;
+    }
+
+    + a.btn-right {
+      @media (min-width: @screen-tablet) {
+          margin-top:0px;
+          float: right;
+      }
+    }
+  }
+
+  h6 {
+    margin-bottom:0px;
+    color: @gray-dark;
+  }
+
+  p {
+    color: @gray-dark;
+  }
+
+  .year{
+    margin-bottom:10px;
+    @media (min-width: @screen-desktop) {
+        margin-bottom:0px;
+    }
+  }
+
+
+  .make{
+    margin-bottom:10px;
+    @media (min-width: @screen-desktop) {
+        margin-bottom:0px;
+    }
+  }
+
+
+  .model {
+    margin-bottom:10px;
+  }
+}
+
+
+
+
+
+// -------------Vehicle Profile Tools Widget----------------
+
+.panel-vehicle-profile-tools {
+  background-color: @white;
+  text-align: center;
+
+    .tools-title {
+      margin-bottom: 20px;
+      overflow: hidden;
+      @media (min-width: @screen-desktop) {
+          text-align: center;
+          margin-bottom:20px;
+      }
+
+    img {
+      float: left;
+      margin: 0px;
+      @media (min-width: @screen-desktop) {
+        float: none;
+        text-align: center;
+        display: inline;
+        margin: 0px 0px 20px 0px;
+      }
+    }
+    h5 {
+      text-align: left;
+      margin-left: 50px;
+      margin-bottom: 0px;
+      @media (min-width: @screen-desktop) {
+        text-align: center;
+        margin:0px;
+      }
+    }
+  }
+  .tools-content {
+    p {
+      text-align: left;
+      margin: 0px;
+      @media (min-width: @screen-desktop) {
+        text-align: center;
+        margin: 0px;
+      }
+    }
+  }
+
+  .tools-footer {
+    text-align: left;
+    overflow: hidden;
+    ul.image-list {
+      li>img {
+        float: left;
+        text-align: center;
+      }
+      li>p {
+        margin: 0px 0px 0px 40px;
+      }
+    }
+  }
+}
+
+// -columns of same height styles--
+.table-container {
+  display:table;
+  width:100%;
+  vertical-align:top;
+}
+.table-row {
+  display:table-row;
+}
+
+.table-cell-column1,
+.table-cell-column2,
+.table-cell-column3 {
+  display:table-cell;
+  float:left;
+  vertical-align:top;
+  border-bottom:1px solid @gray;
+  @media (min-width: @screen-lg-desktop) {
+    float:none;
+    border-right:1px solid @gray;
+    border-bottom:none;
+  }
+}
+
+
+.table-cell-column4 {
+  display:table-cell;
+  float:left;
+  vertical-align:top;
+  border-bottom:1px solid @gray;
+  @media (min-width: @screen-lg-desktop) {
+    float:none;
+    border-bottom:none;
+  }
+}
+
+
+.table-item {
+  width:100%;
+  height:100%;
+  padding: 20px 5px;
+  display:table;
+}
+
+.table-cell-content {
+  display:table-cell;
+}
+
+// -------------END Vehicle Profile Tools Widget----------------
+
+
+
+
+
+// -------------Vehicle Profile Snapshot Vehicle Image----------------
+
+.panel-vehicle-display-snapshot {
+  padding: 0px;
+  text-align: center;
+  position: relative;
+
+  img {
+    @media (min-width: @screen-tablet) {
+      max-height: 194px;
+      display: inline;
+    }
+    @media (min-width: @screen-desktop) {
+      max-height: 160px;
+      display: inline;
+    }
+  }
+
+  .vin {
+    text-transform: uppercase;
+    background-color: @gray-light;
+    padding:5px 10px;
+    position: absolute;
+    top:5px;
+    left: 0px;
+    margin:0px;
+
+    @media (max-width: @screen-tablet) {
+      top: 20px;
+    }
+
+    @media (max-width: @screen-xs) {
+      top: 5px;
+    }
+  }
+}
+
+
+.vehicle-snapshot {
+
+  border-top:1px solid @gray;
+
+  .table-cell-column1 {
+    display:table-cell;
+    float:left;
+    vertical-align:top;
+    border-bottom: none;
+    border-right:1px solid @gray;
+    @media (min-width: @screen-lg-desktop) {
+      float:none;
+      border-right:1px solid @gray;
+    }
+  }
+
+  .table-cell-column2 {
+    display:table-cell;
+    float:left;
+    vertical-align:top;
+    border-bottom: none;
+    @media (min-width: @screen-lg-desktop) {
+      float:none;
+      border-right:1px solid @gray;
+    }
+  }
+
+  .table-cell-column3 {
+    display:table-cell;
+    float:left;
+    vertical-align:top;
+    border-top:1px solid @gray;
+    border-bottom:none;
+    background-color: @gray-light;
+    @media (min-width: @screen-lg-desktop) {
+      float:none;
+      border-bottom:none;
+      border-top:none;
+      border-right:none;
+    }
+  }
+
+  .panel-vehicle-mileage-icon {
+    padding: 0px;
+    text-align: center;
+    border-right: none;
+    @media (min-width: @screen-tablet) {
+      padding:0px;
+    }
+    @media (min-width: @screen-desktop) {
+      padding:0px;
+    }
+    h1 {
+      margin: 0px;
+      line-height: 0px;
+      display: block;
+    }
+    h5 {
+      @media (max-width: 320px) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .panel-vehicle-mileage-odometer {
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+    @media (min-width: @screen-tablet) {
+      margin-left:0px;
+      margin-right: 0px;
+      padding:0px;
+      border-left: none;
+    }
+    @media (min-width: @screen-desktop) {
+      padding:0px;
+    }
+
+    h3 {
+      font-size: 25px;
+      margin-bottom: 5px;
+      display: inline;
+      margin:0px;
+      @media (min-width: 357px) {
+        font-size: 35px;
+      }
+      @media (min-width: 422px) {
+        font-size: 35px;
+        display: block;
+      }
+      @media (min-width: @screen-tablet) {
+        font-size: 35px;
+        margin: 0px;
+      }
+    }
+
+    p {
+      margin: 0px;
+      line-height: 0px;
+      display: inline;
+      @media (min-width: @screen-tablet) {
+        margin: 0px;
+        line-height: 0px;
+        display: inline;
+      }
+    }
+  }
+
+  .panel-vehicle-mileage-edit {
+    margin-left:0px;
+    margin-right:0px;
+    background-color: inherit;
+    border-top: none;
+    padding:0px;
+    overflow: hidden;
+      ul {
+        margin:0px;
+        display: inline-block;
+        zoom: 1; //  IE inline-block fix
+        *display: inline; //  IE inline-block fix
+        width: 50%;
+        float: left;
+          @media (min-width: @screen-tablet) {
+            margin:0px;
+            display: inline-block;
+            zoom: 1; //  IE inline-block fix
+            *display: inline; //  IE inline-block fix
+            width: 100%;
+            float: none;
+          }
+
+          @media (min-width: @screen-desktop) {
+            margin:0px;
+            display: inline-block;
+            zoom: 1; //  IE inline-block fix
+            *display: inline; //  IE inline-block fix
+            width: 50%;
+            float: left;
+          }
+
+      }
+      ul > li:first-child {
+        text-transform: uppercase;
+        margin-bottom: 0px;
+      }
+  }
+
+}
+
+
+.table-item {
+  width:100%;
+  height:100%;
+  padding: 20px 5px;
+  display:table;
+}
+
+.table-cell-content {
+  display:table-cell;
+}
+
+// -------------END Vehicle Profile Tools Widget----------------
+
+
+
+
+
+
+// -------------NEW Active Vehicle Widget----------------
+
+
+// -columns of same height styles--
+.table-container {
+  display:table;
+  width:100%;
+  vertical-align:top;
+}
+.table-row {
+  display:table-row;
+}
+
+.table-cell-content {
+  display:table-cell;
+}
+
+.panel-vehicle-display2 {
+  .table-item {
+    width:100%;
+    height:100%;
+    padding: 0px;
+    display:table;
+  }
+  .table-cell-vehicle-display-column1 {
+    display:table-cell;
+    float:left;
+    vertical-align:top;
+    padding: 0px;
+    border-bottom: 1px solid @gray;
+    border-right: none;
+    @media (min-width: @screen-sm) {
+      float:none;
+      border-bottom: none;
+      border-right: 1px solid @gray;
+    }
+  }
+  .table-cell-vehicle-display-column2 {
+    display:table-cell;
+    vertical-align:top;
+    padding: 0px;
+    float:left;
+    background-color: @gray-light;
+    overflow: hidden;
+    border-bottom: none;
+    @media (min-width: @screen-sm) {
+    float:none;
+    border-bottom: none;
+    border-right: none;
+    }
+    @media (min-width: @screen-lg) {
+    float:none;
+    border-bottom: none;
+    border-right: none;
+    }
+  }
+  .table-cell-vehicle-display-column3 {
+    display:table-cell;
+    float:none;
+    vertical-align:top;
+    border-right: 1px solid @gray;
+    padding: 0px;
+    background-color: @white;
+    @media (min-width: @screen-lg-desktop) {
+      border-bottom:none;
+    }
+  }
+  .table-cell-vehicle-display-column4 {
+    display:table-cell;
+    float:none;
+    vertical-align:top;
+    padding: 0px;
+    background-color: @white;
+    border-right: none;
+    @media (min-width: @screen-lg-desktop) {
+      border-right: none;
+      border-bottom:none;
+    }
+  }
+  .table-cell-vehicle-display-column5 {
+    display:table-cell;
+    float:none;
+    vertical-align:top;
+    padding: 0px;
+    background-color: yellow;
+    @media (min-width: @screen-lg-desktop) {
+      border-bottom:none;
+    }
+  }
+  .panel-vehicle-image-area {
+    position: relative;
+    .panel-vehicle-display-image {
+      text-align: center;
+      height:210px;
+      @media (max-width: @screen-sm) {
+      height: 320px;
+      }
+      @media (min-width: @screen-md) {
+      height: 320px;
+      }
+      @media (max-width: @screen-xs) {
+      height: 210px;
+      }
+    }
+    img {
+      display: inline;
+      max-height:100%;
+    }
+    .vin {
+      text-transform: uppercase;
+      background-color: @gray-light;
+      padding:5px 10px;
+      position: absolute;
+      top: 10px;
+      left: 0px;
+      margin:0px;
+    }
+  }
+  .panel-vehicle-mileage-area {
+    .panel-vehicle-mileage-icon2 {
+      padding: 20px;
+      text-align: center;
+      border-right: none;
+      h1 {
+        margin: 0px;
+        line-height: 0px;
+        display: block;
+      }
+      h5 {
+        margin-bottom: 0px;
+        @media (max-width: 320px) {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  .panel-vehicle-mileage-odometer2 {
+    padding: 20px;
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    h3 {
+      font-size: 35px;
+      margin-bottom: 0px;
+      @media (min-width: @screen-tablet) {
+        margin: 0px;
+      }
+    }
+
+    p {
+      margin: 0px;
+      line-height: 0px;
+      display: inline;
+    }
+  }
+}
+
+
+// -------------END Active Vehicle Widget----------------
+
+
+
+// ------------- START Vehicle Info EV Widget STATUS----------------
+.panel-vehicle-info-subtitle {
+  overflow: hidden;
+  padding: 20px;
+  border-bottom: 1px solid @gray;
+  background-color: @gray-light;
+  h4 {
+    margin-bottom:0px;
+    @media (min-width: @screen-tablet) {
+      float:left;
+    }
+  }
+  ul {
+    margin-bottom: 0px;
+    display: inline;
+    @media (min-width: @screen-tablet) {
+      float: right;
+    }
+    li {
+      padding:0px;
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.panel-vehicle-info-subtitle2 {
+  overflow: hidden;
+  padding: 20px;
+  border-bottom: 1px solid @gray;
+  border-top: 1px solid @gray;
+  background-color: @gray-light;
+  .title{
+    width: 100%;
+    @media (min-width: @screen-tablet) {
+      width: 50%
+    }
+
+    h4 {
+      margin-bottom:0px;
+    }
+    @media (min-width: @screen-tablet) {
+      float:left;
+    }
+    p {
+      margin-bottom: 15px;
+      @media (min-width: @screen-tablet) {
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .view-select {
+    margin-bottom: 0px;
+    width: 100%;
+    @media (min-width: @screen-tablet) {
+      float: right;
+      width: 50%
+    }
+
+    .horizontal-form {
+      @media (min-width: @screen-tablet) {
+        position: relative;
+        float: right;
+        width: 50%;
+      }
+    }
+
+    label {
+      @media (min-width: @screen-tablet) {
+        position: absolute;
+        top: 10px;
+        left: -81px;
+      }
+    }
+  }
+}
+
+.status-left {
+  padding:20px;
+  overflow: hidden;
+  @media (max-width: 302px) {
+    text-align: center;
+  }
+  @media (min-width: @screen-tablet) {
+    margin-right:-15px;
+  }
+
+  img {
+    @media (max-width: 302px) {
+      float: none;
+    }
+    margin-bottom: 20px;
+    float: left;
+    margin-right: 20px;
+    @media (min-width: @screen-tablet) {
+      margin-bottom: 0px;
+    }
+  }
+
+  a.btn-left {
+    margin: 0px;
+  }
+
+  .status-box {
+    @media (max-width: 302px) {
+      margin-left: 0px;
+      margin-bottom:20px;
+    }
+
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: @gray-light;
+    border: 1px solid @gray;
+    padding:10px;
+    margin-left: 105px;
+    h3 {
+      margin:0px 0px 0px 0px;
+      line-height: 1em;
+    }
+    h1 {
+      margin:10px 0px 0px 0px;
+      line-height: 1em;
+    }
+  }
+}
+
+.status-right {
+  margin-left: 0px;
+  border-top: 1px solid @gray;
+  padding:20px;
+  overflow: hidden;
+  @media (min-width: @screen-tablet) {
+    margin-left: -15px;
+    border-top: none;
+    border-left: 1px solid @gray;
+  }
+  a.btn-left {
+    margin: 0px;
+  }
+
+  ul {
+    margin-bottom: 0px;
+    li:first-child {
+      margin-bottom: -5px;
+        span {
+        font-size: 32px;
+        vertical-align: middle;
+        }
+    }
+    li:nth-child(even){
+      margin-bottom: 10px;
+    }
+    li:last-child {
+      margin-bottom: 20px;
+    }
+    h5 {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+// ------------- START Vehicle Info EV Widget CHARGEMODE----------------
+
+.charge-mode {
+  padding:20px;
+  h5 {
+    margin:0px;
+  }
+}
+
+.charge-mode-block-container {
+  margin-bottom:20px;
+  position: relative;
+  overflow: hidden;
+  // @media (min-width: @screen-tablet) {
+  //   height:325px;
+  // }
+}
+
+
+.charge-mode-block-current-pointer {
+  display: none;
+  @media (min-width: @screen-tablet) {
+    display: block;
+    height:37px;
+    width:100%;
+    background-color: @white;
+  }
+  span {
+    display: none;
+  }
+}
+
+
+
+.charge-mode-block-one,
+.charge-mode-block-two,
+.charge-mode-block-three{
+  height:100%;
+  width:100%;
+  position: relative;
+  @media (min-width: @screen-tablet) {
+    width:33.3%;
+    float:left;
+  }
+  background-color: @gray-light;
+  cursor: pointer;
+  &:hover {
+    background-color: @gray;
+  }
+  &.active {
+    background-color: @white;
+    cursor:auto;
+      .charge-mode-block-current-pointer {
+        display: block;
+        background-color: @brand-primary;
+        width:100%;
+        margin:0px auto;
+        height: auto;
+        color:@white;
+        padding: @padding-base-vertical @padding-base-horizontal;
+        font-size: @font-size-base;
+        font-weight: @btn-font-weight;
+        line-height: @line-height-base;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        position: relative;
+          // @media (min-width: @screen-tablet) {
+          //   width:75%;
+          // }
+        &:after {
+          position: absolute;
+          top: 100%;
+          left: 46%;
+          content: " ";
+          height: 0;
+          width: 0;
+          border-top: 10px solid @brand-primary;
+          border-right: 10px solid transparent;
+          border-left: 10px solid transparent;
+        }
+        span {
+          display: block;
+        }
+      }
+  }
+}
+
+
+.charge-mode-block-one,
+.charge-mode-block-two,
+.charge-mode-block-three {
+  &.active,
+  &.active-selected {
+    background-color: @white;
+    cursor:auto;
+    .radio-button:before {
+      content: " ";
+      width: 22px;
+      height: 22px;
+      background: @brand-primary;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 95% auto;
+      border-radius: 50%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  }
+  &.active-disabled {
+    background-color: @white;
+      .charge-mode-block-content {
+        background-color: @gray-light;
+      }
+      .charge-mode-block-current-pointer {
+        display: block;
+        background-color: @gray;
+        width:100%;
+        margin:0px auto;
+        height: auto;
+        color:@white;
+        padding: @padding-base-vertical @padding-base-horizontal;
+        font-size: @font-size-base;
+        font-weight: @btn-font-weight;
+        line-height: @line-height-base;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        position: relative;
+          // @media (min-width: @screen-tablet) {
+          //   width:75%;
+          // }
+        &:after {
+          position: absolute;
+          top: 100%;
+          left: 46%;
+          content: " ";
+          height: 0;
+          width: 0;
+          border-top: 10px solid @gray;
+          border-right: 10px solid transparent;
+          border-left: 10px solid transparent;
+        }
+        span {
+          display: block;
+        }
+      }
+  }
+}
+
+
+
+
+.charge-mode-block-one,
+.charge-mode-block-two,
+.charge-mode-block-three {
+  &.active,
+  &.active-disabled {
+    .charge-mode-block-current-pointer {
+      border-left: 1px solid @gray;
+      border-top: 1px solid @gray;
+      border-right: 1px solid @gray;
+      @media (min-width: @screen-tablet) {
+        border: 0px;
+      }
+    }
+  }
+}
+
+
+.charge-mode-block-content {
+  padding:20px;
+  @media (min-width: @screen-tablet) {
+    height:325px;
+  }
+  h6 {
+    text-align: center;
+    margin: 0px 0px 5px 0px;
+  }
+  .charge-graphic{
+    color: @gray-darker;
+    text-align: center;
+    display: block;
+    font-size: 96px;
+    line-height: .5em;
+    margin: 0px 0px 10px 0px;
+  }
+  p {
+    margin:0px;
+  }
+  .charge-mode-block-content-footer {
+      padding: 0px 0px 0px 0px;
+      text-align: center;
+      margin-top: 20px;
+    @media (min-width: @screen-tablet) {
+      position: absolute;
+      bottom: 20px;
+      left: 45%;
+    }
+    ul.radio-list li {
+      padding:0px;
+    }
+    .radio-button {
+      width: 24px;
+      height: 24px;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 95% auto;
+      border-radius: 50%;
+      border: 1px solid @gray;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray;
+      display: inline-block;
+      position: relative;
+      margin-right: 0.25em;
+      vertical-align: -0.5em;
+    }
+  }
+}
+
+
+.charge-mode-block-one {
+  .charge-mode-block-content {
+    border-left: 1px solid @gray;
+    border-top: 1px solid @gray;
+    border-right: 1px solid @gray;
+    @media (min-width: @screen-tablet) {
+      border-right: 0px;
+      border-left: 1px solid @gray;
+      border-top: 1px solid @gray;
+      border-bottom: 1px solid @gray;
+    }
+  }
+}
+
+.charge-mode-block-two {
+  .charge-mode-block-content {
+    border-left: 1px solid @gray;
+    border-top: 1px solid @gray;
+    border-right: 1px solid @gray;
+    @media (min-width: @screen-tablet) {
+      border: 1px solid @gray;
+    }
+  }
+}
+
+.charge-mode-block-three {
+  .charge-mode-block-content {
+    border-top: 1px solid @gray;
+    border-left: 1px solid @gray;
+    border-right: 1px solid @gray;
+    border-bottom: 1px solid @gray;
+  @media (min-width: @screen-tablet) {
+    border-left: 0px;
+    border-top: 1px solid @gray;
+    border-bottom: 1px solid @gray;
+    border-right:1px solid @gray;
+  }
+  }
+}
+
+
+.charge-mode-block-one,
+.charge-mode-block-two,
+.charge-mode-block-three {
+  &.active {
+    .charge-mode-block-content {
+      border-top: 0px;
+      @media (min-width: @screen-tablet) {
+        border-top: 1px solid @gray;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------ START VEHICLE INFO TABLE ------------- //
+.panel-vehicle-info-table {
+ table {
+    display: block;
+    @media (min-width: @screen-tablet) {
+      display: table;
+    }
+  }
+
+  thead {
+    display: block;
+    @media (min-width: @screen-tablet) {
+    display: table-header-group;
+    }
+  }
+
+  tbody {
+    display: block;
+    overflow: hidden;
+    @media (min-width: @screen-tablet) {
+      display: table-row-group;
+    }
+  }
+
+  th {
+    display: block;
+    @media (min-width: @screen-tablet) {
+      display: table-cell;
+    }
+  }
+
+  tr {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    @media (min-width: @screen-tablet) {
+      display: table-row;
+      width: inherit;
+      float:none;
+    }
+  }
+
+  td {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    @media (min-width: @screen-tablet) {
+      display: table-cell;
+      width: inherit;
+      float:none;
+    }
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    @media (max-width: @screen-tablet) {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 0px;
+    width: 100%;
+    background-color: @white;
+    border: none;
+    a.btn-link {
+      text-align: left;
+    }
+  }
+
+  td {
+    padding: 15px 20px 15px 20px;
+    text-align: left;
+    border: none;
+    @media (min-width: @screen-tablet) {
+      padding: 15px 20px;
+    }
+    h5 {
+      margin-bottom:0px;
+    }
+    &.link {
+      padding-top:0px;
+      @media (min-width: @screen-sm) {
+        padding-top:15px;
+        text-align: right;
+      }
+    }
+  }
+
+  td:nth-child(2){
+    padding: 0px 0px 0px 20px;
+    @media (min-width: @screen-tablet) {
+        padding: 15px 20px 15px 20px;
+    }
+  }
+
+  td:nth-child(3) {
+    padding: 5px 0px 20px 20px;
+    @media (min-width: @screen-tablet) {
+        padding: 15px 20px 15px 20px;
+    }
+  }
+
+  .parent td span {
+    @media (min-width: @screen-tablet) {
+      display:none
+    }
+  }
+
+  th {
+    h5 {
+      margin-bottom:0px;
+    }
+  }
+
+  th {
+    background-color: @white;
+    font-weight: bold;
+    color: @gray-dark;
+    white-space: nowrap;
+    padding: 15px 20px;
+    text-align: left
+  }
+
+
+table tr:nth-child(4n-1), table tr:nth-child(4n)  {
+    background: @gray-light;
+}
+
+.child td {
+  padding-top:0px;
+}
+
+.child-content {
+  border-top: 1px solid @gray;
+  padding: 15px 0px 0px 0px;
+  ul {
+    margin-bottom: 0px;
+    > li:first-child {
+      margin-bottom: 10px;
+    }
+    p:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+}
+
+
+
+
+// ------------- START Bluetooth Switch Vehicle, VIN ----------------
+
+.panel-content-1 {
+   border-bottom: 1px solid @gray;
+   padding:20px;
+}
+
+.panel-content {
+   padding:20px;
+}
+
+
+.table-cell-column1-bluetooth  {
+  display: table-cell;
+  float: left;
+  vertical-align: top;
+  @media (min-width: @screen-tablet) {
+    float: none;
+    border-right: 1px solid @gray;
+    border-bottom: none;
+  }
+}
+
+.table-cell-column2-bluetooth {
+  display: table-cell;
+  float: left;
+  vertical-align: top;
+  border-top: 1px solid @gray;
+  @media (min-width: @screen-tablet) {
+    float: none;
+    border-top: none;
+  }
+}
+
+
+
+
+ul.panel-tabs-topics {
+   margin: 0px;
+   > li {
+      padding: 15px;
+      position: relative;
+      display: block;
+      border-bottom: 1px solid @gray;
+      cursor: pointer;
+      &:hover {
+         background-color: @gray-light;
+      }
+      &:last-child {
+         border-bottom: none;
+      }
+      a.arrow-tab {
+         width: 90%;
+         display: block;
+      }
+   }
+   span.icon-ui-arrowright {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      line-height: 0;
+   }
+}
+
+
+
+
+
+
+
+
+//------------ START VEHICLE MANUAL TABLE ------------- //
+.panel-vehicle-manual-table {
+ table {
+    display: block;
+    @media (min-width: @screen-tablet) {
+      display: table;
+    }
+  }
+
+  thead {
+    display: block;
+    @media (min-width: @screen-tablet) {
+    display: table-header-group;
+    }
+  }
+
+  tbody {
+    display: block;
+    overflow: hidden;
+    @media (min-width: @screen-tablet) {
+      display: table-row-group;
+    }
+  }
+
+  th {
+    display: block;
+    @media (min-width: @screen-tablet) {
+      display: table-cell;
+    }
+  }
+
+  tr {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    @media (min-width: @screen-tablet) {
+      display: table-row;
+      width: inherit;
+      float:none;
+    }
+  }
+
+  td {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    @media (min-width: @screen-tablet) {
+      display: table-cell;
+      width: inherit;
+      float:none;
+    }
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    @media (max-width: @screen-tablet) {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 0px;
+    width: 100%;
+    background-color: @white;
+    border: none;
+    a.btn-link {
+      text-align: left;
+    }
+  }
+
+  td {
+    padding: 20px;
+    text-align: left;
+    border: none;
+    overflow: hidden;
+    &.manual-title {
+      margin-bottom:0px;
+      > span {
+         float:left;
+         font-size:40px;
+      }
+      >h5 {
+         margin-left:45px;
+         margin-bottom:0px;
+      }
+    }
+    &.button {
+      padding-top: 0px;
+      vertical-align: top;
+      margin: 0px;
+      @media (min-width: @screen-sm) {
+        padding-top:20px;
+        text-align: right;
+      }
+      > a.btn-left {
+         margin-bottom: 0px;
+         margin-right: 0px;
+      }
+    }
+  }
+
+
+  th {
+    h5 {
+      margin-bottom:0px;
+    }
+  }
+
+  th {
+    background-color: @white;
+    font-weight: bold;
+    color: @gray-dark;
+    white-space: nowrap;
+    padding: 15px 20px;
+    text-align: left
+  }
+
+
+   table tr:nth-child(even){
+       background: @gray-light;
+   }
+
+}

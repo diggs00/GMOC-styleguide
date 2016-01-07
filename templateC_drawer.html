@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+    
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
+
+
+
+  <head lang="en">
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <meta charset="utf-8">
+        <title>GMOC 2.0</title>
+
+
+        <link rel="stylesheet" type="text/css" href="css/custom-bootstrap.css">
+                <!-- <link rel="stylesheet" type="text/css" href="css/default.date.css">
+                <link rel="stylesheet" type="text/css" href="css/default.css"> -->
+
+        <!--[if lte IE 9]> <link rel="stylesheet" type="text/css" href="css/custom-IE8.css"><![endif]-->
+
+
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+
+        <script src="js/vendor/bootstrap.js"></script>
+        <script src="js/vendor/bootstrap-datepicker.js"></script>
+
+<!-- Date Picker "PickaDate.js" -->
+        <script src="js/vendor/picker.js"></script>
+        <script src="js/vendor/picker.date.js"></script>
+        <script src="js/vendor/legacy.js"></script>
+<!---->
+
+
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+
+
+
+  </head>
+
+
+  <body>
+
+
+  <header>
+      <div class="navbar"></div>
+      <script>$(".navbar").load("templates/head.html", function() {});</script>
+  </header>
+  <span ng-include src='"templates/head.html"' ng-controller='ctrlA'></span>
+
+
+  <div class="wrapper" style="height:100%; min-height:100%">
+  <div class="main-nav-bg"></div>
+
+
+  <nav class="main-nav" >
+      <div class="navbar"></div>
+  </nav>
+  <script>$(".main-nav").load("templates/leftNav.html", function() {});</script>
+
+  <div class="content">
+
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-12 margin-bottom-large">
+
+
+              <div class="row">
+
+                  <div class="page-header-button">
+                      <div class="col-sm-10">
+                          <h1>Drawer Demo</h1>
+                      </div>
+                      <div class="col-sm-2">
+                          <button type="button" class="btn btn-primary btn-center" data-toggle="modal" href="#myModalDrawer"><span aria-hidden="true" class="icon-ui-adddot"></span>Show All Vehicles</button>
+                      </div>
+                  </div>
+
+              </div>
+
+
+
+              <div class="row">
+                  <div class=" col-sm-8 subHeadline">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+  <div class="container">
+
+
+
+  </div>
+
+  </div></div>
+
+  <div id="myModalDrawer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog-drawer">
+          <div class="modal-content">
+
+              <div class="modal-body modal-drawer">
+                  <div class="row">
+                      <div class="col-xs-12">
+
+                          <div class="page-header-button">
+                              <h1>View All</h1>
+                              <button type="button" class="close-modal" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true" class="icon-ui-close"></span></button>
+                          </div>
+
+                          <div class="page-header-subinfo">
+                              <ul class="list-inline-pipe">
+                                  <li><strong>SiriusXM Satellite Radio</strong></li>
+                                  <li>CURRENTLY VIEWING 6 of 6 vehicles</li>
+                              </ul>
+                              <ul class="list-inline">
+                                  <li><button type="button" class="btn btn-link">Manage OnStar<span class="icon-ui-newwindow"></span></button></li>
+                                  <li><button type="button" class="btn btn-link">XM Channel Guide<span class="icon-ui-newwindow"></span></button></li>
+                              </ul>
+                          </div>
+
+
+                          <div class="row">
+
+
+                              <div class="col-xs-12 col-sm-6  col-lg-4">
+
+                                  <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                                      <div class="panel-body"><!-- start panel content -->
+
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <ul>
+                                                      <li><h5>2013 Chevrolet Cruze</h5></li>
+                                                      <li><strong>VIN:12344567</strong></li>
+                                                      <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+
+
+                                      </div><!-- end panel content -->
+                                  </div><!-- end tertiary panel -->
+                              </div>
+
+                              <div class="col-xs-12 col-sm-6 col-lg-4">
+
+                                  <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                                      <div class="panel-body"><!-- start panel content -->
+
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <ul>
+                                                      <li><h5>2014 Chevrolet Silverado 1500</h5></li>
+                                                      <li><strong>VIN:12344567</strong></li>
+                                                      <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+
+
+                                      </div><!-- end panel content -->
+                                  </div><!-- end tertiary panel -->
+                              </div>
+
+                              <div class="col-xs-12  col-sm-6  col-lg-4">
+
+                                  <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                                      <div class="panel-body"><!-- start panel content -->
+
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <ul>
+                                                      <li><h5>2014 Corvette Stingray</h5></li>
+                                                      <li><strong>VIN:12344567</strong></li>
+                                                      <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+
+
+                                      </div><!-- end panel content -->
+                                  </div><!-- end tertiary panel -->
+                              </div>
+
+
+
+
+
+                              <div class="col-xs-12 col-sm-6  col-lg-4">
+
+                                  <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                                      <div class="panel-body"><!-- start panel content -->
+
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <ul>
+                                                      <li><h5>2011 GMC GMC Sierra</h5></li>
+                                                      <li><strong>VIN:12344567</strong></li>
+                                                      <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+
+
+                                      </div><!-- end panel content -->
+                                  </div><!-- end tertiary panel -->
+                              </div>
+
+                              <div class="col-xs-12 col-sm-6  col-lg-4">
+
+                                  <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                                      <div class="panel-body"><!-- start panel content -->
+
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <ul>
+                                                      <li><h5>2014 Cadillac SLT-X</h5></li>
+                                                      <li><strong>VIN:12344567</strong></li>
+                                                      <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+
+                                      </div><!-- end panel content -->
+                                  </div><!-- end tertiary panel -->
+                              </div>
+
+                              <div class="col-xs-12  col-sm-6  col-lg-4">
+
+                                  <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                                      <div class="panel-body"><!-- start panel content -->
+
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <ul>
+                                                      <li><h5>2013 GMC Acadia</h5></li>
+                                                      <li><strong>VIN:12344567</strong></li>
+                                                      <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+
+
+
+                                      </div><!-- end panel content -->
+                                  </div><!-- end tertiary panel -->
+                              </div>
+
+
+
+                          </div>
+
+
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+          </div>
+      </div>
+  </div>
+
+
+  <div id="addVehicle" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog" style="min-width:90%">
+          <div class="modal-content">
+
+
+              <div class="modal-body modal-drawer">
+
+
+
+                  <div class="row margin-bottom-medium">
+                      <div class="col-xs-12">
+
+                          <div class="page-header-button">
+                              <h1>VIEW ALL:</h1>
+                              <button type="button" class="btn btn-primary btn-right"><span aria-hidden="true" class="icon-ui-adddot"></span>Close</button>
+                          </div>
+                          <div class="page-header-subinfo">
+                              <ul class="list-inline-pipe">
+                                  <li><strong>SiriusXM Satellite Radio</strong></li>
+                                  <li>CURRENTLY VIEWING 6 of 6 vehicles</li>
+                              </ul>
+                              <ul class="list-inline">
+                                  <li><button type="button" class="btn btn-link">Manage OnStar<span class="icon-ui-newwindow"></span></button></li>
+                                  <li><button type="button" class="btn btn-link">XM Channel Guide<span class="icon-ui-newwindow"></span></button></li>
+                              </ul>
+                          </div>
+
+                     </div>
+                  </div>
+
+
+
+                  <div class="row">
+
+
+                      <div class="col-xs-12 col-sm-6  col-lg-4">
+
+                          <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                              <div class="panel-body"><!-- start panel content -->
+
+                                  <div class="row">
+                                      <div class="col-xs-12">
+                                          <ul>
+                                              <li><h5>2013 Chevrolet Cruze</h5></li>
+                                              <li><strong>VIN:12344567</strong></li>
+                                              <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                          </ul>
+                                      </div>
+                                  </div>
+
+
+                              </div><!-- end panel content -->
+                          </div><!-- end tertiary panel -->
+                      </div>
+
+                      <div class="col-xs-12 col-sm-6 col-lg-4">
+
+                          <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                              <div class="panel-body"><!-- start panel content -->
+
+                                  <div class="row">
+                                      <div class="col-xs-12">
+                                          <ul>
+                                              <li><h5>2014 Chevrolet Silverado 1500</h5></li>
+                                              <li><strong>VIN:12344567</strong></li>
+                                              <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                          </ul>
+                                      </div>
+                                  </div>
+
+
+                              </div><!-- end panel content -->
+                          </div><!-- end tertiary panel -->
+                      </div>
+
+                      <div class="col-xs-12  col-sm-6  col-lg-4">
+
+                          <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                              <div class="panel-body"><!-- start panel content -->
+
+                                  <div class="row">
+                                      <div class="col-xs-12">
+                                          <ul>
+                                              <li><h5>2014 Corvette Stingray</h5></li>
+                                              <li><strong>VIN:12344567</strong></li>
+                                              <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                          </ul>
+                                      </div>
+                                  </div>
+
+
+                              </div><!-- end panel content -->
+                          </div><!-- end tertiary panel -->
+                      </div>
+
+
+
+
+
+                      <div class="col-xs-12 col-sm-6  col-lg-4">
+
+                          <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                              <div class="panel-body"><!-- start panel content -->
+
+                                  <div class="row">
+                                      <div class="col-xs-12">
+                                          <ul>
+                                              <li><h5>2011 GMC GMC Sierra</h5></li>
+                                              <li><strong>VIN:12344567</strong></li>
+                                              <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                          </ul>
+                                      </div>
+                                  </div>
+
+
+                              </div><!-- end panel content -->
+                          </div><!-- end tertiary panel -->
+                      </div>
+
+                      <div class="col-xs-12 col-sm-6  col-lg-4">
+
+                          <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                              <div class="panel-body"><!-- start panel content -->
+
+                                  <div class="row">
+                                      <div class="col-xs-12">
+                                          <ul>
+                                              <li><h5>2014 Cadillac SLT-X</h5></li>
+                                              <li><strong>VIN:12344567</strong></li>
+                                              <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                          </ul>
+                                      </div>
+                                  </div>
+
+                              </div><!-- end panel content -->
+                          </div><!-- end tertiary panel -->
+                      </div>
+
+                      <div class="col-xs-12  col-sm-6  col-lg-4">
+
+                          <div class="panel panel-drawer"><!-- start tertiary panel -->
+
+
+                              <div class="panel-body"><!-- start panel content -->
+
+                                  <div class="row">
+                                      <div class="col-xs-12">
+                                          <ul>
+                                            <li><h5>2013 GMC Acadia</h5></li>
+                                            <li><strong>VIN:12344567</strong></li>
+                                            <li><strong>Radio ID:987234211</strong><BR><small>Service expires on 12/31/14</small></li>
+                                          </ul>
+                                      </div>
+                                  </div>
+
+
+
+                              </div><!-- end panel content -->
+                          </div><!-- end tertiary panel -->
+                      </div>
+
+
+
+                  </div>
+
+              </div>
+
+
+          </div>
+      </div>
+  </div>
+
+
+  <script>
+
+
+       $('#addVehicle').on('shown.bs.modal', function () {
+           $('#addVehicle').animate({ scrollTop: 0 }, 'fast');
+       });
+
+
+
+   </script>
+
+  <script src="js/components/navTest.js"></script>
+
+  </body>
+
+</html>

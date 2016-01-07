@@ -1,0 +1,473 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Forms</h1>
+            <hr>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><small>Text Input</small></h1>
+        </div>
+    </div>
+
+    <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Text input">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium">
+                <label class="margin-bottom-none">Field Label with Error:</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group has-error">
+                    <input type="text" class="form-control on-error" placeholder="Text input" value="asl@#dkfj3338">
+                </div>
+                <p class="help-block-below red-text">No special characters allowed</p>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><small>Text Area</small></h1>
+        </div>
+    </div>
+
+    <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <div class="form-link-right">
+                    <label>Field Label</label>
+                    <p><strong><a hred="#">Open in new window</a></strong></p>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" readonly>
+A. By using and/or visiting this Website, you agree to and accept (1) these terms and conditions (the "Terms of Service"), and (2) the privacy notice found at http://www.gm.com/privacy/. If you do not agree to any of these terms, or the privacy notice, please do not use the Web site.  The Web site is operated by General Motors LLC ("GM"), through various agencies and service providers.
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><small>Checkboxes</small></h1>
+        </div>
+    </div>
+
+<!--
+    <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="checkbox margin-bottom-none">
+                                <li>
+                                    <input type="checkbox" id="checkbox-1-1" class="regular-checkbox" checked />
+                                    <label for="checkbox-1-1"></label>
+                                    <label class="customCheckLabel">test1</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="checkbox-1-2" class="regular-checkbox" />
+                                    <label for="checkbox-1-2"></label>
+                                    <label class="customCheckLabel">test2</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="checkbox-1-3" class="regular-checkbox" />
+                                    <label for="checkbox-1-3"></label>
+                                    <label class="customCheckLabel">test3</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="checkbox-1-4" class="regular-checkbox" />
+                                    <label for="checkbox-1-4"></label>
+                                    <label class="customCheckLabel">test4</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+ -->
+
+    <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="checkbox-list margin-bottom-none">
+                                <li>
+                                  <label>
+                                    <span class="checkbox">
+                                      <input type="checkbox" name="foo" value="2">
+                                      <span class="checkbox-value" aria-hidden="true"></span>
+                                    </span>
+                                    <div class="margin-left-xl">Option 1</div>
+                                  </label>
+                                </li>
+                                <li>
+                                  <label>
+                                    <span class="checkbox">
+                                      <input type="checkbox" name="foo" value="2">
+                                      <span class="checkbox-value" aria-hidden="true"></span>
+                                    </span>
+                                    <div class="margin-left-xl">Option 2</div>
+                                  </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><small>Radio Buttons - Vertical</small></h1>
+        </div>
+    </div>
+
+
+<!--     <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="radio margin-bottom-none">
+                                <li>
+                                    <input type="radio" id="radio-1-1" name="radio-1-set" class="regular-radio" checked />
+                                    <label for="radio-1-1"></label>
+                                    <label class="customRadioLabel">test1</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="radio-1-2" name="radio-1-set" class="regular-radio" />
+                                    <label for="radio-1-2"></label>
+                                    <label class="customRadioLabel">test2</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="radio-1-3" name="radio-1-set" class="regular-radio" />
+                                    <label for="radio-1-3"></label>
+                                    <label class="customRadioLabel">test3</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="radio-1-4" name="radio-1-set" class="regular-radio" />
+                                    <label for="radio-1-4"></label>
+                                    <label class="customRadioLabel">test4</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="radio-1-5" name="radio-1-set" class="regular-radio" />
+                                    <label for="radio-1-5"></label>
+                                    <label class="customRadioLabel">test5</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> -->
+
+
+    <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="radio-list margin-bottom-none">
+                                <li>
+                                  <label>
+                                    <span class="radio">
+                                      <input type="radio" name="foo" value="2">
+                                      <span class="radio-value" aria-hidden="true"></span>
+                                    </span>
+                                    <div class="margin-left-xl">Option 1</div>
+                                  </label>
+                                </li>
+                                <li>
+                                  <label>
+                                    <span class="radio">
+                                      <input type="radio" name="foo" value="2">
+                                      <span class="radio-value" aria-hidden="true"></span>
+                                    </span>
+                                    <div class="margin-left-xl">Option 2</div>
+                                  </label>
+                                </li>
+                                <li>
+                                  <label class="disabled">
+                                    <span class="radio" disabled>
+                                      <input type="radio" name="foo" value="2" disabled>
+                                      <span class="radio-value" aria-hidden="true"></span>
+                                    </span>
+                                    <div class="margin-left-xl">Disabled</div>
+                                  </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><small>Radio Buttons - Hoirizontal</small></h1>
+        </div>
+    </div>
+
+
+   <form role="form">
+      <div class="row">
+         <label class="control-label col-xs-12 col-xs-3">Field Label</label>
+         <div class="col-xs-12 col-sm-9 margin-bottom-medium">
+            <ul class="radio-list-inline margin-bottom-none">
+               <li>
+                  <label>
+                     <span class="radio">
+                        <input type="radio" name="foo" value="1">
+                        <span class="radio-value" aria-hidden="true"></span>
+                     </span>
+                     <div class="margin-left-xl">Option 1</div>
+                  </label>
+               </li>
+               <li>
+                  <label>
+                     <span class="radio">
+                        <input type="radio" name="foo" value="2">
+                        <span class="radio-value" aria-hidden="true"></span>
+                     </span>
+                     <div class="margin-left-xl">Option 1</div>
+                  </label>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </form>
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><small>Dropdown</small></h1>
+        </div>
+    </div>
+
+    <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group">
+                    <select name="selectName" class="form-control-custom select-container">
+                        <option value="0">Lorem ipsum</option>
+                        <option value="1">consectetur adipisicing elit</option>
+                        <option value="2">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</option>
+                        <option value="3">ut labore et dolore</option>
+                        <option value="4">do eiusmod tempor</option>
+                        <option value="5">dolore magna</option>
+                        <option value="6">ut</option>
+                        <option value="7">ut labore et dolore+</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label class="margin-bottom-none">Field Label with Error</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group on-selectError on-error">
+                    <select name="selectName" class="form-control-custom select-container">
+                        <option value="0">Lorem ipsum</option>
+                        <option value="1">consectetur adipisicing elit</option>
+                        <option value="2">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</option>
+                        <option value="3">ut labore et dolore</option>
+                        <option value="4">do eiusmod tempor</option>
+                        <option value="5">dolore magna</option>
+                        <option value="6">ut</option>
+                        <option value="7">ut labore et dolore+</option>
+                    </select>
+                </div>
+                <p class="help-block-below red-text">Lorem ipsum dolor sit amet</p>
+            </div>
+        </div>
+    </form>
+
+
+
+        <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group select-container default">
+                    <select name="selectName">
+                        <option>Lorem ipsum</option>
+                        <option>consectetur adipisicing elit</option>
+                        <option>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</option>
+                        <option>ut labore et dolore</option>
+                        <option>do eiusmod tempor</option>
+                        <option>dolore magna</option>
+                        <option>ut</option>
+                        <option>ut labore et dolore+</option>
+                    </select>
+                    <span class="select-value" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label class="margin-bottom-none">Field Label with Error</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group select-container on-selectError on-error">
+                    <select name="selectName">
+                        <option>Lorem ipsum</option>
+                        <option>consectetur adipisicing elit</option>
+                        <option>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</option>
+                        <option>ut labore et dolore</option>
+                        <option>do eiusmod tempor</option>
+                        <option>dolore magna</option>
+                        <option>ut</option>
+                        <option>ut labore et dolore+</option>
+                    </select>
+                    <span class="select-value" aria-hidden="true"></span>
+                </div>
+                <p class="help-block-below red-text">Lorem ipsum dolor sit amet</p>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+ <form role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label class="margin-bottom-none">Field Label</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="styled-select">
+                   <select>
+                      <option>Here is the first option</option>
+                      <option>The second option</option>
+                   </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label class="margin-bottom-none">Field Label with Error</label>
+                <p class="help-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="form-group on-selectError on-error">
+                    <select name="selectName" class="form-control-custom select-container">
+                        <option value="0">Lorem ipsum</option>
+                        <option value="1">consectetur adipisicing elit</option>
+                        <option value="2">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</option>
+                        <option value="3">ut labore et dolore</option>
+                        <option value="4">do eiusmod tempor</option>
+                        <option value="5">dolore magna</option>
+                        <option value="6">ut</option>
+                        <option value="7">ut labore et dolore+</option>
+                    </select>
+                </div>
+                <p class="help-block-below red-text">Lorem ipsum dolor sit amet</p>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><small>Search Field</small></h1>
+        </div>
+    </div>
+
+
+    <form class="form-search-inline" role="form">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom-medium clearfix">
+                <label>Field Label</label>
+                <button type="submit" class="btn btn-primary">Search</button>
+                <div class="form-search-input">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+</div>
+
+
+
+<script>
+// For each .select element
+$('.select-container').each(function(){
+  // Save some elements as variables
+  var $element = $(this);
+  var $select = $element.find('select');
+  var $value = $element.find('.select-value');
+  // Bind event handlers to <select>
+  $select.on({
+    // On change or keyup, update the value text
+    'change keyup': function () {
+      $value.text($select.val());
+    },
+    // On focus, add the focus class
+    'focus': function () {
+      $element.addClass('focus');
+    },
+    // On blur, remove the focus class
+    'blur': function () {
+      $element.removeClass('focus');
+    }
+  });
+  // Trigger the change event so the value is current
+  $select.trigger('change');
+});
+</script>

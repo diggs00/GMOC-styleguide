@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+    
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
+
+
+
+  <head lang="en">
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <meta charset="utf-8">
+        <title>GMOC 2.0</title>
+
+
+        <link rel="stylesheet" type="text/css" href="css/custom-bootstrap.css">
+                <!-- <link rel="stylesheet" type="text/css" href="css/default.date.css">
+                <link rel="stylesheet" type="text/css" href="css/default.css"> -->
+
+        <!--[if lte IE 9]> <link rel="stylesheet" type="text/css" href="css/custom-IE8.css"><![endif]-->
+
+
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+
+        <script src="js/vendor/bootstrap.js"></script>
+        <script src="js/vendor/bootstrap-datepicker.js"></script>
+
+<!-- Date Picker "PickaDate.js" -->
+        <script src="js/vendor/picker.js"></script>
+        <script src="js/vendor/picker.date.js"></script>
+        <script src="js/vendor/legacy.js"></script>
+<!---->
+
+
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+
+
+
+  </head>
+
+
+  <body>
+
+
+  <div class="navbar"></div>
+  <script>$(".navbar").load("templates/head.html", function() {});</script>
+
+  <style>
+    .jumbotron {
+      background: url('images/banner_accounts.jpg')  no-repeat center ;
+    }
+  </style>
+
+  <div class="jumbotron">
+
+      <div class="mobileBGOverlay"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <h1 class="page-header-image">My Accounts</h1>
+                  <p>Get info on your accounts</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+  <div class="container">
+
+      <div class="row">
+
+
+          <div class="col-xs-12 col-sm-6 col-md-4 template-violate">
+
+              <div class="panel panel-primary-icon"><!-- start default panel -->
+
+                  <!--<div class="panel-heading">
+                    <h3 class="panel-title pull-right closePanel"><div class="panelIcon"><span aria-hidden="true" class="icon-graphic-profile"></span></div></h3>
+                    <h3 class="panel-title-icon">Your Profile</h3>
+                  </div>   -->
+
+                  <div class="panel-heading">
+                      <span aria-hidden="true" class="icon-graphic-profile"></span>
+                      <div class="panel-title ">
+                          <h3 class="closePanel">Your Profile</h3>
+                      </div>
+                  </div>
+
+                  <div class="panel-contents">
+
+                      <div class="panel-body"><!-- start panel content -->
+
+                          <div class="row margin-bottom-small">
+                              <div class="col-xs-12">
+                                  <h4 class="margin-bottom-medium">Alexander L Jones</h4>
+                                  <h5 class="margin-bottom-xs">Address</h5>
+                                  <ul class="margin-bottom-medium">
+                                      <li>123 West Main</li>
+                                      <li>Apt 3C</li>
+                                      <li>Truth or Consequences, NM 87901</li>
+                                  </ul>
+
+
+                                  <h5 class="margin-bottom-xs">Phone Number</h5>
+                                  <ul>
+                                      <li><strong>Home:</strong> 234-234-2345</li>
+                                      <li><strong>Cell:</strong> 234-234-2345</li>
+                                  </ul>
+                              </div>
+                          </div>
+
+                          <div class="row panel-footer">
+                              <div class="col-xs-12">
+                                  <button type="button" class="btn btn-primary btn-left margin-bottom-none"><span class="icon-ui-edit"></span>Edit Profile</button>
+                              </div>
+                          </div>
+
+                      </div><!-- end panel body content -->
+
+                      <div class="panel-bg-extend gray-light">
+                          <ul class=" list-inline margin-bottom-xs">
+                              <li><h5 class="margin-bottom-none">Email:</h5></li>
+                              <li>test@gmails.com</li>
+                          </ul>
+                          <ul class=" list-inline margin-bottom-medium">
+                              <li><h5 class="margin-bottom-none">Password:</h5></li>
+                              <li>**********<span aria-hidden="true" class="icon-secure"></span></li>
+                          </ul>
+                          <button type="button" class="btn btn-primary btn-left margin-bottom-none"><span class="icon-ui-edit"></span>Edit Login Settings</button>
+                      </div>
+
+                  </div>
+
+              </div><!-- end panel -->
+          </div>
+
+          <div class="col-xs-12 col-sm-6  col-md-4">
+
+              <div class="panel panel-default"><!-- start primary panel -->
+
+                  <div class="panel-heading">
+                      <h3 class="panel-title closePanel">OnStar Subscription</h3>
+                  </div>
+
+
+                  <div class="panel-contents">
+                      <div class="panel-bg-extend gray-light clearfix">
+
+                          <div class="pull-left">
+                              <ul class="margin-bottom-none">
+                                  <li><small>CURRENTLY VIEWING<BR>2 of 10 Vehicles</small></li>
+                              </ul>
+                          </div>
+
+                          <button type="button" class="btn btn-default btn-right"><span class="icon-ui-view"></span>View All</button>
+                      </div>
+
+                      <div class="panel-body"><!-- start panel content -->
+
+                          <div class="row">
+                              <div class="col-xs-11">
+                                  <h5 class="margin-bottom-xs">2013 Chevrolet Cruze</h5>
+                                  <ul class="margin-bottom-medium">
+                                      <li><strong>OnStar Account #:</strong> 123456789</li>
+                                      <li><strong>RemoteLink Lite Subscription</strong></li>
+                                      <li><strong>Account Status: </strong>Active <small>expires 12/31/14</small></li>
+                                  </ul>
+                                  <hr>
+
+                                  <h5 class="margin-bottom-xs">2013 Buick Enclave</h5>
+                                  <ul class="margin-bottom-small">
+                                      <li>This vehicle does not have an active OnStar subscription.</li>
+                                      <li></li>
+                                  </ul>
+
+                                  <button type="button" class="btn btn-default"><span aria-hidden="true" class="icon-ui-adddot"></span> Add OnStar</button>
+                              </div>
+                          </div>
+
+                      </div><!-- endpanel content -->
+
+                      <div class="panel-bg-extend-border">
+                          <ul class="list-inline margin-bottom-none">
+                              <li><button type="button" class="btn btn-link padding-none"> Manage OnStar<span aria-hidden="true" class="icon-ui-newwindow"></span></button></li>
+                          </ul>
+                      </div>
+                  </div>
+
+
+              </div><!-- end primary panel -->
+          </div>
+
+
+          <!-- Add the extra clearfix for only the required viewport -->
+          <div class="clearfix visible-sm"></div>
+
+
+
+          <div class="col-xs-12 col-sm-6 col-md-4">
+
+              <div id="alert" class="alert alert-success alert-dismissable">
+                  <span aria-hidden="true" class="icon-ui-check"></span>
+
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                      <span aria-hidden="true" class="icon-ui-closedot"></span>
+                  </button>
+
+                  <div class="panel-body-alert success">
+                      <p><strong>This is my Success alert</strong></p>
+                      <p>Success supporting text</p>
+                  </div>
+              </div>
+
+
+              <!-- start panel container-->
+              <div class="panel panel-default">
+
+                  <div class="panel-heading">
+                      <h3 class="panel-title closePanel">SiriusXM Satellite Radio</h3>
+                  </div>
+
+                  <div class="panel-contents">
+                  <!-- ********************** START Slide CONTAINER ********************** -->
+                  <div id="slideContainer" style="position:relative;">
+
+                      <!-- START Slide 1 -->
+                      <div id="slide1">
+                          <div class="panel-body">
+                              <div class="row">
+                                  <div class="col-xs-12">
+                                      <h5 class="margin-bottom-none">2013 Chevrolet Cruze</h5>
+                                      <ul class="margin-bottom-medium">
+                                          <li><strong>VIN:</strong> Unknown</li>
+                                          <li>XM not associated</li>
+                                      </ul>
+
+                                      <button type="button" id="button" class="btn btn-default btn-left margin-bottom-none"><span aria-hidden="true" class="icon-ui-adddot"></span>Add XM Account Slider</button>
+
+                                      <BR> <BR>
+                                      <button type="button" id="buttonModal" class="btn btn-default  btn-left addVehicleBtn"  data-toggle="modal" href="#myAddVehicleDrawer"><span aria-hidden="true" class="icon-ui-adddot"></span>Add XM Account Drawer</button>
+
+
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="panel-bg-extend gray-light clearfix">
+                              <p class="margin-bottom-none">Some brief reason about the benefits of associating your XM account</p>
+                          </div>
+
+                          <div class="panel-bg-extend-border">
+                              <ul class="list-inline margin-bottom-none">
+                                  <li><strong><a href="#">Learn About XM </strong><span class="icon-ui-newwindow"></span></a></li>
+                                  <li><strong><a href="#">XM Channel Guide </strong><span class="icon-ui-newwindow"></span></a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- END slide 1 -->
+
+                      <!-- START slide 2 -->
+                      <div id="slide2">
+                          <div class="panel-body">
+                              <div class="row">
+                                  <div class="col-xs-12">
+
+                                      <h5 class="margin-bottom-none"><span aria-hidden="true" class="icon-ui-adddot"></span> Add Your XM Account</h5>
+                                      <hr>
+                                      <h5>2013 Chevrolet Cruze</h5>
+                                      <div class="form-group margin-bottom-xs">
+                                          <label>VIN*</label>
+                                          <input type="text" class="form-control" placeholder="Text input">
+                                      </div>
+                                      <div class="form-group margin-bottom-xs">
+                                          <label>XM Radio ID*</label>
+                                          <input type="text" class="form-control" placeholder="Text input">
+                                      </div>
+                                      <p class="margin-bottom-none"><small>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo invento.</small></p>
+                                  </div>
+                              </div>
+                              <div class="row panel-footer text-center">
+                                  <div class="col-xs-12">
+                                      <hr>
+                                      <button type="button"  class="btn btn-default btn-left">Cancel</button>
+                                      <button type="button" id="button2" class="btn btn-primary btn-left" data-dismiss="modal">Save</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- END slide 2 -->
+
+
+                      <!-- START slide 3 -->
+                      <div id="slide3">
+                          <div class="panel-body">
+
+                              <div class="row">
+                                  <div class="col-xs-12">
+                                      <h5 class="margin-bottom-none inline">2013 Chevrolet Cruze</h5>
+                                      <p class="green-text inline"><span class="icon-ui-check"></span><small> <strong>Added</strong></small></p>
+
+                                      <ul class="margin-bottom-none">
+                                          <li><strong>VIN:</strong> 123456789</li>
+                                          <li><strong>Radio ID:</strong> 123456789</li>
+                                          <li><small><strong>Service expires on</strong> 12/31/14</small></li>
+                                      </ul>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                          <div class="panel-bg-extend-border">
+                              <ul class="list-inline margin-bottom-none">
+                                  <li><strong><a href="#">Manage OnStar </strong><span class="icon-ui-newwindow"></span></a></li>
+                                  <li><strong><a href="#">XM Channel Guide </strong><span class="icon-ui-newwindow"></span></a></li>
+                              </ul>
+                          </div>
+
+                      </div>
+                      <!-- END slide 3 -->
+
+                  </div>
+                  <!-- ********************** END Slide CONTAINER ********************** -->
+                  </div>
+              </div>
+              <!-- END panel container-->
+
+
+          </div>
+
+          <!-- Add the extra clearfix for only the required viewport -->
+          <div class="clearfix visible-lg visible-md"></div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <div class="panel panel-default"><!-- start primary panel -->
+
+                <div class="panel-heading">
+                    <h3 class="panel-title closePanel">GM Card</h3>
+                </div>
+
+                <div class="panel-contents">
+                <div class="panel-body"><!-- start panel content -->
+
+                <div class="row">
+
+                    <div class="col-xs-12">
+                        <img class="pull-right" src="images/gmcard.jpg">
+
+                        <div class="panel-finance-item-text">
+                            <h5 class="margin-bottom-xs">GM Flexible Earnings Card</h5>
+                            <ul class="margin-bottom-medium">
+                                <li><strong>Card Ending In:</strong> 1234</li>
+                                <li><strong>9,432 Points</strong> as of  12/31/12</li>
+                            </ul>
+                        </div>
+
+                        <button type="button" class="btn btn-link-secondary"><span aria-hidden="true" class="icon-ui-closedot"></span>Remove</button>
+
+                        <hr>
+
+
+
+                        <img class="pull-right" src="images/gmcard.jpg">
+
+                        <div class="panel-finance-item-text">
+                            <h5 class="margin-bottom-xs">GM Flexible Earnings Card</h5>
+                            <ul class="margin-bottom-medium">
+                                <li><strong>Card Ending In:</strong> 1234</li>
+                                <li><strong>9,432 Points</strong> as of  12/31/12</li>
+                            </ul>
+                        </div>
+
+                        <button type="button" class="btn btn-link-secondary"><span aria-hidden="true" class="icon-ui-closedot"></span>Remove</button>
+
+
+
+                    </div>
+                </div>
+
+                <hr>
+
+                <button type="button" class="btn btn-default btn-left margin-bottom-none"><span aria-hidden="true" class="icon-ui-adddot"></span> Add GM Card</button>
+
+
+            </div><!-- endpanel content -->
+
+            <div class="panel-bg-extend-border">
+                <ul class="list-inline margin-bottom-none">
+                    <li><button type="button" class="btn btn-link padding-none"> Manage GM Card<span aria-hidden="true" class="icon-ui-newwindow"></span></button></li>
+                </ul>
+            </div>
+
+        </div>
+
+
+      </div>
+
+  </div>
+
+
+
+
+  <div id="myAddVehicleDrawer" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog-drawer ">
+          <div class="modal-content">
+
+              <!-- content here is stored in seperate files under the "screns/addAccount" directory" -->
+
+          </div>
+      </div>
+  </div>
+
+
+
+<script>
+
+
+    $( document ).ready( function(){
+
+
+
+
+        var isClicked = false;
+
+        $(".modal-content").load("screens/addAccount/addXM.html", function() {
+
+            $(".mmy_hide").hide();                     //hide add by mmy
+
+
+            $(".addMMY").click(function(e) {                  //  reveal add by mmy
+                e.preventDefault();
+
+                var isVis = $(".mmy_hide").is(":visible");
+                if(!isClicked){
+                    isClicked = true;
+                    if(!isVis){
+                        $(".mmy_hide").slideDown( "fast", function() {
+                            isClicked = false;
+                        });
+                    }else{
+                        isClicked = false;
+                        $(".mmy_hide").slideUp();
+                    }
+                }
+
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+        var width = $(window).width();
+        var bodyVisible = false;
+
+        $(window).resize(function(){
+            if($(this).width() != width){
+                width = $(this).width();
+                console.log("this")
+                checkWidth();
+            }
+        });
+        function checkWidth(){
+            bodyVisible = false;
+
+            if($(window).width() < 750){
+                hideMobileWidgets();
+            }else{
+                showWidgets();
+            }
+        }
+        function hideMobileWidgets (){
+
+                $(".panel-contents:not(:first)").slideUp();
+
+                $(".panelShow:not(:first)").slideDown();
+                $(".panelHide:first").show();
+                //$(".panelIcon:first").hide();
+
+                $(".panel-heading").unbind( "click" );
+                $(".panel-heading").click(function() {
+
+
+
+                    var myBody = $(this).parent().find(".panel-contents");
+
+                    var myHide = $(this).parent().find(".panelHide");
+                    var myShow = $(this).parent().find(".panelShow");
+
+
+
+                    bodyVisible = $(myBody).is(':visible');
+
+                    if(bodyVisible){
+
+                        console.log(bodyVisible)
+
+                        $(".panel-contents").slideUp( "fast", function() {
+                            //complete
+                            bodyVisible = false;
+                        });
+
+                        $(myShow).show();
+                        $(myHide).hide();
+
+                    }else{
+
+                        $(".panel-contents").not(myBody).slideUp( "fast", function() {
+                            //complete
+                        });
+
+                        $(".panelHide").not(myBody).hide();
+                        $(".panelShow").not(myBody).show();
+
+
+                        $(myShow).hide();
+                        $(myHide).show();
+
+                        $(myBody).slideDown( "fast", function() {
+                            //complete
+                        });
+
+                    }
+
+                });
+        }
+        function showWidgets(){
+            $(".panel-heading").unbind( "click" );
+            $(".panel-contents").slideDown( "fast", function() {
+                //complete
+                $(".panelHide").hide();
+                $(".panelShow").hide();
+            });
+            $(".panelHide").hide();
+            $(".panelShow").hide();
+            //$(".panelIcon").show();
+        }
+        function addClose(){
+            var myString = "<div class='pull-right'>";
+            myString += "<div class='panelHide' style='display:none'><span aria-hidden='true' class='icon-ui-minusfill'></span></div>";
+            myString += "<div class='panelShow' style='display:none'><span aria-hidden='true' class='icon-ui-addfill'></span></div>";
+            myString += "</div>";
+
+            $(".closePanel").append(myString);
+        }
+
+        addClose();
+        checkWidth();
+
+        //$(".panelHide").slideUp();
+        //$(".panelShow").slideUp();
+
+
+
+
+
+        // variables
+        var visibleSlide = 'slide1';
+        var width, height;
+        var right = {
+            direction: 'right',
+            easing: 'easeOutExpo',
+            duration: 500
+        };
+        var left = {
+            direction: 'left',
+            easing: 'easeOutExpo',
+            duration: 500
+        };
+        // functions
+        var getWidth =function(){
+            return $('#slideContainer').css('width');
+        };
+        var updateWidth =function(){
+            width = getWidth();
+            $('#slide1').css('width', width);
+            $('#slide2').css('width', width);
+            $('#slide3').css('width', width);
+        };
+        var updateHeight=function(){
+            height = $('#'+visibleSlide).css('height');
+            $('#slideContainer').css('height',height);
+        };
+        var slide=function(slideOutId,slideInId, direction){
+            var dir1= direction==="left"?left:right;
+            var dir2= direction==="left"?right:left;
+            var heightOut = $('#'+slideOutId).css('height');
+            var heightIn = $('#'+slideInId).css('height');
+            visibleSlide = slideInId;
+            $('#'+slideOutId).toggle('slide', dir1);
+            if (heightIn > heightOut){
+                updateHeight();
+            }
+            $('#'+slideInId)
+                    .css('width', width)
+                    .css('position', 'absolute')
+                    .css('top', '0')
+                    .toggle('slide', dir2, function(){
+                        //$('#'+slideInId).css('position', '');
+                        updateHeight();
+                    });
+        };
+        // handlers
+        $( window ).resize(function(){
+            updateWidth();
+            updateHeight();
+        });
+
+        $('#button').click(function(){ 	// slide.bind(null,"slide1","slide2","left")
+            updateWidth();
+            slide("slide1","slide2","left");
+            updateHeight();
+        });
+        $('#button2').click(function(){ 	// slide.bind(null,"slide2","slide1","right")
+            updateWidth();
+            slide("slide2","slide3","right");
+            $("#alert").show('fast');
+            updateHeight();
+        });
+
+
+
+        // init
+        width = getWidth();
+        $("#alert").hide();
+        $('#slide2').hide();
+        $('#slide3').hide();
+
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+
+
+
+
+
+</html>
