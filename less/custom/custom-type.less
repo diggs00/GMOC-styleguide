@@ -3,8 +3,6 @@
 // --------------------------------------------------
 
 
-
-
 // Body text
 // -------------------------
 
@@ -14,7 +12,7 @@ p {
 .lead {
   margin-bottom: 0px;
   font-size: @font-size-large;
-  font-weight: 200;
+  font-weight: 700;
   line-height: 1.4;
 
   @media (min-width: 768px) {
@@ -23,29 +21,10 @@ p {
 }
 
 
-
-// // DB: For cms style
-// .p {
-//   margin: 0 0 (@line-height-computed / 2);
-// }
-// .lead {
-//   margin-bottom: @line-height-computed;
-//   font-size: (@font-size-base * 1.15);
-//   font-weight: 200;
-//   line-height: 1.4;
-
-//   @media (min-width: 768px) {
-//     font-size: (@font-size-base * 1.5);
-//   }
-// }
-
-
-
-
 // Emphasis & misc
 // -------------------------
 
-// Ex: 13px base font * 85% = about 11px
+// Ex: 13px base font * 85% = about 14px
 small   { font-size: 85%; }
 
 // Undo browser default styling
@@ -68,12 +47,11 @@ cite    { font-style: normal; }
 // Headings
 // -------------------------
 
-
 h1 {
-  font-family: @headings-font-family-chevy;
+  font-family: @font-family-bold;
   line-height: @headings-line-height;
-  color: @gray-darker;
-  text-transform:uppercase;
+  color: @gray-darkest;
+  // text-transform:uppercase;
 
   small {
     font-weight: normal;
@@ -87,11 +65,11 @@ h1 {
 }
 
 
-h2 {
-  font-family: @headings-font-family-chevy;
-  font-weight: @headings-font-weight;
+h2,h3 {
+  font-family: @font-family-bold;
+  // font-weight: @headings-font-weight;
   line-height: @headings-line-height;
-  color: @gray-darker;
+  color: @gray-darkest;
   small {
     font-weight: normal;
     line-height: 1;
@@ -99,47 +77,25 @@ h2 {
   }
 }
 
-h3{
-  font-family: @headings-font-family-chevy2;
-}
 
-h4{
-  font-family: @font-family-chevyBold;
-}
-
-h3, h4 {
-
+h4,h5 {
+  font-family: @headings-font-family;
   font-weight: normal;
   line-height: @headings-line-height;
-  color: @gray-darker;
+  color: @gray-darkest;
   small {
     font-weight: normal;
     line-height: 1;
     color: @headings-small-color;
   }
 }
-
-
-h5 {
-  font-family: @font-family-chevyBold;
-  font-weight: normal;
-  line-height: @headings-line-height;
-  color: @gray-darker;
-  small {
-    font-weight: normal;
-    line-height: 1;
-    color: @headings-small-color;
-  }
-}
-
-
 
 
 h6 {
   font-family: @headings-font-family;
-  font-weight: @headings-font-weight-bold;
+  font-weight: @headings-font-weight;
   line-height: @headings-line-height;
-  color: @gray-darker;
+  color: @gray-darkest;
   small {
     font-weight: normal;
     line-height: 1;
@@ -148,26 +104,22 @@ h6 {
 }
 
 
-
-
-
 h1, h2, h3, h4, h5, h6  {
-  // margin-top: @line-height-computed;
   margin-top: 0px;
   margin-bottom: (@line-height-computed / 2);
 
 }
 
 
-h1, .h1 { font-size: floor(@font-size-base * 3.40); } // 44px
-h2, .h2 { font-size: floor(@font-size-base * 1.54); } // 20px
-h3, .h3 { font-size: floor(@font-size-base * 1.54); } // 20px
-h4, .h4 { font-size: floor(@font-size-base * 1.39); } // 18px
-h5, .h5 { font-size: floor(@font-size-base * 1.25); } // 16px
-h6, .h6 { font-size: floor(@font-size-base * 1.25); } // 16px
+h1, .h1 { font-size: floor(@font-size-base * 2.8125); } // 45px
+h2, .h2 { font-size: floor(@font-size-base * 1.25); } // 20px
+h3, .h3 { font-size: floor(@font-size-base * 1.25); } // 20px
+h4, .h4 { font-size: floor(@font-size-base * 1.5625); } // 25px
+h5, .h5 { font-size: floor(@font-size-base * 1.25); } // 20px
+h6, .h6 { font-size: floor(@font-size-base * 1.125); } // 18px
 
-h1 small, .h1 small { font-size: ceil(@font-size-base * 1.153); } // ~15px
-h2 small, .h2 small { font-size: ceil(@font-size-base * 1.153); } // ~15px
+h1 small, .h1 small { font-size: ceil(@font-size-base * 1.125); } // ~18px
+h2 small, .h2 small { font-size: ceil(@font-size-base * 1.125); } // ~18px
 h3 small, .h3 small,
 h4 small, .h4 small,
 h5 small, .h5 small,
@@ -178,49 +130,23 @@ h6 small, .h6 small { font-size: @font-size-base; }
 // -------------------------
 
 .page-header {
-  text-transform: Uppercase;
   padding-bottom: 10px;
   margin: 0px 0px 20px 0px;
   border-bottom: 1px solid @page-header-border-color;
-  font-size: 22px;
-
-  @media (min-width: @screen-tablet) {
-    font-size: 34px;
-  }
-  @media (min-width: @screen-desktop) {
-    font-size: 44px;
-  }
 }
 
 
 .page-header-no-underline {
-  text-transform: Uppercase;
   padding-bottom: 10px;
   margin: 0px 0px 20px 0px;
-  font-size: 22px;
-
-  @media (min-width: @screen-tablet) {
-    font-size: 30px;
-  }
-  // @media (min-width: @screen-desktop) {
-  //   font-size: 30px;
-  // }
 }
 
 
 .page-header-image {
   text-shadow: 0px 0px 5px #323334;
   filter: dropshadow(color=#323334, offx=0, offy=0);
-  text-transform: Uppercase;
   color:@white;
-  font-size: 22px;
   line-height: 1;
-  @media (min-width: @screen-tablet) {
-    font-size: 34px;
-  }
-  @media (min-width: @screen-desktop) {
-    font-size: 44px;
-  }
 }
 
 p.page-header-image {
@@ -235,7 +161,6 @@ p.page-header-image {
 
 
 .page-header-button {
-  text-transform: Uppercase;
   padding-bottom: 10px;
   margin: 0px 0px 20px 0px;
   border-bottom: 1px solid @page-header-border-color;
@@ -246,10 +171,8 @@ p.page-header-image {
 
 
   h1 {
-    font-size: 22px;
     margin-bottom:5px;
       @media (min-width: @screen-tablet) {
-        font-size: 34px;
         display: inline-block;
         *zoom: 1; // for IE inline-block
         *display: inline; // for IE inline-block
@@ -257,7 +180,6 @@ p.page-header-image {
         margin-bottom:0px;
       }
       @media (min-width: @screen-desktop) {
-        font-size: 44px;
         display: inline-block;
         *zoom: 1; // for IE inline-block
         *display: inline; // for IE inline-block
@@ -298,15 +220,7 @@ p.page-header-image {
 .page-header-image {
   text-shadow: 0px 0px 5px #323334;
   filter: dropshadow(color=#323334, offx=0, offy=0);
-  text-transform: Uppercase;
   color:@white;
-  font-size: 22px;
-  @media (min-width: @screen-tablet) {
-    font-size: 34px;
-  }
-  @media (min-width: @screen-desktop) {
-    font-size: 44px;
-  }
 }
 
 
@@ -320,15 +234,12 @@ p.page-header-image {
     position: relative;
 
     h1 {
-      font-size: 22px;
       margin-bottom:5px;
       margin-right:60px;
         @media (min-width: @screen-tablet) {
-          font-size: 34px;
           margin-bottom:0px;
         }
         @media (min-width: @screen-desktop) {
-          font-size: 44px;
           margin-bottom:0px;
         }
     }

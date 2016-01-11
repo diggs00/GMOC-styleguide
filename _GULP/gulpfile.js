@@ -46,12 +46,19 @@ gulp.task('less', function () {
     .pipe(notify({ message: 'LESS task complete' }));
 
 });
+3
+
+
+
+
 
 // RELOAD HTML TASK
 gulp.task('html' , function() {
     gulp.src('../**/*.html')
     .pipe(reload());
 })
+
+
 
 
 

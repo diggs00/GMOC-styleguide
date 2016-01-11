@@ -485,50 +485,6 @@
   .open .dropdown-toggle& {
     color: @color;
     background-color: darken(@background, 8%);
-        border-color: darken(@border, 0%);
-  }
-  &:active,
-  &.active,
-  .open .dropdown-toggle& {
-    background-image: none;
-  }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &,
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      background-color: @background;
-          border-color: @border
-    }
-  }
-}
-
-
-
-.button-variant-primary-gradient(@color; @border) {
-  color: @color;
-  border-color: @border;
-background: @brand-primary;
-background: -moz-linear-gradient(top, @brand-primary-light 0%, @brand-primary-dark 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, @brand-primary-dark), color-stop(100%, @brand-primary-dark));
-background: -webkit-linear-gradient(top, @brand-primary-light 0%, @brand-primary-dark 100%);
-background: -o-linear-gradient(top, @brand-primary-light 0%, @brand-primary-dark 100%);
-background: -ms-linear-gradient(top, @brand-primary-light 0%, @brand-primary-dark 100%);
-background: linear-gradient(to bottom, @brand-primary-light 0%, @brand-primary-dark 100%);
-// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8ca43', endColorstr='#f0ad00', GradientType=0 );
-
-
-
-  &:hover,
-  &:focus,
-  &:active,
-  &.active,
-  .open .dropdown-toggle& {
-    color: @color;
-    background: @brand-primary-dark;
     border-color: darken(@border, 0%);
   }
   &:active,
@@ -544,8 +500,43 @@ background: linear-gradient(to bottom, @brand-primary-light 0%, @brand-primary-d
     &:focus,
     &:active,
     &.active {
-      background-color: @brand-primary;
-          border-color: @border
+      background-color: @background;
+      border-color: @border
+    }
+  }
+}
+
+
+
+.button-variant-primary(@color; @background; @border) {
+  color: @color;
+  border-color: @border;
+  background-color: @background;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 8%);
+    border-color: darken(@border, 0%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background;
+      border-color: @border
     }
   }
 }
@@ -560,7 +551,7 @@ background: linear-gradient(to bottom, @brand-primary-light 0%, @brand-primary-d
   &:hover,
   .open .dropdown-toggle& {
     color: @color;
-    background-color: darken(@background, 8%);
+    background-color: darken(@background, 0%);
     border-color: darken(@border, 0%);
   }
   &:focus,

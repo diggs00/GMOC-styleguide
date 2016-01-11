@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta content="charset=utf-8">
+	<title>FlexSlider 2</title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+
+	<link rel="stylesheet" type="text/css" href="css/custom-bootstrap.css">
+
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery-ui-1.10.3.custom.js"></script>
+
+	<!-- Modernizr -->
+	<script src="js/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+
+			<div id="alert" class="alert alert-success alert-dismissable">
+			    <span aria-hidden="true" class="icon-ui-check"></span>
+
+			    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+			    <span aria-hidden="true" class="icon-ui-closedot"></span>
+			    </button>
+
+			    <div class="panel-body-alert success">
+			        <p><strong>This is my Success alert</strong></p>
+			        <p>Success supporting text</p>
+			    </div>
+			</div>
+
+
+			<!-- start panel container-->
+	        <div class="panel panel-default">
+
+				<div class="panel-heading">
+				  <h3 class="panel-title">Title - h3</h3>
+				</div>
+
+
+				<!-- ********************** START Slide CONTAINER ********************** -->
+				<div id="slideContainer" style="position:relative;">
+
+					<!-- START Slide 1 -->
+					<div id="slide1">
+						<div class="panel-body">
+						    <div class="row">
+						        <div class="col-xs-12">
+						            <h5 class="margin-bottom-none">2013 Chevrolet Cruze</h5>
+						            <ul class="margin-bottom-medium">
+						                <li><strong>VIN:</strong> Unknown</li>
+						                <li>XM not associated</li>
+						            </ul>
+
+						             <button type="button" id="button" class="btn btn-default btn-left margin-bottom-none"><span aria-hidden="true" class="icon-ui-adddot"></span>Add XM Account</button>
+						        </div>
+						    </div>
+						</div>
+
+						<div class="panel-bg-extend gray-light clearfix">
+						    <p class="margin-bottom-none">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantiunatus error sit voluptatem accusantium doloremque laudantium, totam rem apenatus error sit voluptatem accusantium doloremque laudantium, totam rem apenatus error sit voluptatem accusantium doloremque laudantium, totam rem apenatus error sit voluptatem accusantium doloremque laudantium, totam rem apem, totam rem aperiam, eaque ipsa quae ab illo invento</p>
+						</div>
+
+						<div class="panel-bg-extend-border">
+						    <ul class="list-inline margin-bottom-none">
+						        <li><strong><a href="#">Manage OnStar </strong><span class="icon-ui-newwindow"></span></a></li>
+						        <li><strong><a href="#">XM Channel Guide </strong><span class="icon-ui-newwindow"></span></a></li>
+						    </ul>
+						</div>
+					</div>
+					<!-- END slide 1 -->
+
+					<!-- START slide 2 -->
+					<div id="slide2">
+			            <div class="panel-body">
+			                <div class="row">
+			                    <div class="col-xs-12">
+			                        <h5 class="margin-bottom-none"><span aria-hidden="true" class="icon-ui-add"></span> Add Your XM Account</h5>
+			                        <hr>
+			                        <h5>2013 Chevrolet Cruze</h5>
+			                        <div class="form-group margin-bottom-xs">
+			                            <label>VIN*</label>
+			                            <input type="text" class="form-control" placeholder="Text input">
+			                        </div>
+			                        <div class="form-group margin-bottom-xs">
+			                            <label>XM Radio ID*</label>
+			                            <input type="text" class="form-control" placeholder="Text input">
+			                        </div>
+			                        <p class="margin-bottom-none"><small>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo invento.</small></p>
+			                    </div>
+			                </div>
+			                <div class="row panel-footer text-center">
+			                    <div class="col-xs-12">
+			                    <hr>
+			                    <button type="button"  class="btn btn-default btn-left">Cancel</button>
+			                    <button type="button" id="button2" class="btn btn-primary btn-left" data-dismiss="modal">Save</button>
+			                    </div>
+			                </div>
+			            </div>
+		            </div>
+					<!-- END slide 2 -->
+
+
+					<!-- START slide 3 -->
+					<div id="slide3">
+			            <div class="panel-body">
+
+			                <div class="row">
+			                    <div class="col-xs-12">
+			                        <h5 class="margin-bottom-none inline">2013 Chevrolet Cruze</h5>
+		                            <p class="green-text inline"><span class="icon-ui-check"></span><small> <strong>Added</strong></small></p>
+
+		                            <ul class="margin-bottom-none">
+		                                <li><strong>VIN:</strong> 123456789</li>
+		                                <li><strong>Radio ID:</strong> 123456789</li>
+		                                <li><small><strong>Service expires on</strong> 12/31/14</small></li>
+		                            </ul>
+			                    </div>
+			                </div>
+
+			            </div>
+
+		                <div class="panel-bg-extend-border">
+		                    <ul class="list-inline margin-bottom-none">
+		                        <li><strong><a href="#">Manage OnStar </strong><span class="icon-ui-newwindow"></span></a></li>
+		                        <li><strong><a href="#">XM Channel Guide </strong><span class="icon-ui-newwindow"></span></a></li>
+		                    </ul>
+		                </div>
+
+		            </div>
+					<!-- END slide 3 -->
+
+				</div>
+				<!-- ********************** END Slide CONTAINER ********************** -->
+
+	        </div>
+	        <!-- END panel container-->
+
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+
+
+$( document ).ready( function(){ 
+	// variables
+	var visibleSlide = 'slide1';
+	var width, height;
+	var right = {
+	  	direction: 'right',
+	  	easing: 'easeOutExpo',
+	  	duration: 500
+	};
+	var left = {
+	  	direction: 'left',
+	  	easing: 'easeOutExpo',
+	  	duration: 500
+	};
+	// functions
+	var getWidth =function(){
+		return $('#slideContainer').css('width');
+	};
+	var updateWidth =function(){
+		width = getWidth();
+		$('#slide1').css('width', width);
+		$('#slide2').css('width', width);
+		$('#slide3').css('width', width);
+	};
+	var updateHeight=function(){
+		height = $('#'+visibleSlide).css('height');
+		$('#slideContainer').css('height',height);
+	};
+	var slide=function(slideOutId,slideInId, direction){
+		var dir1= direction==="left"?left:right;
+		var dir2= direction==="left"?right:left;
+		var heightOut = $('#'+slideOutId).css('height');
+		var heightIn = $('#'+slideInId).css('height');
+		visibleSlide = slideInId;
+		$('#'+slideOutId).toggle('slide', dir1);
+	    if (heightIn > heightOut){
+	    	updateHeight();
+	    }
+	    $('#'+slideInId)
+	      	.css('width', width)
+	      	.css('position', 'absolute')
+	      	.css('top', '0')
+			.toggle('slide', dir2, function(){
+		  		//$('#'+slideInId).css('position', '');
+		  		updateHeight();
+			});  
+	};
+	// handlers
+	$( window ).resize(function(){
+		updateWidth();
+		updateHeight();
+	});
+
+	$('#button').click(function(){ 	// slide.bind(null,"slide1","slide2","left")
+		updateWidth();
+		slide("slide1","slide2","left");
+		updateHeight();
+	});  
+	$('#button2').click(function(){ 	// slide.bind(null,"slide2","slide1","right")
+		updateWidth();
+		slide("slide2","slide3","right");
+		$("#alert").show('fast');
+		updateHeight();
+	});
+
+	
+		
+	// init
+	width = getWidth();
+	$("#alert").hide();
+	$('#slide2').hide();
+	$('#slide3').hide();
+	
+
+});
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
