@@ -240,6 +240,9 @@
 
 .panel-heading-expand{
   cursor:pointer;
+  span.icon-ui-arrowdown {
+    color: @blue;
+  }
 }
 
 
@@ -286,7 +289,7 @@
   > a {
     color: inherit;
   }
-  p {
+  h5,p {
     margin-bottom: 0px;
     margin-left: 30px;
   }
@@ -610,7 +613,7 @@
     border-radius: @panel-border-radius;
     overflow: hidden; // crop contents when collapsed
     + .panel {
-      margin-top: 5px;
+      margin-top: -1px;
     }
   }
 
@@ -629,7 +632,9 @@
 
   // New subcomponent for wrapping collapsable content for proper animations
   .panel-collapse {
-
+    .panel-body {
+      border-top: 1px solid @panel-inner-border;
+    }
   }
 }
 

@@ -326,7 +326,7 @@ A. By using and/or visiting this Website, you agree to and accept (1) these term
 
 
 
-        <form role="form">
+<!--         <form role="form">
         <div class="row">
             <div class="col-xs-12 margin-bottom-medium clearfix">
                 <label class="margin-bottom-none">Field Label</label>
@@ -367,7 +367,7 @@ A. By using and/or visiting this Website, you agree to and accept (1) these term
                 <p class="help-block-below red-text">Lorem ipsum dolor sit amet</p>
             </div>
         </div>
-    </form>
+    </form> -->
 
 
 
@@ -376,7 +376,7 @@ A. By using and/or visiting this Website, you agree to and accept (1) these term
 
 
 
- <form role="form">
+<!--  <form role="form">
         <div class="row">
             <div class="col-xs-12 margin-bottom-medium clearfix">
                 <label class="margin-bottom-none">Field Label</label>
@@ -409,7 +409,7 @@ A. By using and/or visiting this Website, you agree to and accept (1) these term
                 <p class="help-block-below red-text">Lorem ipsum dolor sit amet</p>
             </div>
         </div>
-    </form>
+    </form> -->
 
 
 
@@ -432,7 +432,7 @@ A. By using and/or visiting this Website, you agree to and accept (1) these term
                 <label>Field Label</label>
                 <button type="submit" class="btn btn-primary">Search</button>
                 <div class="form-search-input">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control-search" placeholder="Search">
                 </div>
             </div>
         </div>
@@ -445,29 +445,29 @@ A. By using and/or visiting this Website, you agree to and accept (1) these term
 
 
 
-<script>
-// For each .select element
-$('.select-container').each(function(){
-  // Save some elements as variables
-  var $element = $(this);
-  var $select = $element.find('select');
-  var $value = $element.find('.select-value');
-  // Bind event handlers to <select>
-  $select.on({
-    // On change or keyup, update the value text
-    'change keyup': function () {
-      $value.text($select.val());
-    },
-    // On focus, add the focus class
-    'focus': function () {
-      $element.addClass('focus');
-    },
-    // On blur, remove the focus class
-    'blur': function () {
-      $element.removeClass('focus');
-    }
-  });
-  // Trigger the change event so the value is current
-  $select.trigger('change');
-});
-</script>
+// <script>
+// // For each .select element
+// $('.select-container').each(function(){
+//   // Save some elements as variables
+//   var $element = $(this);
+//   var $select = $element.find('select');
+//   var $value = $element.find('.select-value');
+//   // Bind event handlers to <select>
+//   $select.on({
+//     // On change or keyup, update the value text
+//     'change keyup': function () {
+//       $value.text($select.val());
+//     },
+//     // On focus, add the focus class
+//     'focus': function () {
+//       $element.addClass('focus');
+//     },
+//     // On blur, remove the focus class
+//     'blur': function () {
+//       $element.removeClass('focus');
+//     }
+//   });
+//   // Trigger the change event so the value is current
+//   $select.trigger('change');
+// });
+// </script>

@@ -22,9 +22,6 @@
 
 
 
-
-
-
 // Container that the modal scrolls within
 .modal {
   display: none;
@@ -78,7 +75,7 @@
   background-color: @modal-content-bg;
   border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
   border: 1px solid @modal-content-border-color;
-  border-radius: @border-radius-xl;
+  border-radius: @border-radius-base;
   .box-shadow(0 3px 9px rgba(0,0,0,.5));
   background-clip: padding-box;
   // Remove focus outline from opened modal
@@ -93,7 +90,7 @@
   bottom: 0;
   left: 0;
   z-index: (@zindex-modal-background - 10);
-  background-color: @modal-backdrop-bg;
+  background-color: transparent;
   // Fade for backdrop
   &.fade { .opacity(0); }
   &.in { .opacity(.5); }
@@ -102,15 +99,15 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-   -webkit-border-top-left-radius: @border-radius-xl;
-  -webkit-border-top-right-radius: @border-radius-xl;
-       -moz-border-radius-topleft: @border-radius-xl;
-      -moz-border-radius-topright: @border-radius-xl;
-           border-top-left-radius: @border-radius-xl;
-          border-top-right-radius: @border-radius-xl;
-  background-color: @gray-light;
-  padding: @modal-inner-padding;
-  border-bottom: 1px solid @modal-header-border-color;
+   -webkit-border-top-left-radius: @border-radius-base;
+  -webkit-border-top-right-radius: @border-radius-base;
+       -moz-border-radius-topleft: @border-radius-base;
+      -moz-border-radius-topright: @border-radius-base;
+           border-top-left-radius: @border-radius-base;
+          border-top-right-radius: @border-radius-base;
+  background-color: @white;
+  padding: 40px 40px 10px 40px;
+  border-bottom: 0px solid @modal-header-border-color;
   min-height: (@modal-title-padding + @modal-title-line-height);
 }
 // Close icon
@@ -122,14 +119,13 @@
 .modal-title {
   margin: 0;
   line-height: @modal-title-line-height;
-  color:@gray-dark;
 }
 
 // Modal body
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  padding: @modal-inner-padding;
+  padding: 10px 40px 20px 40px;
 }
 
 // Footer (for actions)
@@ -138,12 +134,10 @@
   padding: 0px @modal-inner-padding @modal-inner-padding;
   text-align: center; // right align buttons
   border-top: 0px solid @modal-footer-border-color;
-  .clearfix(); // clear it in case folks use .pull-* classes on buttons
 
 
   .modal-footer-content {
-    padding-top: @padding-xlarge-vertical;
-    border-top: 1px solid @modal-footer-border-color;
+    padding-top: 0px;
   }
 
 
@@ -172,6 +166,7 @@
 
 
 // Scale up the modal
+// TABLET
 @media screen and (min-width: @screen-tablet) {
 
   .modal-dialog {
@@ -183,6 +178,7 @@
   }
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));
+    box-shadow: none;
   }
 
 
@@ -214,23 +210,67 @@
     }
   }
 
+}
 
+
+// DESKTOP
+@media screen and (min-width: @screen-desktop) {
+
+  .modal-dialog {
+    left: 50%;
+    right: auto;
+    width: 800px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .modal-content {
+    .box-shadow(0 5px 15px rgba(0,0,0,.5));
+    box-shadow: none;
+  }
+
+
+
+  // Footer (for actions)
+  .modal-footer {
+  
+    // Removes 10px margin on bottom of first button as it stack on small devices
+    .modal-footer-content > button {
+      margin-bottom: 0px;
+    }
+
+    .btn {
+      width:auto;
+    }
+
+    // Properly space out buttons
+    .btn + .btn {
+      margin-left: 0px;
+      margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+    }
+    // but override that for button groups
+    .btn-group .btn + .btn {
+      margin-left: 0px;
+    }
+    // and override it for block buttons as well
+    .btn-block + .btn-block {
+      margin-left: 0;
+    }
+  }
 
 }
 
 
 //added by jeff
 .modal-drawer{
-  background-color:#f0f0f0;
+  background-color: @white;
   border-radius: 0px;
+  padding-top:40px;
+  padding-bottom: 40px;
+  padding-left:40px;
+  padding-right:40px;
 
-  @media screen and (min-width: @screen-tablet) {
-    padding-left:50px;
-    padding-right:50px;
-
-    padding-top:40px;
-    padding-bottom: 40px;
-  }
+  // @media screen and (min-width: @screen-tablet) {
+  // }
 
 }
 

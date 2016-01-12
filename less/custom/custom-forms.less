@@ -172,10 +172,52 @@ input[type="number"] {
   }
 }
 
+
+.form-control-search {
+  display: block;
+  width: 100%;
+  float: left;
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: @padding-base-vertical @padding-base-horizontal @padding-base-vertical 35px;
+  font-size: @font-size-large;
+  line-height: @line-height-base;
+  color: @input-color;
+  vertical-align: middle;
+  background-color: @input-bg;
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
+  .box-shadow(inset 0 1px 5px rgba(204,204,204,.75));
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+  }
+
+  // Reset height for `textarea`s
+  // DBaker: change font size for T&C
+  textarea& {
+    height: auto;
+    font-size: @font-size-base;
+  }
+}
+
+
+
   // DBaker: Allows Jquery Daepicker to act like a 100% form
 .date-form-container {
   position: relative;
-  padding-right:55px;
+  padding-right:43px;
 }
 
 
@@ -416,7 +458,7 @@ input[type="checkbox"],
   margin-top: 0px;
   margin-bottom: 10px;
   color: @text-color;
-  font-size:11px; // DB: small font size
+  // font-size:11px; // DB: small font size
 }
 
 
@@ -525,7 +567,6 @@ input[type="checkbox"],
   margin-top:0px;
   margin-bottom:10px;
   color: @text-color;
-  font-size:11px;
 }
 
 
@@ -549,151 +590,6 @@ div.input{
 
 
 
-  // JEFF:/* custom labels */
-
-// label.customCheckLabel{
-//   margin-left:10px;
-//   margin-right:10px;
-//   padding-bottom:0px;
-//   font-weight:normal;
-//   vertical-align: bottom;
-
-// }
-
-// label.customCheckLabelIE{
-//   margin-left:10px;
-//   margin-right:10px;
-//   padding-bottom:0px;
-//   font-weight:normal;
-//   vertical-align: -12%;
-
-// }
-
-
-// label.customRadioLabel{
-//   margin-left:32px;
-//   margin-right:10px;
-//   padding-bottom:0px;
-//   font-weight:normal;
-//   vertical-align: bottom;
-// }
-
-
-//   /* CheckBoxes */
-
-// ul.checkbox li {
-//   border-bottom: @gray-light 1px solid;
-//   margin-bottom: 3px;
-//   padding-bottom: 10px;
-// }
-
-// ul.radio li {
-//   border-bottom: @gray-light 1px solid;
-//   // margin-bottom: 3px;
-//   padding-bottom: 10px;
-//   padding-top: 10px;
-// }
-
-// ul.checkbox.border-bottom-none li,
-// ul.radio.border-bottom-none li {
-//   border-bottom: 0px;
-//   margin-bottom: 0px;
-//   padding-bottom: 0px;
-// }
-
-
-
-// .regular-checkbox {
-//   display: none;
-//   vertical-align:middle;
-// }
-
-// .regular-checkbox + label {
-//   background-color: #ffffff;
-//   border: 1px solid @gray;
-//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray;
-//   padding: 10px;
-//   border-radius: 0px;
-//   display: inline-block;
-//   position: relative;
-//   vertical-align:middle;
-//   margin-top: 7px;
-// }
-
-// .regular-checkbox + label:active, .regular-checkbox:checked + label:active {
-//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-// }
-
-// .regular-checkbox:checked + label {
-//   background-color: @white;
-//   border: 1px solid @gray;
-//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 0px 0px 2px 0px @gray-light;
-//   color: #99a1a7;
-// }
-
-// .regular-checkbox:checked + label:after {
-//   font-family: 'icon-ui';
-//   font-weight: normal;
-//   content: "\e640";
-//   font-size: 22px;
-//   position: absolute;
-//   top: -6px;
-//   left: 0px;
-//   margin-left:2px;
-//   color: #888888;
-// }
-
-
-
-//   /* Radio */
-// .regular-radio {
-//  vertical-align:middle;
-//  font-weight:normal;
-//  left: 26px;
-//  opacity: 0;
-//  position: relative;
-//  z-index: 5;
-// }
-
-// .regular-radio + label {
-//   -webkit-appearance: none;
-//   background-color: @white;
-//   border: 1px solid @gray;
-//   box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0px -15px 10px -12px rgba(0,0,0,0.1);
-//   padding: 10px;
-//   border-radius: 50px;
-//   position: absolute;
-//   vertical-align:middle;
-//   font-weight:normal;
-
-// }
-// .regular-radio:checked + label:after {
-//   content: ' ';
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50px;
-//   position: absolute;
-//   top: 0px;
-//   background: @brand-primary;
-//   box-shadow: inset 0px 0px 0px rgba(0,0,0,0.3);
-//   text-shadow: 0px;
-//   left: 0px;
-//   font-size: 20px;
-//   font-weight:normal;
-// }
-
-// .regular-radio:checked + label {
-//   background-color: @white;
-//   color: @gray;
-//   border: 1px solid @gray;
-//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
-//   font-weight:normal;
-// }
-
-// .regular-radio + label:active, .regular-radio:checked + label:active {
-//   box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-// }
-
 
 
   /* Select Dropdowns */
@@ -704,7 +600,7 @@ select {
   background-color: transparent;
   color: @gray-dark;
   font-size: 14px;
-  padding: 7px 40px 7px 7px;
+  padding: 7px 50px 7px 7px;
   line-height:12px;
   cursor:pointer;
   -webkit-appearance: none;
@@ -718,7 +614,7 @@ select {
 .select-container {
   width: 100%;
   overflow:hidden;
-  background: url("../img/downArrow.jpg") no-repeat right #f0f0f0;
+  background: url("../img/selectArrows.png") no-repeat right #f0f0f0;
   border-color:@input-border;
   border-style:solid;
   border-width:1px;
@@ -727,7 +623,7 @@ select {
 .on-selectError .select-container{
   width: 100%;
   overflow:hidden;
-  background: url("../img/downArrowError.jpg") no-repeat right;
+  background: url("../img/selectArrows_error.png") no-repeat right;
   background-color:@red-lighter;
   border-color:@red;
   border-style:solid;
@@ -744,7 +640,7 @@ select {
 
 input.on-error{
   color:@red;
-  background:@red-lighter;
+  background: @white;
 }
 
 .on-match{
@@ -804,6 +700,7 @@ div.fail{
   }
   button {
     float: right;
+    width: 50%;
   }
 }
 
@@ -812,6 +709,22 @@ div.fail{
 .form-search-input {
   overflow: hidden;
   padding-right: 10px;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    bottom: auto;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    background: url(../img/icon-graphic-search.svg) no-repeat 0 0;
+  }
 }
 
 
@@ -820,7 +733,7 @@ div.fail{
 //-------------- DB: CheckBoxes------------------
 // Bootstrap Overrides:
 .checkbox {
-   float: left;
+  float: left;
   display: inline-block;
   min-height: 0px;
   margin-top: 0px;
@@ -830,13 +743,6 @@ div.fail{
 }
 
 ul.checkbox-list li {
-/*   border-bottom: @gray-light 1px solid; */
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-}
-
-ul.checkbox-list li.border-bottom-none{
-  border-bottom: transparent 0px solid;
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
@@ -852,7 +758,7 @@ ul.checkbox-list label {
   cursor: pointer;
   margin-bottom: 0px;
   font-weight: normal;
-  font-size: @font-size-large;
+  font-size: @font-size-base;
 }
 
 .checkbox input {
@@ -884,13 +790,12 @@ ul.checkbox-list label {
 input:checked + .checkbox-value:before {
   font-family: 'icon-ui';
   font-weight: normal;
-  content: "\e640";
+  content: "\e614";
   font-size: 22px;
   position: absolute;
-  top: -6px;
-  left: 0px;
-  margin-left:2px;
-  color: #888888;
+  top: -3px;
+  left: 0;
+  color: @blue;
 }
 
 
@@ -929,11 +834,6 @@ ul.radio-list-inline li {
 
 
 
-ul.radio-list li.border-bottom-none{
-  border-bottom: transparent 0px solid;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-}
 
 ul.radio-list li:last-child {
   margin-bottom: 0px;
@@ -944,7 +844,7 @@ ul.radio-list label {
   cursor: pointer;
   margin-bottom: 0px;
   font-weight: normal;
-  font-size: @font-size-large;
+  font-size: @font-size-base;
   &.disabled {
      cursor: default;
  }
@@ -954,7 +854,7 @@ ul.radio-list-inline label {
   cursor: pointer;
   margin-bottom: 0px;
   font-weight: normal;
-  font-size: @font-size-large;
+  font-size: @font-size-base;
   &.disabled {
      cursor: default;
  }
@@ -991,19 +891,30 @@ ul.radio-list-inline label {
 }
 
 /* style the "fake CHECKED" radio */
-input:checked + .radio-value:before {
-  content: " ";
-  width: 1.4em;
-  height: 1.4em;
-  background: @brand-primary;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 95% auto;
-  border-radius: 50%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+input:checked + .radio-value {
+  &:before {
+    content: " ";
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 2px solid @blue;
+  }
+  &:after {
+    content: " ";
+    border-radius: 50%;
+    border-color: yellow;
+    background-color: @blue;
+    width: .75em;
+    height: .75em;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
 }
+
 
 
 
@@ -1020,7 +931,7 @@ input:checked + .radio-value:before {
 /* style the "fake" select */
 // Default State
 .select-container.default {
-  background:  url("../../img/downArrow.jpg") no-repeat right @gray-light;
+  background:  url("../../img/selectArrows.png") no-repeat right @gray-light;
   border: 1px solid @input-border;
   border-radius: 0;
   position: relative;
@@ -1042,7 +953,7 @@ input:checked + .radio-value:before {
 
 // Error State
 .select-container.on-selectError{
-  background:  url("../../img/downArrowError.jpg") no-repeat right @red-lighter;
+  background:  url("../../img/selectArrows_error.png") no-repeat right @red-lighter;
   border: 1px solid @red;
   border-radius: 0;
   position: relative;
@@ -1109,7 +1020,7 @@ input:checked + .radio-value:before {
 	width: 100%;
 	height: 34px;
 	overflow: hidden;
-	background: url("../img/downArrow.jpg") no-repeat right #f0f0f0;
+	background: url("../img/selectArrows.png") no-repeat right #f0f0f0;
 	border-color:@input-border;
 	border-style:solid;
 	border-width:1px;
