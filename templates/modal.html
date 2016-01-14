@@ -9,7 +9,9 @@
     <div class="row">
         <div class="col-sm-12">
             <h1><small>Modal Window</small></h1>
-            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Launch</button>
+            <div class="stacked-buttons">
+                <a data-toggle="modal" data-target="#myModal" class="btn btn-primary">Launch</a>
+            </div>
         </div>
     </div>
 
@@ -17,7 +19,9 @@
     <div class="row">
         <div class="col-sm-12">
             <h1><small>Modal Drawer</small></h1>
-            <button data-toggle="modal" href="#myModalDrawer" class="btn btn-primary">Launch</button>
+            <div class="stacked-buttons">
+                <a data-toggle="modal" href="#myModalDrawer" class="btn btn-primary">Launch</a>
+            </div>
         </div>
     </div>
 
@@ -35,8 +39,10 @@
           </div>
           <div class="modal-footer">
             <div class="modal-footer-content">
-                <button type="button" class="btn btn-primary btn-right">Continue</button>
-                <button type="button" class="btn btn-secondary btn-right" data-dismiss="modal">Cancel</button>
+                <div class="inline-buttons">
+                    <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-primary">Continue</a>
+                </div>
             </div>
           </div>
 
@@ -81,8 +87,10 @@
 
                     <div class="modal-footer">
             <div class="modal-footer-content">
-                <button type="button" class="btn btn-primary btn-right">Continue</button>
-                <button type="button" class="btn btn-secondary btn-right" data-dismiss="modal">Cancel</button>
+                <div class="inline-buttons">
+                    <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-primary">Continue</a>
+                </div>
             </div>
           </div>
 

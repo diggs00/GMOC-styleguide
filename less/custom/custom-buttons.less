@@ -23,7 +23,7 @@
   // white-space: nowrap;
   white-space: none;
   width: 100%;
-  max-width: 385px;
+
 
   .user-select(none);
 
@@ -393,6 +393,12 @@ input[type="button"] {
   a.btn {
     display: block;
     margin-bottom: 10px;
+    @media (min-width: @screen-tablet) {
+      max-width: 200px;
+    }
+    @media (min-width: @screen-desktop) {
+      max-width: 303px;
+    }
     &:last-child {
     margin-bottom: 0px;
     }
@@ -402,11 +408,19 @@ input[type="button"] {
 .inline-buttons{
   margin-bottom: 10px;
   a.btn {
-    display: inline-block;
+    display: block;
     margin-bottom: 10px;
-    &:nth-child(2) {
+    @media (min-width: @screen-tablet) {
+      margin-bottom: 0px;
+      display: inline-block;
+      max-width: 200px;
+    }
+    @media (min-width: @screen-desktop) {
+      max-width: 303px;
+    }
+    &:nth-child(n+2) {
       margin-left: 0px;
-      @media (min-width: 991px) {
+      @media (min-width: @screen-tablet) {
         margin-left: 10px;
       }
     }
