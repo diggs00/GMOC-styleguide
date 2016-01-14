@@ -246,12 +246,6 @@
 }
 
 
-.panel-heading > span {
-  position:absolute;
-  top:50%;
-  font-size: 20px;
-  line-height: 0px;
-}
 
 
 .panel-heading-expand > span {
@@ -274,9 +268,8 @@
 
 // Within heading, strip any `h*` tag of it's default margins for spacing.
 .panel-title {
-  color:@white;
   margin:0px;
-  padding: 15px 20px;
+  padding: 15px 20px 5px 20px;
   > a {
     color: inherit;
   }
@@ -303,24 +296,6 @@
 }
 
 
-
-.panel-default-icon .panel-title {
-  margin-left: 30px;
-  background-color: @gray-darker;
-  h3 {
-    margin-bottom: 0px;
-    color:@white;
-  }
-}
-
-.panel-primary-icon .panel-title {
-  margin-left: 30px;
-  background-color: @brand-primary;
-  h3 {
-    margin-bottom: 0px;
-    color:@white;
-  }
-}
 
 
 .panel-primary-tool .panel-title {
@@ -406,7 +381,7 @@
 
 
 .panel-bg-extend-border {
-  padding: 10px 20px;
+  padding: 20px;
   border-top:1px solid @gray;
 }
 
@@ -531,27 +506,27 @@
 
 
 // Dbaker: horizontal list links for panels
-.panel-bg-extend-border ul.list-inline li + li {
-  margin-bottom: 0px;
-  margin-top: 10px;
-  float:none;
-      @media (min-width: 369px) {
-      float: right;
-      margin-left: 0px;
-      margin-top:0px;
-      // margin: 10px 0px 0px 0px;
-    }
-    @media (min-width: @screen-tablet) {
-      float: none;
-      margin-left: 0px;
-      margin-top:10px;
-      // margin: 10px 0px 0px 0px;
-    }
-    @media (min-width: @screen-lg-desktop) {
-      float: right;
-      margin-top:0px;
-    }
-}
+// .panel-bg-extend-border ul.list-inline li + li {
+//   margin-bottom: 0px;
+//   margin-top: 10px;
+//   float:none;
+//       @media (min-width: 369px) {
+//       float: right;
+//       margin-left: 0px;
+//       margin-top:0px;
+//       // margin: 10px 0px 0px 0px;
+//     }
+//     @media (min-width: @screen-tablet) {
+//       float: none;
+//       margin-left: 0px;
+//       margin-top:10px;
+//       // margin: 10px 0px 0px 0px;
+//     }
+//     @media (min-width: @screen-lg-desktop) {
+//       float: right;
+//       margin-top:0px;
+//     }
+// }
 
 
 
