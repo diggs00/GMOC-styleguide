@@ -388,7 +388,6 @@ input[type="button"] {
   }
 }
 
-
 .stacked-buttons{
   a.btn {
     display: block;
@@ -404,6 +403,26 @@ input[type="button"] {
     }
   }
 }
+
+
+.panel.panel-default{
+  .stacked-buttons{
+    a.btn {
+      display: block;
+      margin-bottom: 10px;
+      @media (min-width: @screen-tablet) {
+        max-width: 100%;
+      }
+      @media (min-width: @screen-desktop) {
+        max-width: 100%;
+      } 
+      &:last-child {
+      margin-bottom: 0px;
+      }
+    }
+  }
+}
+
 
 .inline-buttons{
   margin-bottom: 10px;

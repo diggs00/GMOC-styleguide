@@ -406,8 +406,32 @@
 
 // Panels for EXPAND/COLLAPSE (DB)
 // -------------------------
-.panel-variant-expand(@border; @heading-text-color; @heading-bg-color; @heading-border;) {
+.panel-variant-expand(@border; @heading-bg-color; @heading-border; @panel-expanded-bg-color) {
   border-color: @border;
+  & > .panel-heading-expand {
+    padding: 0px 0px 0px 0px;
+    background-color: @heading-bg-color;
+    border-color: @heading-border;
+    + .panel-collapse .panel-body {
+      border-top-color: @border;
+      background-color: @heading-border;
+      background-color: @panel-expanded-bg-color;
+    }
+  }
+  & > .panel-footer {
+    + .panel-collapse .panel-body {
+      border-bottom-color: @border;
+    }
+  }
+}
+
+
+// Panels for EXPAND/COLLAPSE contained within a PANEL (DB)
+// -------------------------
+.panel-variant-expand-contained(@border; @heading-text-color; @heading-bg-color; @heading-border; @panel-expanded-bg-color) {
+    border-color: @border;
+    border-left:0px;
+    border-right:0px;
   & > .panel-heading-expand {
     padding: 0px 0px 0px 0px;
     color: @heading-text-color;
@@ -415,6 +439,7 @@
     border-color: @heading-border;
     + .panel-collapse .panel-body {
       border-top-color: @border;
+      background-color: @panel-expanded-bg-color;
     }
   }
   & > .panel-footer {
