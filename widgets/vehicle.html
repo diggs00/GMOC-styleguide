@@ -11,58 +11,45 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-lg-12">
+        <div class="col-xs-12 col-sm-8">
             <h1><small>Vehicle Profile</small></h1>
 
-            <div class="panel panel-primary"><!-- start default panel -->
+
+            <div class="panel panel-default"><!-- start default panel -->
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">Title h3</h3>
+                    <div class="panel-title">
+                        <h4>Title h4</h4>
+                    </div>
                 </div>
 
-                <div class="row">
+                <div class="panel-vehicle-display"><!-- start vehicle panel content -->
+                    <img src="images/myGarageCarLarge.png" class="img-responsive" alt="Responsive image">
+                </div>
 
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="panel-vehicle-display"><!-- start vehicle panel content -->
-                            <img src="images/myGarageCarLarge.png" class="img-responsive" alt="Responsive image">
-                            <p class="vin"><strong>VIN:</strong> 1234567890</p>
-                        </div>
+
+                <div class="panel-vehicle-mileage">
+                    <div class="panel-vehicle-mileage-icon">
+                        <span aria-hidden="true" class="icon-graphic-mileage gray-darkest-text"></span>
+                        <p><strong>Mileage:</strong></p>
                     </div>
-
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="panel-vehicle-mileage">
-
-                            <div class="row">
-                                <div class="col-xs-5 col-sm-5">
-                                    <div class="panel-vehicle-mileage-icon">
-                                        <h1><span aria-hidden="true" class="icon-graphic-mileage"></span></h1>
-                                        <h5>Mileage:</h5>
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-7 col-sm-7">
-                                    <div class="panel-vehicle-mileage-odometer">
-                                        <h3>000,000</h3>
-                                        <p class="lead gray-darker-text">miles</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12">
-                                    <div class="panel-vehicle-mileage-edit">
-                                        <ul class="pull-left">
-                                            <li><small>Last Updated</small></li>
-                                            <li><small>9/13/2013 at 11:32EST</small></li>
-                                        </ul>
-                                        <button type="button" class="btn btn-default btn-right"><span class="icon-ui-edit"></span>Edit Miles</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="panel-vehicle-mileage-odometer">
+                        <h4>000,000 Miles</h4>
+                        <small>Last Updated 11/11/15</small>
                     </div>
+                    <div class="panel-vehicle-mileage-update">
+                        <a class="btn btn-primary"><span class="icon-ui-edit"></span>Update Mileage</a>
+                    </div>
+                </div>
 
+                <div class="panel-vehicle-learn">
+                    <small>2015 Chevrolet Corvette</small>
+                    <h4>Get to know your 2015 Chevrolet Corvette</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <div class="inline-buttons text-right">
+                        <a href="#" class="btn btn-secondary">Owner's Manual</a>
+                        <a href="#" class="btn btn-secondary">Learn About</a>
+                    </div>
                 </div>
 
             </div>

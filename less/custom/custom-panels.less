@@ -688,11 +688,6 @@
   padding: 0px;
   position: relative;
   border-bottom: 1px solid @gray;
-    @media (min-width: @screen-tablet) {
-      border-bottom: none;
-      margin-right:-15px;
-      border-right: 1px solid @gray;
-    }
 
   .panel-vehicle-display-title {
     padding:20px 20px 20px 20px;
@@ -741,74 +736,115 @@
   }
 }
 
-.panel-vehicle-mileage {
+
+.panel-vehicle-mileage{
   padding: 0px;
-  position: relative;
-  margin-left:-15px;
-  @media (max-width: @screen-tablet) {
-    margin-left:0px;
+  @media (min-width: @screen-desktop) {
+    padding: 20px;
+  }
+  .panel-vehicle-mileage-icon{
+    text-align: center;
+    display: inline-block;
+    padding: 20px;
+    @media (min-width: @screen-desktop) {
+      padding: 0px 0px 0px 0px;
+    }
+    span {
+      font-size: 40px;
+      line-height: .6;
+    }
+    p{
+      margin-bottom: 0px;
+      padding:0px;
+      color: @gray-darkest;
+    }
+  }
+  .panel-vehicle-mileage-odometer {
+    float: right;
+    padding: 20px;
+    @media (min-width: @screen-desktop) {
+      padding: 0px 0px 0px 0px;
+      margin-left: 20px;
+      display: inline-block;
+      float: none;
+    }
+    h4 {
+      margin-bottom: 0px;
+    }
+
+  }
+  .panel-vehicle-mileage-update {
+    padding: 20px 20px;
+    border-top: 1px solid @gray;
+    @media (min-width: @screen-desktop) {
+      float: right;
+      padding:0px;
+      border-top: 0px solid red;
+    }
+    a {
+      @media (min-width: @screen-desktop) {
+      width: 200px;
+      }
+    }
   }
 }
 
-.panel-vehicle-mileage-icon {
-  padding: 10px;
-  text-align: center;
-  border-right: 1px solid @gray;
-    @media (min-width: @screen-tablet) {
-      padding:5px;
-      border-right: none;
-    }
-    @media (min-width: @screen-desktop) {
-      padding:10px;
-      border-right: none;
-    }
 
-  h1 {
-    margin: 0px;
-    line-height: 0px;
-  }
-  h5 {
-    margin: 0px;
-    line-height: 0px;
-    display: inline;
-  }
-}
-
-
-.panel-vehicle-mileage-odometer {
-  text-align: center;
-  margin-left: -30px;
-  margin-right: 0px;
-  padding: 10px;
-    @media (min-width: @screen-tablet) {
-      margin-left:-30px;
-      margin-right: 0px;
-      padding:5px;
-      border-left: 1px solid @gray;
-    }
-    @media (min-width: @screen-desktop) {
-      padding:10px;
-    }
-
-  h3 {
-    font-size: 35px;
-    margin-bottom: 5px;
-    @media (min-width: @screen-tablet) {
-      font-size: 35px;
-      margin: 0px;
-    }
-  }
-
+.panel-vehicle-learn{
+  display: none;
   p {
-    margin: 0px;
-    line-height: 0px;
-    @media (min-width: @screen-tablet) {
-      margin: 0px;
-      line-height: 0px;
-      display: inline;
+    margin-bottom: 20px;
+  }
+  .inline-buttons a.btn {
+    @media (min-width: @screen-desktop) {
+      max-width:200px;
+    }
+    @media (min-width: @screen-lg-desktop) {
+      max-width: 303px;
     }
   }
+  @media (min-width: @screen-tablet) {
+    border-top: 1px solid @gray;
+    display: block;
+    padding: 20px 20px 10px 20px;
+  }
 }
+
+
+
+
+// .panel-vehicle-mileage-odometer {
+//   float:left;
+//     @media (min-width: @screen-tablet) {
+//       margin-left:-30px;
+//       margin-right: 0px;
+//       padding:5px;
+//       border-left: 1px solid @gray;
+//     }
+//     @media (min-width: @screen-desktop) {
+//       padding:10px;
+//     }
+
+//   h3 {
+//     font-size: 35px;
+//     margin-bottom: 5px;
+//     @media (min-width: @screen-tablet) {
+//       font-size: 35px;
+//       margin: 0px;
+//     }
+//   }
+
+//   p {
+//     margin: 0px;
+//     line-height: 0px;
+//     @media (min-width: @screen-tablet) {
+//       margin: 0px;
+//       line-height: 0px;
+//       display: inline;
+//     }
+//   }
+// }
+
 
 
 .panel-vehicle-mileage-edit {
