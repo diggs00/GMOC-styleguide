@@ -43,9 +43,35 @@
   </head>
 
 
-  <body >
+  <body ng-controller='MainCtrl'>
 
-  asdsadsad
+    <header>
+            <span ng-include src='"templates/head.html"' ng-controller='ctrlA'></span>
+            <!-- <span ng-include src='"templates/animation.html"'></span>  -->
+    </header>
+
+<!--     <div class="wrapper" style="height:100%; min-height:100%">
+      <div class="main-nav-bg"></div> -->
+
+
+<!--       <nav class="main-nav">
+        <span ng-include src='"templates/leftNav.html"' ng-controller='ctrlA'></span>
+      </nav> -->
+
+        <div class="content">
+            <span ng-controller='ctrlB' onload="hi()">
+              <span ng-include src="template.url"></span>
+            </span>
+
+
+
+
+            <span ng-include src='"templates/footer.html"' ng-controller='ctrlB'></span>
+         </div>
+
+
+
+  </div>
 
 
   </body>
