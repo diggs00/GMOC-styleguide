@@ -107,7 +107,7 @@
                 <div class="panel-body"><!-- start panel content -->
                     <div class="title">
                         <img src="img/icon-dashboard-wifi.png" class="img-responsive" alt="Responsive image">
-                        <h5>OnStar Wifi<sup>&reg;</sup> Hotspot <a href="#"><span class="icon-ui-infofill gray-text"></span></a></h5>
+                        <h5>OnStar Wifi<sup>&reg;</sup> Hotspot <a class="btnPop" ata-toggle="popover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title"><span class="icon-ui-infofill"></span></a></h5>
                         <p class="margin-bottom-none"><strong>Monthly 200MB Data Plan</strong></p>
                         <p><small>Renews 06/05/16</small></p>
                     </div>
@@ -129,3 +129,18 @@
 
 
 </div>
+
+    <script>
+        $('.btnPop').popover();
+        $('.btnTool').tooltip();
+        
+        $(document).click(function(e) {
+            if ( $('.popover:visible').length) {
+                
+              setTimeout( function(){       
+                $('.popover').remove();
+                }, 5000);     
+                
+            }
+        });
+    </script>
