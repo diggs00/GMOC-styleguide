@@ -1,0 +1,137 @@
+//------------ Default TABLE ------------- //
+.table-default {
+  table {
+    display: block;    
+    @media (min-width: @screen-tablet) {
+      display: table;
+    }
+  }
+
+  thead {
+    display: block;
+    @media (min-width: @screen-tablet) {
+    display: table-header-group;
+    }
+  }
+
+  tbody {
+    display: block;
+    overflow: hidden;
+    border-left: 1px solid @gray;
+    border-right: 1px solid @gray;
+    border-bottom: 1px solid @gray;
+    @media (min-width: @screen-tablet) {
+      display: table-row-group;
+    }
+  }
+
+  th {
+    display: block;
+    @media (min-width: @screen-tablet) {
+      display: table-cell;
+    }
+  }
+
+  th:nth-child(n+1){
+    @media (min-width: @screen-tablet) {
+      border-left: 1px solid @gray;
+    }
+  }
+
+  tr {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    border-top: 1px solid @gray;
+    @media (min-width: @screen-tablet) {
+      border: 1px solid @gray;
+      display: table-row;
+      width: inherit;
+      float:none;
+    }
+  }
+
+  td {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    @media (min-width: @screen-tablet) {
+      display: table-cell;
+      width: inherit;
+      float:none;
+    }
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    @media (max-width: @screen-tablet) {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 0px;
+    width: 100%;
+    background-color: @white;
+    border: none;
+    a.btn-link {
+      text-align: left;
+    }
+  }
+
+  td {
+    padding: 15px 20px 15px 20px;
+    text-align: left;
+    border: none;
+    @media (min-width: @screen-tablet) {
+      padding: 15px 20px;
+    }
+    h5 {
+      margin-bottom:0px;
+    }
+    &.link {
+      padding-top:0px;
+      @media (min-width: @screen-sm) {
+        padding-top:15px;
+        text-align: right;
+      }
+    }
+  }
+
+  td:nth-child(n+1){
+    @media (min-width: @screen-tablet) {
+      padding: 15px 20px 15px 20px;
+      border-left: 1px solid @gray;
+    }
+  }
+
+
+
+  .parent td span {
+    @media (min-width: @screen-tablet) {
+      display:none
+    }
+  }
+
+  th {
+    h5 {
+      margin-bottom:0px;
+    }
+  }
+
+  th {
+    background-color: @white;
+    font-weight: bold;
+    color: @gray-dark;
+    white-space: nowrap;
+    padding: 15px 20px;
+    text-align: left
+  }
+
+  table tr:nth-child(odd), table tr:nth-child(odd)  {
+      background: @gray-light;
+  }
+}
