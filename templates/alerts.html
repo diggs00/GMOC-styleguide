@@ -59,20 +59,24 @@ It can include an internal link, such as <a href="#">Log In.</a></h6>
             </div>
 
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-xs-12">
 <pre>
 <code class="html">
-    <span>&lt;div</span> <span>class=</span><span>"alert alert-success alert-dismissable"</span><span>&gt;</span>
-        <span>&lt;span aria-hidden="true" class="icon-ui-check"&gt;&lt;/span&gt;</span>
-        <span>&lt;button type="button" class="close" data-dismiss="alert" aria-hidden="true"&gt;</span>
-            <span>&lt;span aria-hidden="true" class="icon-ui-closedot"&gt;&lt;/span&gt;</span>
-        <span>&lt;button&gt;</span>
-        <span>&lt;div class="panel-body-alert success"&gt;</span>
-            <span>&lt;p&gt;&lt;strong&gt;This is my Success alert&lt;/strong&gt;&lt;/p&gt;</span>
-            <span>&lt;p&gt;Success supporting text&lt;/p&gt;</span>
-        <span>&lt;/div&gt;</span>
-    <span>&lt;/div&gt;</span>
+&lt;div class=&quot;alert alert-success alert-dismissable&quot;&gt;
+    &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-check&quot;&gt;&lt;/span&gt;
+
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-closedot&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt; 
+
+    &lt;div class=&quot;panel-body-alert success&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;This is my Success alert&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;Success supporting text&lt;/p&gt; 
+    &lt;/div&gt;
+&lt;/div&gt;
 </code>
 </pre>
         </div>
@@ -81,12 +85,17 @@ It can include an internal link, such as <a href="#">Log In.</a></h6>
 
 
 
+
     <div class="row">
         <div class="col-xs-12">
             <h1><small>Danger</small></h1>
     
-            <div class="alert alert-danger">
+            <div class="alert alert-danger alert-dismissable">
                 <span aria-hidden="true" class="icon-ui-attention"></span>
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                <span aria-hidden="true" class="icon-ui-closedot"></span>
+                </button> 
 
                  <div class="panel-body-alert danger">
                     <p><strong>This is my Danger alert</strong></p>
@@ -106,18 +115,23 @@ It can include an internal link, such as <a href="#">Log In.</a></h6>
         <div class="col-xs-12">
 <pre>
 <code class="html">
-    <span>&lt;div</span> <span>class=</span><span>"alert alert-danger"</span><span>&gt;</span>
-        <span>&lt;span aria-hidden="true" class="icon-ui-attention"&gt;&lt;/span&gt;</span>
-        <span>&lt;div class="panel-body-alert danger"&gt;</span>
-            <span>&lt;p&gt;&lt;strong&gt;This is my Danger alert&lt;/strong&gt;&lt;/p&gt;</span>
-            <span>&lt;p&gt;Danger supporting text&lt;/p&gt;</span>
-            <span>&lt;ul&gt;</span>
-                <span>&lt;li&gt;Error item 1&lt;/li&gt;</span>
-                <span>&lt;li&gt;Error item 2&lt;/li&gt;</span>
-                <span>&lt;li&gt;Error item 3&lt;/li&gt;</span>
-            <span>&lt;/ul&gt;</span>
-        <span>&lt;/div&gt;</span>
-    <span>&lt;/div&gt;</span>
+&lt;div class=&quot;alert alert-danger alert-dismissable&quot;&gt;
+    &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-attention&quot;&gt;&lt;/span&gt;
+
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-closedot&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt; 
+
+     &lt;div class=&quot;panel-body-alert danger&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;This is my Danger alert&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;Danger supporting text&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Error item 1&lt;/li&gt;
+            &lt;li&gt;Error item 2&lt;/li&gt;
+            &lt;li&gt;Error item 3&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 </code>
 </pre>
         </div>
@@ -129,15 +143,20 @@ It can include an internal link, such as <a href="#">Log In.</a></h6>
         <div class="col-xs-12">
             <h1><small>OVD Status</small></h1>
 
-            <div class="alert alert-ovd">
+            <div class="alert alert-ovd alert-dismissable">
                 <img src="../img/ovd-status-green-lg.png">
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    <span aria-hidden="true" class="icon-ui-closedot"></span>
+                </button> 
+
                 <div class="panel-body-alert ovd">
-                    <p><strong>This is my Danger alert</strong></p>
-                    <p>Danger supporting text</p>
+                    <p><strong>This is my OVD Status</strong></p>
+                    <p>Supporting text</p>
                     <ul>
-                        <li>Error item 1</li>
-                        <li>Error item 2</li>
-                        <li>Error item 3</li>
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
                     </ul>
                 </div>
             </div>
@@ -145,8 +164,33 @@ It can include an internal link, such as <a href="#">Log In.</a></h6>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-xs-12">
+<pre>
+<code class="html">
+&lt;div class=&quot;alert alert-ovd alert-dismissable&quot;&gt;
+    &lt;img src=&quot;../img/ovd-status-green-lg.png&quot;&gt;
+
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-closedot&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt; 
+
+    &lt;div class=&quot;panel-body-alert ovd&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;This is my OVD Status&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;Supporting text&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Item 1&lt;/li&gt;
+            &lt;li&gt;Item 2&lt;/li&gt;
+            &lt;li&gt;Item 3&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>
+        </div>
 
     </div>
+
 
 
 
