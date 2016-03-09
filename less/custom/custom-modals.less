@@ -59,6 +59,35 @@
   z-index: (@zindex-modal-background + 10);
 }
 
+.modal-dialog {
+  .page-header-button {
+    text-transform: Uppercase;
+    padding-bottom: 30px;
+    margin: 0px 0px 30px 0px;
+    border-bottom: 1px solid @page-header-border-color;
+    position: relative;
+
+    h1 {
+      margin-bottom:0px;
+      margin-right:40px;
+    }
+
+    button.close-modal {
+      position: absolute;
+      top:10px;
+      right:0px;
+      @media (min-width: @screen-tablet) {
+        top:0px;
+        right:0px;
+      }
+    }
+
+
+  }
+}
+
+
+
 .modal-dialog-drawer {
   margin-left: auto;
   margin-right: auto;
@@ -67,6 +96,34 @@
   margin-bottom:10px;
   z-index: (@zindex-modal-background + 10);
 }
+
+.modal-dialog-drawer {
+  .page-header-button {
+    text-transform: Uppercase;
+    padding-bottom: 30px;
+    margin: 0px 0px 30px 0px;
+    border-bottom: 1px solid @page-header-border-color;
+    position: relative;
+
+    h1 {
+      margin-bottom:0px;
+      margin-right:40px;
+    }
+
+    button.close-modal {
+      position: absolute;
+      top:10px;
+      right:0px;
+      @media (min-width: @screen-tablet) {
+        top:0px;
+        right:0px;
+      }
+    }
+
+
+  }
+}
+
 
 
 // Actual modal
@@ -90,7 +147,7 @@
   bottom: 0;
   left: 0;
   z-index: (@zindex-modal-background - 10);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, .5);
   // Fade for backdrop
   &.fade { .opacity(0); }
   &.in { .opacity(.3); }
@@ -106,14 +163,11 @@
            border-top-left-radius: @border-radius-base;
           border-top-right-radius: @border-radius-base;
   background-color: @white;
-  padding: 40px 40px 10px 40px;
+  padding: 40px 40px 0px 40px;
   border-bottom: 0px solid @modal-header-border-color;
   min-height: (@modal-title-padding + @modal-title-line-height);
 }
-// Close icon
-.modal-header .close-modal {
-  margin-top: -2px;
-}
+
 
 // Title text within header
 .modal-title {
@@ -125,13 +179,13 @@
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  padding: 10px 40px 20px 40px;
+  padding: 0px 40px 0px 40px;
 }
 
 // Footer (for actions)
 .modal-footer {
   margin-top: 0px;
-  padding: 0px @modal-inner-padding @modal-inner-padding;
+  padding: 40px;
   text-align: right; // right align buttons
   border-top: 0px solid @modal-footer-border-color;
 
@@ -265,7 +319,7 @@
   background-color: @white;
   border-radius: 0px;
   padding-top:40px;
-  padding-bottom: 40px;
+  padding-bottom: 0px;
   padding-left:40px;
   padding-right:40px;
 

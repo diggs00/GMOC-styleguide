@@ -10,7 +10,7 @@ table.ui-datepicker-calendar {
 .ui-datepicker {
   background: @white;
   border: 1px solid @gray;
-  padding:10px;
+  padding: 20px;
   width: 300px;
   overflow: hidden;
   display: none;
@@ -44,7 +44,7 @@ table.ui-datepicker-calendar {
   }
 
 .ui-datepicker-title {
-  font-size: @font-size-large;
+  font-size: @font-size-base;
   font-weight: bold;
   text-align: center;
   line-height: 35px;
@@ -68,8 +68,8 @@ table.ui-datepicker-calendar {
 
 .ui-datepicker th {
   text-align: center;
-  font-size: 13px;
-  color: @gray-dark;
+  font-size: @font-size-base;
+  color: @gray-darkest;
   background: @white;
   padding: 10px 0px;
 }
@@ -91,28 +91,28 @@ table.ui-datepicker-calendar {
     width: 30px;  
     height: 30px;  
     line-height: 30px;  
-    color: @gray-dark;
-    background-color: #d3d3d3;
+    color: @blue-lighter;
+    background-color: @gray-lighter;
 } 
 
 .ui-datepicker-calendar .ui-state-hover {  
-      background-color: @blue;
+      background-color: @blue-lighter;
       color: @white;
 }
 
 .ui-datepicker-calendar .ui-state-active {  
-  background-color: @blue;
+  background-color: @blue-lighter;
   color: @white;
 }  
 
 .ui-state-default.ui-state-highlight {
-    background-color: @gray-dark;
-    color: @white;
+    background-color: @white;
+    color: @gray-darkest;
 }
 
 .ui-datepicker-other-month .ui-state-default {
     background: @white;
-    color: @gray;
+    color: @blue-lightest;
     &:hover {
       background-color: @brand-primary;
       color: @white;
@@ -132,28 +132,30 @@ background-color: red;
 }
 
 button.ui-datepicker-close {
-  display: none;
-  // margin-top: 10px;
-  // float: right;
-  // font-weight: bold;
-  // cursor: pointer;
-  // color: @gray-dark;
-  // border: 0 solid transparent;
-  // outline: none;
-  // background: @gray-light;
+  margin-top: 10px;
+  float: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: @blue-lighter;
+  border: 0 solid transparent;
+  outline: none;
+  background: transparent;
+  &:hover {
+    color: @blue-light;
+  }
 }
 
-.ui-datepicker-close:before {
-  content: "\e601";
+.ui-datepicker-close:after {
+  content: "\e616";
   font-family: 'icon-ui';
-  margin-right:5px;
-  font-size: @font-size-large;
+  margin-right:0px;
+  font-size: @font-size-base;
   vertical-align: top;
   speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
+  line-height: 1.4;
   -webkit-font-smoothing: antialiased;
 }

@@ -510,7 +510,7 @@
   &.active,
   .open .dropdown-toggle& {
     color: @color;
-    background-color: darken(@background, 8%);
+    background-color: none;
     border-color: darken(@border, 0%);
   }
   &:active,
@@ -540,18 +540,17 @@
   background-color: @background;
 
   &:hover,
+  .open .dropdown-toggle& {
+    background-color: @blue-dark;
+    border-color: @blue-dark;
+  }
   &:focus,
   &:active,
   &.active,
   .open .dropdown-toggle& {
     color: @color;
-    background-color: darken(@background, 8%);
-    border-color: darken(@border, 0%);
-  }
-  &:active,
-  &.active,
-  .open .dropdown-toggle& {
-    background-image: none;
+    border-color: @border;
+    background-color: none;
   }
   &.disabled,
   &[disabled],
@@ -561,8 +560,8 @@
     &:focus,
     &:active,
     &.active {
-      background-color: @background;
-      border-color: @border
+      background-color: @blue-lightest;
+      border-color: @blue-lightest;
     }
   }
 }
@@ -576,8 +575,8 @@
 
   &:hover,
   .open .dropdown-toggle& {
-    color: @color;
-    background-color: darken(@background, 0%);
+    color: @white;
+    background-color: @blue-lighter;
     border-color: darken(@border, 0%);
   }
   &:focus,
@@ -585,8 +584,8 @@
   &.active,
   .open .dropdown-toggle& {
     color: @color;
-    background-image: none;
-    background-color: @white;
+    border-color: @border;
+    background-color: @background;
   }
   &.disabled,
   &[disabled],
@@ -596,8 +595,9 @@
     &:focus,
     &:active,
     &.active {
-      background-color: @background;
-          border-color: @border
+      color: @blue-lightest;
+      background-color: none;
+      border-color: @blue-lightest;
     }
   }
 }

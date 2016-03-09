@@ -1,25 +1,28 @@
 <div class="container">
-    
-    <h1>Password Strength meter</h1>
-</div>
 
-    <div class="container form-group">                       
-          <div class="">
-              <label>Choose a password:</label>
-              <span class="help-block">Passwords must be at least this long, and contain these specific things, and can't contain these other things</span>                                                      
-          </div>    
-          <div class="col-sm-6 no-left-gutter">
-              <input type="text" class="form-control gmocPasswordField" placeholder="Choose a password">  
+  <div class="row">
+      <div class="col-xs-12">
+          <h1>Password Strength meter</h1>
+          <hr>
+      </div>
+  </div>
               
-          </div>    
-          <div class="col-sm-6 no-left-gutter">
-                <div class="progress progressContainer">
-                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                  </div> 
-                  <div class="progressBody"></div>
-                </div>
+  <div class="row">
+      <div class="col-xs-6">
+          <label class="margin-bottom-none">Choose a password:</label>
+          <p class="help-block">Passwords must be at least this long, and contain these specific things, and can't contain these other things</p>
+          <div class="form-group">
+              <input type="text" class="form-control gmocPasswordField" placeholder="Choose a password">  
           </div>
-    </div>
+          <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+          </div> 
+          <div class="progressBody"></div>
+          </div>
+      </div>
+  </div>
+
+ </div>
 
 
 

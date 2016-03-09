@@ -15,11 +15,17 @@
         <div class="col-xs-12">
             <h1><small>Info</small></h1>
 
-            <div class="alert alert-info">
+            <div class="alert alert-info alert-dismissable">
                 <span aria-hidden="true" class="icon-ui-info"></span>
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    <span aria-hidden="true" class="icon-ui-closedot"></span>
+                </button> 
+
+
                 <div class="panel-body-alert info">
-                    <h6>This is my Info alert
-                    that requires attention before proceeding. It can include an internal link, such as <a href="#">Log In.</a></h6>
+                    <p><strong>This is my Info alert</strong></p>
+                    <p>that requires attention before proceeding. It can include an internal link, such as <a href="#">Log In.</a></p>
                 </div>
             </div>
         </div>
@@ -27,15 +33,60 @@
         <div class="col-xs-12">
 <pre>
 <code class="html">
-    <span>&lt;div</span> <span>class=</span><span>"alert alert-info"</span><span>&gt;</span>
-        <span>&lt;span aria-hidden="true" class="icon-ui-info"&gt;&lt;/span&gt;</span>
-        <span>&lt;div class="panel-body-alert info"&gt;</span>
-            <span>&lt;h6&gt;This is my Info alert that requires attention before proceeding. It can include an internal link, such as &lt;a href="#"&gt;Log In.&lt;/a&gt;&lt;/h6&gt;</span>
-        <span>&lt;/div&gt;</span>
-    <span>&lt;/div&gt;</span>
+&lt;div class=&quot;alert alert-info alert-dismissable&quot;&gt;
+    &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-info&quot;&gt;&lt;/span&gt;
+
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-closedot&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt; 
+
+
+    &lt;div class=&quot;panel-body-alert info&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;This is my Info alert&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;that requires attention before proceeding. It can include an internal link, such as &lt;a href=&quot;#&quot;&gt;Log In.&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 </code>
 </pre>
         </div>
+
+        <div class="col-xs-12">
+            <h1><small>OVD Status</small></h1>
+
+            <div class="alert alert-info alert-dismissable">
+                 <span aria-hidden="true" class="icon-ui-checkfill green-text"></span>
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    <span aria-hidden="true" class="icon-ui-closedot"></span>
+                </button> 
+
+                <div class="panel-body-alert info">
+                    <p><strong>This is my OVD Status</strong></p>
+                    <p>Supporting text</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12">
+<pre>
+<code class="html">
+&lt;div class=&quot;alert alert-info alert-dismissable&quot;&gt;
+     &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-checkfill green-text&quot;&gt;&lt;/span&gt;
+
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-closedot&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt; 
+
+    &lt;div class=&quot;panel-body-alert info&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;This is my OVD Status&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;Supporting text&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>
+        </div>
+
 
     </div>
 
@@ -48,7 +99,7 @@
                 <span aria-hidden="true" class="icon-ui-check"></span>
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                <span aria-hidden="true" class="icon-ui-closedot"></span>
+                <span aria-hidden="true" class="icon-ui-closedot green-text"></span>
                 </button> 
 
                 <div class="panel-body-alert success">
@@ -93,17 +144,12 @@
                 <span aria-hidden="true" class="icon-ui-attention"></span>
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                <span aria-hidden="true" class="icon-ui-closedot"></span>
+                <span aria-hidden="true" class="icon-ui-closedot red-text"></span>
                 </button> 
 
                  <div class="panel-body-alert danger">
                     <p><strong>This is my Danger alert</strong></p>
                     <p>Danger supporting text</p>
-                    <ul>
-                        <li>Error item 1</li>
-                        <li>Error item 2</li>
-                        <li>Error item 3</li>
-                    </ul>
                 </div>
             </div>
 
@@ -124,11 +170,6 @@
      &lt;div class=&quot;panel-body-alert danger&quot;&gt;
         &lt;p&gt;&lt;strong&gt;This is my Danger alert&lt;/strong&gt;&lt;/p&gt;
         &lt;p&gt;Danger supporting text&lt;/p&gt;
-        &lt;ul&gt;
-            &lt;li&gt;Error item 1&lt;/li&gt;
-            &lt;li&gt;Error item 2&lt;/li&gt;
-            &lt;li&gt;Error item 3&lt;/li&gt;
-        &lt;/ul&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code>
@@ -138,57 +179,9 @@
     </div>
 
 
-   <div class="row">
-        <div class="col-xs-12">
-            <h1><small>OVD Status</small></h1>
+   
 
-            <div class="alert alert-ovd alert-dismissable">
-                <img src="../img/ovd-status-green-lg.png">
 
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                    <span aria-hidden="true" class="icon-ui-closedot"></span>
-                </button> 
-
-                <div class="panel-body-alert ovd">
-                    <p><strong>This is my OVD Status</strong></p>
-                    <p>Supporting text</p>
-                    <ul>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12">
-<pre>
-<code class="html">
-&lt;div class=&quot;alert alert-ovd alert-dismissable&quot;&gt;
-    &lt;img src=&quot;../img/ovd-status-green-lg.png&quot;&gt;
-
-    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;
-        &lt;span aria-hidden=&quot;true&quot; class=&quot;icon-ui-closedot&quot;&gt;&lt;/span&gt;
-    &lt;/button&gt; 
-
-    &lt;div class=&quot;panel-body-alert ovd&quot;&gt;
-        &lt;p&gt;&lt;strong&gt;This is my OVD Status&lt;/strong&gt;&lt;/p&gt;
-        &lt;p&gt;Supporting text&lt;/p&gt;
-        &lt;ul&gt;
-            &lt;li&gt;Item 1&lt;/li&gt;
-            &lt;li&gt;Item 2&lt;/li&gt;
-            &lt;li&gt;Item 3&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code>
-</pre>
-        </div>
-
-    </div>
 
 
 

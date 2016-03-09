@@ -8,13 +8,13 @@
   font-size: @font-size-base;
   font-weight: @close-font-weight;
   line-height: normal;
-  color: inherit;
+  color: @link-color;
   text-shadow: none;
   .opacity(1);
 
   &:hover,
   &:focus {
-    color: inherit;
+    color: @blue-light;
     text-decoration: none;
     cursor: pointer;
     outline: none;
@@ -40,20 +40,19 @@
 
 
 .close-modal {
-  float: right;
   font-weight: none;
   line-height: 1;
-  color: inherit;
+  color: @link-color;
   text-shadow: none;
   margin-top: 0px;
-  font-size: @font-size-xlarge;
+  font-size: @font-size-base;
   .opacity(1);
   @media screen and (min-width: @screen-tablet) {
   }
 
   &:hover,
   &:focus {
-    color: inherit;
+    color: @blue-light;
     text-decoration: none;
     cursor: pointer;
     outline: none;

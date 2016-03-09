@@ -14,27 +14,26 @@
 
 // Grays
 // -------------------------
-@gray-darkest:			#222222;
-@gray-darker:			#575656;   			   
-@gray-dark-hover:		#575656;
-@gray-dark:				#737373;
-@gray:					#a4a4a4;
-@gray-light:			#f0f0f0;
-@gray-lighter:			pink;
+@gray-darkest:			#454545;
+@gray-darker:			#959595;   			   
+@gray-dark:				#acacac;
+@gray:					#cacaca;
+@gray-light:			#e5e5e5;
+@gray-lighter:			#f0f0f0;
 
 
 // Greens
 // -------------------------
 
-@green:                   #7fb306;
-@green-light:             #d2ecae;
+@green:                   #299508;
+@green-light:             #d9f2c1;
 @green-lighter:           #f0f7e9;
 
 
 // Reds
 // -------------------------
-@red:                   #bf2828;
-@red-light:             #f0b6b6;
+@red:                   #ed211b;
+@red-light:             #fdb4b4;
 @red-lighter:           #f8e9e9;
 
 
@@ -42,15 +41,16 @@
 
 // Yellow
 // -------------------------
-@yellow:					#f1e400;
+@yellow:					#ecc30f;
 
 
 // Blue
 // -------------------------
-@blue-dark:				#203966;
-@blue:					#1f478c;
-@blue-light:			#1864ec; //Link Color
-@blue-lighter:			#a1bdeb;
+@blue-dark:				#06214e; //Primary Blue hover
+@blue:					#134a9c; //Primary Blue 
+@blue-light:			#2a4f8e; //Secondary Blue hover, Link color Hover
+@blue-lighter:			#4178da; //Secondary Blue, Link color
+@blue-lightest:			#bdd0f2; //Secondary Blue Disabled
 
 
 // Aqua
@@ -78,14 +78,14 @@
 // Scaffolding
 // -------------------------
 
-@body-bg:               #fff;
-@text-color:            @gray-dark;
+@body-bg:               @gray-lighter;
+@text-color:            @gray-darkest;
 
 // Links
 // -------------------------
 
-@link-color:            @blue-light;
-@link-hover-color:		@blue-dark;
+@link-color:            @blue-lighter;
+@link-hover-color:		@blue-light;
 
 // Typography
 // -------------------------
@@ -106,7 +106,7 @@
 
 @font-size-base:          16px;
 @font-size-large:         18px;
-@font-size-xlarge:        22px;
+@font-size-xlarge:        25px;
 // @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
 @line-height-base:        1.35; // 17/13
@@ -146,7 +146,7 @@
 @line-height-large:              1.33;
 @line-height-small:              1.5;
 
-@border-radius-base:             4px;
+@border-radius-base:             3px;
 @border-radius-small:            2px;
 @border-radius-large:            6px;
 @border-radius-xl:               8px;
@@ -184,9 +184,9 @@
 @btn-primary-bg:                 @blue;
 @btn-primary-border:             darken(@btn-primary-bg, 0%);
 
-@btn-secondary-color:             @blue;
+@btn-secondary-color:             @blue-lighter;
 @btn-secondary-bg:                transparent;
-@btn-secondary-border:            @blue;
+@btn-secondary-border:            @blue-lighter;
 
 @btn-onstar-color:             #fff;
 @btn-onstar-bg:                @onstar;
@@ -457,7 +457,7 @@
 @state-success-border:           @brand-success;
 
 @state-info-text:                @gray-dark;
-@state-info-bg:                  @gray-light;
+@state-info-bg:                  @gray-lighter;
 @state-info-border:              @gray;
 
 
@@ -477,8 +477,8 @@
 // -------------------------
 @popover-bg:                          #fff;
 @popover-max-width:                   276px;
-@popover-border-color:                @gray;
-@popover-fallback-border-color:       @gray;
+@popover-border-color:                 @blue-lighter;
+@popover-fallback-border-color:        @blue-lighter;
 
 @popover-title-bg:                    darken(@popover-bg, 3%);
 
@@ -486,8 +486,8 @@
 @popover-arrow-color:                 #fff;
 
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
-@popover-arrow-outer-color:           @gray;
-@popover-arrow-outer-fallback-color:  @gray;
+@popover-arrow-outer-color:           @blue-lighter;
+@popover-arrow-outer-fallback-color:  @blue-lighter;
 
 
 // Labels
@@ -531,7 +531,7 @@
 @alert-success-border:        @state-success-border;
 
 @alert-info-bg:               @state-info-bg;
-@alert-info-text:             @state-info-text;
+@alert-info-text:             @text-color;
 @alert-info-border:           @state-info-border;
 
 @alert-warning-bg:            @state-warning-bg;
@@ -550,7 +550,7 @@
 
 @progress-bar-bg:             @brand-primary;
 @progress-bar-success-bg:     @brand-success;
-@progress-bar-warning-bg:     @brand-yellow-warning;
+@progress-bar-warning-bg:     @blue-lighter;
 @progress-bar-danger-bg:      @brand-danger;
 @progress-bar-info-bg:        @brand-info;
 @progress-bar-timeline-fill-bg:		  @blue-aqua;
@@ -698,7 +698,7 @@
 @code-color:                  #c7254e;
 @code-bg:                     #f9f2f4;
 
-@pre-bg:                      #f5f5f5;
+@pre-bg:                      @white;
 @pre-color:                   @gray-dark;
 @pre-border-color:            #ccc;
 @pre-scrollable-max-height:   340px;

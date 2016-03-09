@@ -1,0 +1,119 @@
+ //
+// Panels
+// --------------------------------------------------
+
+
+// EXPAND/COLLAPSE (DB)
+// -------------------------
+
+.expand-group {
+  .expand+.expand {
+    margin-top: -1px;
+  }
+}
+
+
+.expand {
+  border:1px solid @gray-darker;
+  .expand-heading {
+    padding: 0px 0px 0px 0px;
+    background-color: @white;
+    position: relative;
+    cursor:pointer;
+    > span {
+      position:absolute;
+      top: 30px;
+      right: 15px;
+      font-size: @font-size-base;
+      line-height: 0px;
+    }
+    span.icon-ui-arrowdown {
+      color: @blue-lighter;
+    }
+    a {
+    color: @white;
+    text-decoration: none;
+    }
+    a:hover {
+    color: @white;
+    text-decoration: none;
+    }
+    p.expand-title {
+      font-weight: 700;
+    }
+    h4.expand-title, p.expand-title {
+      padding: 20px;
+      margin:0px 30px 0px 0px;
+      // h4,p {
+      //   margin-bottom: 0px;
+      //   margin-left: 30px;
+      // }
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+    .expand-title-with-icon {
+      padding: 20px;
+      margin:0px 30px 0px 0px;
+      span {
+        float: left;
+        font-size: @font-size-xlarge;
+        line-height: 1.4em;
+      }
+      h4.expand-title,p {
+        padding: 0px;
+        margin-bottom: 0px;
+        margin-left: 35px;
+      }
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+  }
+  .expand-body {
+    padding: 40px 20px;
+    background-color: @white;
+  }
+}
+
+
+// EXPAND/COLLAPSE contained within a Container (DB)
+// -------------------------
+// .expand-contained {
+//     border-color: @border;
+//     border-left:0px;
+//     border-right:0px;
+//   & > .panel-heading-expand {
+//     padding: 0px 0px 0px 0px;
+//     color: @heading-text-color;
+//     background-color: @heading-bg-color;
+//     border-color: @heading-border;
+//     + .panel-collapse .panel-body {
+//       border-top-color: @border;
+//       background-color: @panel-expanded-bg-color;
+//     }
+//   }
+//   & > .panel-footer {
+//     + .panel-collapse .panel-body {
+//       border-bottom-color: @border;
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6842,7 +6842,7 @@ function Datepicker() {
 	this._dayOverClass = "ui-datepicker-days-cell-over"; // The name of the day hover marker class
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[""] = { // Default regional settings
-		closeText: "Close", // Display text for close link
+		closeText: "Close ", // Display text for close link
 		prevText: "", // Display text for previous month link
 		nextText: "", // Display text for next month link
 		currentText: "Today", // Display text for current month link

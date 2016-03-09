@@ -25,7 +25,9 @@ a.btnPop {
   border: 1px solid @popover-fallback-border-color;
   border: 1px solid @popover-border-color;
   border-radius: @border-radius-small;
-  .box-shadow(0 0px 0px rgba(0,0,0,0));
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.15);
+  box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.15);
 
   // Overrides for proper insertion
   white-space: normal;
@@ -43,7 +45,7 @@ a.btnPop {
 
 .popover-content {
   padding: 9px 14px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: @font-family-sans-serif;
   font-weight: 400;
   color: @text-color;

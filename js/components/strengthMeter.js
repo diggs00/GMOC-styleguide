@@ -6,7 +6,7 @@
     var bar = $('.progress-bar');  //find bar
     bar.width(0);  //set initial width to 0
     var progressBody = $('.progressBody');
-    var barRightPadding = 40; //makes room for copy
+    var barRightPadding = 0; //makes room for copy
 
     $(window).resize(function() {
         //resize just happened, pixels changed

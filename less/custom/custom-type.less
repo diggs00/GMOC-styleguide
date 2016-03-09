@@ -24,7 +24,7 @@ p {
 // Emphasis & misc
 // -------------------------
 
-// Ex: 13px base font * 85% = about 14px
+// Ex: 16px base font * 85% = about 14px
 small   { font-size: 85%; }
 
 // Undo browser default styling
@@ -51,12 +51,11 @@ h1 {
   font-family: @font-family-bold;
   line-height: @headings-line-height;
   color: @gray-darkest;
-  // text-transform:uppercase;
+  text-transform: uppercase;
 
   small {
     font-weight: normal;
     line-height: 1;
-    color: @headings-small-color;
   }
 
   &.page-header-no-underline {
@@ -66,57 +65,52 @@ h1 {
 
 
 h2,h3 {
-  font-family: @font-family-bold;
-  // font-weight: @headings-font-weight;
+  font-family: @font-family-sans-serif;
   line-height: @headings-line-height;
+  font-weight: normal;
   color: @gray-darkest;
   small {
-    font-weight: normal;
     line-height: 1;
-    color: @headings-small-color;
   }
 }
 
 
 h4,h5 {
-  font-family: @headings-font-family;
+  font-family: @font-family-sans-serif;
   font-weight: normal;
   line-height: @headings-line-height;
   color: @gray-darkest;
   small {
-    font-weight: normal;
     line-height: 1;
-    color: @headings-small-color;
   }
 }
 
 
 h6 {
-  font-family: @headings-font-family;
+  font-family: @font-family-sans-serif;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
   color: @gray-darkest;
   small {
-    font-weight: normal;
     line-height: 1;
-    color: @headings-small-color;
   }
 }
 
 
 h1, h2, h3, h4, h5, h6  {
   margin-top: 0px;
-  margin-bottom: (@line-height-computed / 2);
+  // margin-bottom: (@line-height-computed / 2);
+  margin-bottom: 0px;
 
 }
 
 
 h1, .h1 { font-size: floor(@font-size-base * 2.8125); } // 45px
-h2, .h2 { font-size: floor(@font-size-base * 1.25); } // 20px
-h3, .h3 { font-size: floor(@font-size-base * 1.25); } // 20px
+h2, .h2 { font-size: floor(@font-size-base * 2.19); } // 35px
+h3, .h3 { font-size: floor(@font-size-base * 1.875); } // 30px
 h4, .h4 { font-size: floor(@font-size-base * 1.5625); } // 25px
 h5, .h5 { font-size: floor(@font-size-base * 1.25); } // 20px
-h6, .h6 { font-size: floor(@font-size-base * 1.125); } // 18px
+h6, .h6 { font-size: floor(@font-size-base * 1); } // 16px
 
 h1 small, .h1 small { font-size: ceil(@font-size-base * 1.125); } // ~18px
 h2 small, .h2 small { font-size: ceil(@font-size-base * 1.125); } // ~18px
@@ -161,8 +155,8 @@ p.page-header-image {
 
 
 .page-header-button {
-  padding-bottom: 10px;
-  margin: 0px 0px 20px 0px;
+  padding-bottom: 40px;
+  margin: 0px 0px 40px 0px;
   border-bottom: 1px solid @page-header-border-color;
   display: inline-block;
   *zoom: 1; // for IE inline-block
@@ -171,7 +165,7 @@ p.page-header-image {
 
 
   h1 {
-    margin-bottom:5px;
+    margin-bottom:0px;
       @media (min-width: @screen-tablet) {
         display: inline-block;
         *zoom: 1; // for IE inline-block
@@ -191,11 +185,11 @@ p.page-header-image {
     margin-top:0px;
     margin-bottom:0px;
     @media (min-width: @screen-tablet) {
-      margin-top:3px;
+      margin-top:0px;
       margin-bottom:0px;
     }
     @media (min-width: @screen-desktop) {
-      margin-top:10px;
+      margin-top:0px;
     }
   }
 
@@ -225,32 +219,6 @@ p.page-header-image {
 
 
 
-.modal-dialog-drawer {
-  .page-header-button {
-    text-transform: Uppercase;
-    padding-bottom: 30px;
-    margin: 0px 0px 30px 0px;
-    border-bottom: 1px solid @page-header-border-color;
-    position: relative;
-
-    h1 {
-      margin-bottom:0px;
-      margin-right:40px;
-    }
-
-    button.close-modal {
-      position: absolute;
-      top:10px;
-      right:0px;
-      @media (min-width: @screen-tablet) {
-        top:0px;
-        right:0px;
-      }
-    }
-
-
-  }
-}
 
 
 
@@ -289,7 +257,7 @@ p.page-header-image {
  }
 
 
-// Unordered and Ordered lists
+// Unordered lists
 ul {
   margin-top: 0;
   margin-bottom: 10px;
@@ -300,13 +268,28 @@ ul {
   }
 }
 
+ul {
+  li {
+    margin-bottom:20px;
+    &:last-child {
+      margin-bottom:0px;
+    }
+  }
+}
 
-
+// Ordered lists
 ol {
+
+  li {
+    margin-bottom:20px;
+    padding-left: 15px;
+    &:last-child {
+      margin-bottom:0px;
+    }
+  }
   margin-top: 0;
   margin-bottom: (@line-height-computed / 2);
   padding-left: 23px;
-  // text-indent: -16px;
 
   ol{
     margin-bottom: 0;
@@ -318,18 +301,46 @@ ol {
 
 
 
-
-
 // List options
 
 // DB: Styled keeps list items block level, just removes default browser padding and list-style
-.list-styled {
+
+// Bullet lists
+ul.list-bullet {
    list-style-type: disc;
    list-style-position: outside;
    list-style-image: none;
    margin-left: 0px;
    padding-left: 15px;
+   li {
+    padding-left:15px;
+   }
 }
+
+
+// Inline Lists
+ul.list-inline {
+  margin-bottom: 0px;
+  > li {
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 40px;
+    content: none;
+    margin-bottom: 20px;
+    &:last-child {
+      padding-right: 0px;
+    }
+  }
+}
+
+.list-inline {
+  .list-unstyled();
+  > li:before {
+    content: none;
+  }
+}
+
+
 
 // DB: Styled list with image left text right
 ul.image-list {
@@ -347,23 +358,7 @@ ul.image-list {
 }
 
 
-// Inline turns list items into inline-block
-.list-inline {
-  .list-unstyled();
-  > li {
-    display: inline-block;
-    padding-left: 0px;
-    padding-right: 5px;
-    content: none;
-  }
-}
 
-.list-inline {
-  .list-unstyled();
-  > li:before {
-    content: none;
-  }
-}
 
 
 
