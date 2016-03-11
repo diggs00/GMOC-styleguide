@@ -278,9 +278,7 @@
 
 
 
-.panel-tertiary .panel-heading {
-  padding: 15px 20px 0px 20px;
-}
+
 
 
 
@@ -340,10 +338,7 @@
 
 
 
-.panel-tertiary .panel-title {
-    border-bottom:1px solid @gray;
-    padding: 0px 0px 14px 0px;
-}
+
 
 
 // Optional footer (stays gray in every modifier class)
@@ -634,7 +629,7 @@
 
 // Contextual variations
 .panel-default {
-  .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+  .panel-variant-default(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
 }
 .panel-primary {
   .panel-variant(@panel-default-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
@@ -643,13 +638,12 @@
   .panel-variant(@panel-default-border; @panel-secondary-text; @panel-secondary-heading-bg; @panel-secondary-border);
 }
 .panel-tertiary {
-  .panel-variant(@panel-default-border; @panel-info-text; @panel-tertiary-heading-bg; @panel-tertiary-border);
+  .panel-variant-tertiary(@panel-default-border; @panel-info-text; @panel-tertiary-heading-bg; @panel-tertiary-border);
 }
 
 .panel-informational {
   .panel-variant(@panel-default-border; @panel-informational-text; @panel-informational-heading-bg; @panel-informational-border);
 }
-
 
 
 

@@ -347,7 +347,7 @@
     color: @heading-text-color;
     background-color: @heading-bg-color;
     border-color: @border;
-    border-bottom: 1px solid @border;
+    border-bottom: 1px solid @gray;
     + .panel-collapse .panel-body {
       border-top-color: @border;
     }
@@ -362,6 +362,51 @@
   }
 }
 
+
+.panel-variant-default(@border; @heading-text-color; @heading-bg-color; @heading-border;) {
+  border-color: @border;
+  margin-bottom: 15px;
+  & > .panel-heading {
+    color: @heading-text-color;
+    background-color: @heading-bg-color;
+    border-color: @border;
+    border-bottom: 2px solid @blue-lighter;
+    + .panel-collapse .panel-body {
+      border-top-color: @border;
+    }
+    .panel-title h4 {
+      color: @heading-text-color;
+    }
+  }
+  & > .panel-footer {
+    + .panel-collapse .panel-body {
+      border-bottom-color: @border;
+    }
+  }
+}
+
+
+.panel-variant-tertiary(@border; @heading-text-color; @heading-bg-color; @heading-border;) {
+  border-color: @border;
+  margin-bottom: 15px;
+  & > .panel-heading {
+    color: @heading-text-color;
+    background-color: @heading-bg-color;
+    border-color: @border;
+    border-bottom: 1px solid @gray;
+    + .panel-collapse .panel-body {
+      border-top-color: @border;
+    }
+    .panel-title h4 {
+      color: @heading-text-color;
+    }
+  }
+  & > .panel-footer {
+    + .panel-collapse .panel-body {
+      border-bottom-color: @border;
+    }
+  }
+}
 
 // Panels with icon in header (DB)
 // -------------------------
