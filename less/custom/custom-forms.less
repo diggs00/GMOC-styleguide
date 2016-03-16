@@ -624,7 +624,7 @@ select {
   width: 100%;
   overflow:hidden;
   background: url("../img/selectArrows_error.png") no-repeat right;
-  background-color:@red-lighter;
+  background-color: @gray-lighter;
   border-color:@red;
   border-style:solid;
   border-width:1px;
@@ -795,7 +795,7 @@ input:checked + .checkbox-value:before {
   position: absolute;
   top: -6px;
   left: -1px;
-  color: @blue;
+  color: @blue-lighter;
 }
 
 
@@ -900,13 +900,13 @@ input:checked + .radio-value {
     position: absolute;
     top: -1px;
     left: -1px;
-    border: 2px solid @blue;
+    border: 2px solid @blue-lighter;
   }
   &:after {
     content: " ";
     border-radius: 50%;
     border-color: yellow;
-    background-color: @blue;
+    background-color: @blue-lighter;
     width: .75em;
     height: .75em;
     position: absolute;
@@ -931,7 +931,7 @@ input:checked + .radio-value {
 /* style the "fake" select */
 // Default State
 .select-container.default {
-  background:  url("../../img/selectArrows.png") no-repeat right @gray-light;
+  background:  url("../../img/selectArrows.png") no-repeat right @gray-lighter;
   border: 1px solid @input-border;
   border-radius: 0;
   position: relative;
@@ -953,7 +953,7 @@ input:checked + .radio-value {
 
 // Error State
 .select-container.on-selectError{
-  background:  url("../../img/selectArrows_error.png") no-repeat right @red-lighter;
+  background:  url("../../img/selectArrows_error.png") no-repeat right @gray-lighter;
   border: 1px solid @red;
   border-radius: 0;
   position: relative;
@@ -978,14 +978,14 @@ input:checked + .radio-value {
   height: 100%;
   display: block;
   width: 100%;
-  background-color: @gray-light;
+  background-color: @gray-lighter;
 }
 
 .select-container.on-selectError select {
   height: 100%;
   display: block;
   width: 100%;
-  background-color: @red-lighter;
+  background-color: @gray-light;
   color:@red;
 }
 /* hide and overlay when JavaScript is enabled */
