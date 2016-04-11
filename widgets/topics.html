@@ -1,0 +1,190 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Topics Idea</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-4">
+            <h1><small>Default</small></h1>
+
+            <div class="panel panel-default"><!-- start default panel -->
+
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>Title - h4</h4>
+                    </div>
+                </div>
+
+
+
+
+                    <div class="panel-group">
+                        <div class="panel panel-default-expand-contained">
+                            <div class="panel-heading-expand" id="something">
+                                <span data-toggle="collapse" href="#collapseOne" aria-hidden="true" class="icon-ui-arrowdown"></span>
+                                <span data-toggle="collapse" href="#collapseOne" aria-hidden="true" class="icon-ui-arrowup" style="display: none"></span>
+                                <h5 class="panel-title-expand">Title h5</h5>
+
+                            </div>
+
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                <ul>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 2</a>
+                                    </li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default-expand-contained">
+                            <div class="panel-heading-expand">
+                                <span data-toggle="collapse" href="#collapseTwo" aria-hidden="true" class="icon-ui-arrowdown"></span>
+                                <span data-toggle="collapse" href="#collapseTwo" aria-hidden="true" class="icon-ui-arrowup" style="display: none"></span>
+                                <h5 class="panel-title-expand">Title h5</h5>
+                            </div>
+
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                <ul>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default-expand-contained">
+                            <div class="panel-heading-expand">
+                                <span data-toggle="collapse" href="#collapseThree" aria-hidden="true" class="icon-ui-arrowdown"></span>
+                                <span data-toggle="collapse" href="#collapseThree" aria-hidden="true" class="icon-ui-arrowup" style="display: none"></span>
+                                <h5 class="panel-title-expand">Title h5</h5>
+                            </div>
+
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                <ul>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-link">Link 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+               
+
+
+            </div><!-- end panel content -->
+        </div><!-- end default panel -->
+
+
+        
+
+
+    
+
+
+</div>
+
+
+
+<script>
+
+    $( document ).ready( function(){
+
+        var bodyVisible = false;
+        var clicked = false;
+
+        $(".panel-heading-expand").click(function() {
+
+            //prevent double action on click
+            if(!clicked){
+
+                var myBody = $(this).parent().find(".panel-collapse");
+                var myIcon = $(this).parent().find(".icon-ui-arrowdown");
+                var myTitle = $(this).parent().find(".panel-title-expand");
+                var checkBox = $(this).parent().find(".icon-ui-checkfill");
+                var alertArrow = $(this).parent().find(".icon-ui-attentionfill");
+
+                var attentionOutline = $(this).parent().find(".icon-ui-attentionoutline");
+
+                var plusBox = $(this).parent().find(".icon-ui-arrowdown");
+                var minusBox = $(this).parent().find(".icon-ui-arrowup");
+
+                var myHead = $(this);
+
+
+
+                bodyVisible = $(myBody).is(':visible');
+
+                if(bodyVisible){
+
+                    $(minusBox).hide();
+                    $(plusBox).show();
+                    $(plusBox).first().css("color","#1f478c");
+                    $(checkBox).first().css("color","#7fb306");
+                    $(attentionOutline).first().css("color","#bf2828");
+                    $(alertArrow).first().css("color","#bf2828");
+                    $(myHead).css("background-color","white");
+
+                }else{
+
+                    $(plusBox).hide();
+                    $(minusBox).show();
+                    $(minusBox).first().css("color","#1f478c");
+                    $(checkBox).first().css("color","#7fb3063");
+                    $(alertArrow).first().css("color","bf2828");
+                    $(attentionOutline).first().css("color","#bf2828");
+                    $(myHead).css("background-color","white");
+
+                }
+
+                console.log("-- "+myIcon)
+
+
+                clicked = true;
+
+                $(myIcon).click();
+
+                setTimeout(function(){
+                    clicked = false;
+                },500);
+            }
+
+        });
+
+
+    });
+
+
+
+</script>
+
+</div>
+
+
