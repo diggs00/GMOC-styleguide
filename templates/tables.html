@@ -1,4 +1,74 @@
+<!-- <script src="js/components/responsive-tables.js"></script> -->
 
+<script>
+$(document).ready(function() {
+  var switched = false;
+  var updateTables = function() {
+    if (($(window).width() < 768) && !switched ){
+      switched = true;
+      $("table.responsive").each(function(i, element) {
+        splitTable($(element));
+      });
+      return true;
+    }
+    else if (switched && ($(window).width() > 767)) {
+      switched = false;
+      $("table.responsive").each(function(i, element) {
+        unsplitTable($(element));
+      });
+    }
+  };
+   
+  $(window).load(updateTables);
+  $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
+  $(window).on("resize", updateTables);
+   
+	
+	function splitTable(original)
+	{
+		original.wrap("<div class='table-wrapper' />");
+		
+		var copy = original.clone();
+		copy.find("td:not(:first-child), th:not(:first-child)").css("display", "none");
+		copy.removeClass("responsive");
+		
+		original.closest(".table-wrapper").append(copy);
+		copy.wrap("<div class='pinned' />");
+		original.wrap("<div class='scrollable' />");
+
+    setCellHeights(original, copy);
+	}
+	
+	function unsplitTable(original) {
+    original.closest(".table-wrapper").find(".pinned").remove();
+    original.unwrap();
+    original.unwrap();
+	}
+
+  // function setCellHeights(original, copy) {
+  //   var tr = original.find('tr'),
+  //       tr_copy = copy.find('tr'),
+  //       heights = [];
+
+  //   tr.each(function (index) {
+  //     var self = $(this),
+  //         tx = self.find('th, td');
+
+  //     tx.each(function () {
+  //       var height = $(this).outerHeight(true);
+  //       heights[index] = heights[index] || 0;
+  //       if (height > heights[index]) heights[index] = height;
+  //     });
+
+  //   });
+
+  //   tr_copy.each(function (index) {
+  //     $(this).height(heights[index]);
+  //   });
+  // }
+
+});
+</script>
 
 
 <div class="container">
@@ -9,6 +79,63 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1><small>Default</small></h1>
+
+			<div class="table-default">
+				<table>
+					<thead>
+						<tr>
+							<!-- <th>Specifications</th> -->
+							<th>Category 1 Title</th>
+							<th>Category 2 Title</th>
+							<th>Category 3 Title</th>
+							<!-- <th>More Details</th> -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="parent">
+							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
+							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
+							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
+						</tr>
+
+
+						<tr class="parent" >
+							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
+							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
+							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
+						</tr>
+
+						<tr class="parent" >
+							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
+							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
+							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
+						</tr>
+
+						<tr class="parent" >
+							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
+							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
+							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 <div class="container">
@@ -84,63 +211,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<h1><small>Default</small></h1>
-
-			<div class="table-default">
-				<table>
-					<thead>
-						<tr>
-							<!-- <th>Specifications</th> -->
-							<th>Category 1 Title</th>
-							<th>Category 2 Title</th>
-							<th>Category 3 Title</th>
-							<!-- <th>More Details</th> -->
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="parent">
-							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
-							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
-							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
-						</tr>
-
-
-						<tr class="parent" >
-							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
-							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
-							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
-						</tr>
-
-						<tr class="parent" >
-							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
-							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
-							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
-						</tr>
-
-						<tr class="parent" >
-							<td><span><strong>Category 1 Title </strong></span>Value 1</td>
-							<td><span><strong>Category 2 Title </strong></span>Value 2</td>
-							<td><span><strong>Category 3 Title </strong></span>Value 3</td>
-						</tr>
-
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-
-
 
 
 
