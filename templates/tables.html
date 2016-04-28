@@ -1,5 +1,75 @@
 <!-- <script src="js/components/responsive-tables.js"></script> -->
 
+<script>
+$(document).ready(function() {
+  var switched = false;
+  var updateTables = function() {
+    if (($(window).width() < 767) && !switched ){
+      switched = true;
+      $("table.responsive").each(function(i, element) {
+        splitTable($(element));
+      });
+      return true;
+    }
+    else if (switched && ($(window).width() > 767)) {
+      switched = false;
+      $("table.responsive").each(function(i, element) {
+        unsplitTable($(element));
+      });
+    }
+  };
+   
+  $(window).load(updateTables);
+  $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
+  $(window).on("resize", updateTables);
+   
+  
+  function splitTable(original)
+  {
+    original.wrap("<div class='table-wrapper' />");
+    
+    var copy = original.clone();
+    copy.find("td:not(:first-child), th:not(:first-child)").css("display", "none");
+    copy.removeClass("responsive");
+    
+    original.closest(".table-wrapper").append(copy);
+    copy.wrap("<div class='pinned' />");
+    original.wrap("<div class='scrollable' />");
+
+    setCellHeights(original, copy);
+  }
+  
+  function unsplitTable(original) {
+    original.closest(".table-wrapper").find(".pinned").remove();
+    original.unwrap();
+    original.unwrap();
+  }
+
+  // function setCellHeights(original, copy) {
+  //   var tr = original.find('tr'),
+  //       tr_copy = copy.find('tr'),
+  //       heights = [];
+
+  //   tr.each(function (index) {
+  //     var self = $(this),
+  //         tx = self.find('th, td');
+
+  //     tx.each(function () {
+  //       var height = $(this).outerHeight(true);
+  //       heights[index] = heights[index] || 0;
+  //       if (height > heights[index]) heights[index] = height;
+  //     });
+
+  //   });
+
+  //   tr_copy.each(function (index) {
+  //     $(this).height(heights[index]);
+  //   });
+  // }
+
+});
+</script>
+
 
 
 
@@ -84,82 +154,6 @@
 			</div>
 		</div>
 	</div>
-
-	
-
-	<div class="container">
-
-		<div class="row">
-
-			<div class="col-xs-12">
-				
-    			<h5>Small Word Table</h5>
-				<table class="responsive">
-    				
-					<tr>
-						<th>Header 1</th>
-						<th>Header 2</th>
-						<th>Header 3</th>
-						<th>Header 4</th>
-						<th>Header 5</th>
-						<th>Header 6</th>
-						<th>Header 7</th>
-						<th>Header 8</th>
-					</tr>
-					<tr>
-						<td>row 1, cell 1</td>
-						<td>row 1, cell 2</td>
-						<td>row 1, cell 3</td>
-						<td>row 1, cell 4</td>
-						<td>row 1, cell 5</td>
-						<td>row 1, cell 6</td>
-						<td>row 1, cell 7</td>
-						<td>row 1, cell 8</td>
-					</tr>
-					<tr>
-						<td>row 2, cell 1</td>
-						<td>row 2, cell 2</td>
-						<td>row 2, cell 3</td>
-						<td>row 2, cell 4</td>
-						<td>row 2, cell 5</td>
-						<td>row 2, cell 6</td>
-						<td>row 2, cell 7</td>
-						<td>row 2, cell 8</td>
-					</tr>
-					<tr>
-						<td>row 3, cell 1</td>
-						<td>row 3, cell 2</td>
-						<td>row 3, cell 3</td>
-						<td>row 3, cell 4</td>
-						<td>row 3, cell 5</td>
-						<td>row 3, cell 6</td>
-						<td>row 3, cell 7</td>
-						<td>row 3, cell 8</td>
-					</tr>
-					<tr>
-						<td>row 4, cell 1</td>
-						<td>row 4, cell 2</td>
-						<td>row 4, cell 3</td>
-						<td>row 4, cell 4</td>
-						<td>row 4, cell 5</td>
-						<td>row 4, cell 6</td>
-						<td>row 4, cell 7</td>
-						<td>row 4, cell 8</td>
-					</tr>
-    					
-        		</table>
-        
-    </div>
-</div>
-
-	</div>
-
-
-
-
-
-
-
 
 
 
