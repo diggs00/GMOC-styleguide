@@ -138,3 +138,135 @@
 
 
 
+
+//   Tables with Radio buttons
+// ----------------------------------------- */
+
+table.responsive {
+  margin: 0px;
+  width: 100%;
+
+  table {
+    margin:0px;
+    width: 100%;
+  } 
+
+  th, td {
+    padding: 15px 20px 15px 20px;
+    border-top: 1px solid @gray;
+    border-left: 1px solid @gray;
+    border-bottom: 1px solid @gray;
+    border-right: 1px solid @gray;
+    ul.radio-list {
+      li {
+        margin-top: 0px;
+        padding-bottom: 0px;
+        line-height: 0px;
+        span.radio > span.radio-value {
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+
+  td:first-child {
+    width:20px;
+  }
+
+
+  tr:nth-child(even)  {
+      background: @gray-light;
+  }
+}
+
+
+
+
+/* Mobile */
+@media only screen and (max-width: @screen-tablet) {
+  
+  table.responsive { 
+    margin-bottom: 0;
+
+  }
+  
+  .pinned { 
+    position: absolute;
+    left: 1px;
+    top: 0;
+    background: #fff;
+    width: 25%; 
+    overflow: hidden;
+    // overflow-x: scroll; 
+    // border-right: 1px solid #ccc;
+    // border-left: 1px solid #ccc; 
+  }
+
+  .pinned table { 
+    border-right: none; 
+    border-left: none;
+    width: 100%; 
+  }
+
+  .pinned table tr:nth-child(even)  {
+    background: @gray-light;
+  }
+
+  .pinned table th, .pinned table td { 
+    white-space: nowrap;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    border-top: 1px solid @gray;
+    border-bottom: 1px solid @gray;
+    border-left: 1px solid @gray;
+    border-right: 1px solid @gray;
+    ul.radio-list {
+      li {
+        margin-top: 2px;
+        padding-bottom: 0px;
+      }
+    }
+  }
+
+  .pinned td:last-child { 
+    border-bottom: 0; 
+  }
+
+
+  
+  div.table-wrapper { 
+    position: relative; 
+    margin-bottom: 20px;
+    overflow: hidden; 
+    // border-right: 1px solid @gray;
+  }
+
+  div.table-wrapper div.scrollable { 
+    margin-left: 25%; 
+  }
+
+  div.table-wrapper div.scrollable { 
+    // overflow: scroll;
+    overflow: auto; 
+    overflow-y: hidden; 
+  }  
+
+  
+  table.responsive tr:nth-child(even)  {
+    background: @gray-light;
+  }
+
+
+  table.responsive td, table.responsive th { 
+    position: relative; 
+    white-space: nowrap; 
+    overflow: hidden;
+    padding: 15px 20px 15px 20px;
+    // border: 1px solid @gray;
+  }
+
+  table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { 
+    display: none; 
+  }
+}
+
