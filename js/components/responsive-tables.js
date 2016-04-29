@@ -16,9 +16,14 @@ $(document).ready(function() {
     }
   };
    
-  $(window).load(updateTables);
-  $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
-  $(window).on("resize", updateTables);
+  updateTable();
+  // $(window).load(updateTables);
+  // $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
+  // $(window).on("resize", updateTables);
+
+  $("#radio-table").load(updateTables);
+  // $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
+  $("#radio-table").on("resize", updateTables);
    
 	
 	function splitTable(original)
