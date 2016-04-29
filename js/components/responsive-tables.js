@@ -18,12 +18,12 @@ $(document).ready(function() {
    
 
   $(window).load(updateTables);
-  $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
+  // $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
   $(window).on("resize", updateTables);
 
-  // $( "#radio-table" ).load(updateTables);
-  // $( "#radio-table").on("redraw",function(){switched=false;updateTables();}); // An event to listen for
-  // $( "#radio-table" ).on("resize", updateTables);
+  $( '#radio-table' ).load(updateTables);
+  $( '#radio-table' ).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
+  $( '#radio-table' ).on("resize", updateTables);
    
 	
 	function splitTable(original)
@@ -38,7 +38,7 @@ $(document).ready(function() {
 		copy.wrap("<div class='pinned' />");
 		original.wrap("<div class='scrollable' />");
 
-    setCellHeights(original, copy);
+    // setCellHeights(original, copy);
 	}
 	
 	function unsplitTable(original) {
