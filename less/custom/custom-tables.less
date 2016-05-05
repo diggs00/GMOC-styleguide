@@ -139,24 +139,69 @@
 
 
 
-//   Tables with Radio buttons
+//   Tables with Radio buttons 
 // ----------------------------------------- */
 
-table.responsive {
-  margin: 0px;
+.radio-table {
+  // margin: 1em 0;
   width: 100%;
+  // overflow: hidden;
+  background: @white;
+  border: 1px solid @gray;
 
-  table {
-    margin:0px;
-    width: 100%;
-  } 
+  tr {
+    border: 1px solid @gray;
+  }
+  tr:nth-child(even) {
+    background-color:  @gray-light;
+  }
+// .radio-table th {
+//   display: none;
+//   border: 1px solid #FFF;
+//   background-color: #167F92;
+//   color: #FFF;
+//   padding: 1em;
+// }
+// .radio-table th:first-child {
+//   display: table-cell;
+//   text-align: center;
+// }
+// .radio-table th:nth-child(2) {
+//   display: table-cell;
+// }
+// .radio-table th:nth-child(2) span {
+//   display: none;
+// }
+// .radio-table th:nth-child(2):after {
+//   content: attr(data-th);
+// }
+// @media (min-width: 480px) {
+//   .radio-table th:nth-child(2) span {
+//     display: block;
+//   }
+//   .radio-table th:nth-child(2):after {
+//     display: none;
+//   }
+// }
+  td {
+    display: block;
+    word-wrap: break-word;
+    max-width: 100%;
+    // margin:20px;
+    @media (min-width: 480px) {
+      border: 1px solid @gray;
+    }
+  }
 
-  th, td {
-    padding: 15px 20px 15px 20px;
-    border-top: 1px solid @gray;
-    border-left: 1px solid @gray;
-    border-bottom: 1px solid @gray;
+  td:first-child {
+    display: table-cell;
+    text-align: center;
     border-right: 1px solid @gray;
+    margin:0px;
+    width: 64px;
+  }
+
+  td {
     ul.radio-list {
       li {
         margin-top: 0px;
@@ -169,104 +214,160 @@ table.responsive {
     }
   }
 
-  td:first-child {
-    width:20px;
+  td:nth-child(n+2) {
+    margin:20px;
   }
 
 
-  tr:nth-child(even)  {
-      background: @gray-light;
-  }
-}
 
-
-
-
-/* Mobile */
-@media only screen and (max-width: @screen-tablet) {
-  
-  table.responsive { 
-    margin-bottom: 0;
-
-  }
-  
-  .pinned { 
-    position: absolute;
-    left: 1px;
-    top: 0;
-    background: #fff;
-    width: 25%; 
-    overflow: hidden;
-    // overflow-x: scroll; 
-    // border-right: 1px solid #ccc;
-    // border-left: 1px solid #ccc; 
-  }
-
-  .pinned table { 
-    border-right: none; 
-    border-left: none;
-    width: 100%; 
-  }
-
-  .pinned table tr:nth-child(even)  {
-    background: @gray-light;
-  }
-
-  .pinned table th, .pinned table td { 
-    white-space: nowrap;
-    padding: 10px 20px 10px 20px;
-    text-align: center;
-    border-top: 1px solid @gray;
-    border-bottom: 1px solid @gray;
-    border-left: 1px solid @gray;
-    border-right: 1px solid @gray;
-    ul.radio-list {
-      li {
-        margin-top: 2px;
-        padding-bottom: 0px;
-      }
-    }
-  }
-
-  .pinned td:last-child { 
-    border-bottom: 0; 
-  }
-
-
-  
-  div.table-wrapper { 
-    position: relative; 
-    margin-bottom: 20px;
-    overflow: hidden; 
-    // border-right: 1px solid @gray;
-  }
-
-  div.table-wrapper div.scrollable { 
-    margin-left: 25%; 
-  }
-
-  div.table-wrapper div.scrollable { 
-    // overflow: scroll;
-    overflow: auto; 
-    overflow-y: hidden; 
-  }  
-
-  
-  table.responsive tr:nth-child(even)  {
-    background: @gray-light;
-  }
-
-
-  table.responsive td, table.responsive th { 
-    position: relative; 
-    white-space: nowrap; 
-    overflow: hidden;
-    padding: 15px 20px 15px 20px;
-    // border: 1px solid @gray;
-  }
-
-  table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { 
-    display: none; 
+  th, td {
+    text-align: left;
+    // margin: .5em 1em;
+    @media (min-width: 480px) {
+      display: table-cell;
+      padding: 1em;
+    } 
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+//   Tables with Radio buttons (ZURB)
+// ----------------------------------------- */
+
+// table.responsive {
+//   margin: 0px;
+//   width: 100%;
+
+//   table {
+//     margin:0px;
+//     width: 100%;
+//   } 
+
+//   th, td {
+//     padding: 15px 20px 15px 20px;
+//     border-top: 1px solid @gray;
+//     border-left: 1px solid @gray;
+//     border-bottom: 1px solid @gray;
+//     border-right: 1px solid @gray;
+//     ul.radio-list {
+//       li {
+//         margin-top: 0px;
+//         padding-bottom: 0px;
+//         line-height: 0px;
+//         span.radio > span.radio-value {
+//           margin-right: 0px;
+//         }
+//       }
+//     }
+//   }
+
+//   td:first-child {
+//     width:20px;
+//   }
+
+
+//   tr:nth-child(even)  {
+//       background: @gray-light;
+//   }
+// }
+
+
+
+
+// /* Mobile */
+// @media only screen and (max-width: @screen-tablet) {
+  
+//   table.responsive { 
+//     margin-bottom: 0;
+
+//   }
+  
+//   .pinned { 
+//     position: absolute;
+//     left: 1px;
+//     top: 0;
+//     background: #fff;
+//     width: 25%; 
+//     overflow: hidden;
+//     // overflow-x: scroll; 
+//     // border-right: 1px solid #ccc;
+//     // border-left: 1px solid #ccc; 
+//   }
+
+//   .pinned table { 
+//     border-right: none; 
+//     border-left: none;
+//     width: 100%; 
+//   }
+
+//   .pinned table tr:nth-child(even)  {
+//     background: @gray-light;
+//   }
+
+//   .pinned table th, .pinned table td { 
+//     white-space: nowrap;
+//     padding: 10px 20px 10px 20px;
+//     text-align: center;
+//     border-top: 1px solid @gray;
+//     border-bottom: 1px solid @gray;
+//     border-left: 1px solid @gray;
+//     border-right: 1px solid @gray;
+//     ul.radio-list {
+//       li {
+//         margin-top: 2px;
+//         padding-bottom: 0px;
+//       }
+//     }
+//   }
+
+//   .pinned td:last-child { 
+//     border-bottom: 0; 
+//   }
+
+
+  
+//   div.table-wrapper { 
+//     position: relative; 
+//     margin-bottom: 20px;
+//     overflow: hidden; 
+//     // border-right: 1px solid @gray;
+//   }
+
+//   div.table-wrapper div.scrollable { 
+//     margin-left: 25%; 
+//   }
+
+//   div.table-wrapper div.scrollable { 
+//     // overflow: scroll;
+//     overflow: auto; 
+//     overflow-y: hidden; 
+//   }  
+
+  
+//   table.responsive tr:nth-child(even)  {
+//     background: @gray-light;
+//   }
+
+
+//   table.responsive td, table.responsive th { 
+//     position: relative; 
+//     white-space: nowrap; 
+//     overflow: hidden;
+//     padding: 15px 20px 15px 20px;
+//     // border: 1px solid @gray;
+//   }
+
+//   table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { 
+//     display: none; 
+//   }
+// }
 
