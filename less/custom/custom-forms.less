@@ -174,6 +174,53 @@ input[type="number"] {
 }
 
 
+.form-control-pin{
+  display: block;
+  margin-right: 10px;
+  width: @input-height-base;
+  float: left;
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: @padding-base-vertical @padding-base-horizontal;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @input-color;
+  vertical-align: middle;
+  background-color: @input-bg;
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
+  .box-shadow(inset 0 1px 5px rgba(204,204,204,.75));
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  .form-control-focus();
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case; we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @white;
+    color:@gray-darkest;
+  }
+
+  // Reset height for `textarea`s
+  // DBaker: change font size for T&C
+  textarea& {
+    height: auto;
+    font-size: @font-size-base;
+  }
+
+  &:last-child {
+    margin-right: 0px;
+  }
+}
+
+
+
 .form-control-search {
   display: block;
   width: 100%;
