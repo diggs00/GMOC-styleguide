@@ -270,12 +270,12 @@ ul + a.btn-right {
   white-space: normal;
   font-weight: bold;
   cursor: pointer;
-  padding: 0px; // DB added
+  padding: 0px 0px 0px 0px; // DB added
   text-align: left; // DB added 6/27/14
-  display: inline;
+  // display: inline;
   text-decoration: none;
   // border-bottom: 1px solid @link-color;
-  padding-bottom: 2px;
+  // padding-bottom: 2px;
 
   &,
   &:active,
@@ -430,8 +430,8 @@ input[type="button"] {
   }
 }
 
-
-.inline-buttons{
+// MAinly used fo Buttons within container 6-24-16 DB
+.inline-buttons {
   overflow: hidden;
   @media (min-width: @screen-tablet) {
     margin-bottom: 10px;
@@ -451,6 +451,24 @@ input[type="button"] {
     }
   }
 }
+
+// MAinly used for link left and two inline Buttons on the right 6-24-16 DB
+.inline-buttons-right {
+  @media (min-width: @screen-tablet) {
+    float: right;
+  }
+  a.btn {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+  &:last-child {
+    padding-right: 0px;
+    margin-bottom: 0px;
+  }
+}
+
 
 
 
