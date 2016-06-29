@@ -272,7 +272,7 @@ ul + a.btn-right {
   cursor: pointer;
   padding: 0px 0px 0px 0px; // DB added
   text-align: left; // DB added 6/27/14
-  // display: inline;
+  display: inline;
   text-decoration: none;
   // border-bottom: 1px solid @link-color;
   // padding-bottom: 2px;
@@ -454,7 +454,9 @@ input[type="button"] {
 
 // MAinly used for link left and two inline Buttons on the right 6-24-16 DB
 .inline-buttons-right {
+  margin-top: 10px;
   @media (min-width: @screen-tablet) {
+    margin-top: 0px;
     float: right;
   }
   a.btn {

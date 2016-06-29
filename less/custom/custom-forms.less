@@ -964,6 +964,60 @@ input:checked + .radio-value {
 
 
 
+//-------------- DB: Switch ------------------
+
+.switch-list li {
+/*   border-bottom: @gray-light 1px solid; */
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+ul.switch-list li:last-child {
+  margin-bottom: 0px;
+}
+
+
+ul.switch-list label {
+  cursor: pointer;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: @font-size-base;
+  &.disabled {
+     cursor: default;
+ }
+}
+
+
+ul.switch-list-inline li {
+/*   border-bottom: @gray-light 1px solid; */
+   display: block;
+   margin-bottom: 10px;
+   @media (min-width: @screen-tablet) {
+      display: inline-block;
+      padding-right: 20px;
+   }
+   &:last-child {
+      padding-right: 0px;
+   }
+}
+
+
+ul.switch-list-inline label {
+  cursor: pointer;
+  margin-bottom: 0px;
+  font-weight: normal;
+  font-size: @font-size-base;
+  &.disabled {
+     cursor: default;
+ }
+}
+
+
+
+
+
+
+
 
 /* ---------------------DB: START: NEW Select Form (javascript for Firefox fix)------------------- */
 
