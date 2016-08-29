@@ -289,6 +289,14 @@
   > a {
     color: inherit;
   }
+  ul.list-inline.icons{
+    color: @blue;
+    font-size: 40px
+  }
+  ul.list-inline.icons li {
+      padding-right: 0px;
+      margin-bottom: 10px;
+  }
 }
 
 .panel-title-expand {
@@ -326,7 +334,7 @@
 
 // DB: Makes Title work with icon floated to right
 .panel-title-icon {
-    padding: 15px 20px;
+  padding: 15px 20px;
   margin-right:40px;
   margin-bottom: 0px;
   color:@white;
@@ -645,7 +653,10 @@
   .panel-variant(@panel-default-border; @panel-informational-text; @panel-informational-heading-bg; @panel-informational-border);
 }
 
-
+// DB added august 2016 29th
+.panel-plan {
+  .panel-variant(@panel-default-border; @panel-default-text; @panel-tertiary-heading-bg; @panel-default-border);
+}
 
 
 // Contextual variations with icon left
@@ -2498,3 +2509,27 @@ ul.panel-tabs-topics {
    }
 
 }
+
+
+// -------------START Plan CARDS - Used in NOO ----------------
+// DB added august 2016 29th
+.panel-plan {
+  .panel-title {
+    ul.price-plan {
+      @media (min-width: @screen-desktop) {
+        text-align: right;
+      }
+    }
+  }
+  ul.price-plan {
+    margin-bottom: 10px;
+    li {
+      margin-bottom:0px;
+    }
+    li > h2e {
+      display: inline;
+    }
+  }
+}
+
+

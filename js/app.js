@@ -20,7 +20,7 @@ app.controller('ctrlB', function($scope) {
 
     var template = QueryString.template;
     var widgets = QueryString.widget;
-
+    var noo = QueryString.noo;
 
 
     if (page == undefined  && template == undefined){
@@ -57,6 +57,16 @@ app.controller('ctrlB', function($scope) {
             {
                 name: 'start',
                 url: 'widgets/'+widgets+'.html'}
+        ];
+
+    }
+
+    if(noo){
+
+        $scope.templates = [
+            {
+                name: 'start',
+                url: 'noo/'+noo+'.html'}
         ];
 
     }
