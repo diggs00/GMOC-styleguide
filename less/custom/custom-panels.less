@@ -2516,8 +2516,15 @@ ul.panel-tabs-topics {
 .panel-plan {
   .panel-title {
     ul.price-plan {
+      margin-bottom: 0px;
       @media (min-width: @screen-desktop) {
         text-align: right;
+      }
+      li > h2 {
+        display: block;
+        @media (min-width: @screen-desktop) {
+          display: inline;
+        }
       }
     }
   }
@@ -2526,7 +2533,7 @@ ul.panel-tabs-topics {
     li {
       margin-bottom:0px;
     }
-    li > h2e {
+    li > h2 {
       display: inline;
     }
   }
