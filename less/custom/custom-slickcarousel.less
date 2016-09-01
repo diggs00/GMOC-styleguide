@@ -105,9 +105,9 @@
 // Default Variables
 
 
-@slick-font-family: @font-family-sans-serif;
+@slick-font-family: Arial, sans-serif; //@font-family-sans-serif;
 @slick-loader-path: "./";
-@slick-dot-color: @blue;
+@slick-dot-color: #134a9c; //@blue;
 @slick-dot-color-active: @slick-dot-color;
 @slick-prev-character: "\e906";
 @slick-next-character: "\e908";
@@ -159,7 +159,7 @@
     font-family: 'icon-ui';
     font-weight: normal;
     font-size: 23px;
-    color: @blue;
+    color: #134a9c; //@blue;
     opacity: @slick-opacity-default;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -169,7 +169,7 @@
 .slick-prev {
     left: 0px;
     z-index: -1;
-    @media screen and (min-width: @screen-tablet) {
+    @media screen and (min-width: 768px) {
         left: 0px;
         z-index: 1;
         background-color: white;
@@ -193,7 +193,7 @@
 .slick-next {
     right: 0px;
     z-index: -1;
-    @media screen and (min-width: @screen-tablet) {
+    @media screen and (min-width: 768px) {
     right: 0px;
     z-index: 1;
     background-color: white;
@@ -229,7 +229,7 @@
     padding: 0;
     margin: 0;
     width: 100%;
-    @media screen and (min-width: @screen-tablet) {
+    @media screen and (min-width: 768px) {
         bottom: -50px;
     }
     li {
@@ -240,7 +240,7 @@
         margin: 0 5px;
         padding: 0;
         cursor: pointer;
-        @media screen and (min-width: @screen-tablet) {
+        @media screen and (min-width: 768px) {
             height: 20px;
             width: 20px;
         }
@@ -285,27 +285,68 @@
             height: 15px;
             border-radius: 50%;
             background-color: transparent;
-            border: 1px solid @blue-lighter;
+            border: 1px solid #4178da; //@blue-lighter;
             line-height: 0px;
             font-size: 0px;
             padding: 5px;
             cursor: pointer;
-            @media screen and (min-width: @screen-tablet) {
+            @media screen and (min-width: 768px) {
                 height: 20px;
                 width: 20px;
             }
             &:hover, &:focus {
                 outline: none;
                 &:before {
-                background-color: @white;
-                border: 1px solid @blue-lighter;
+                background-color: #fff; //@white;
+                border: 1px solid #4178da; //@blue-lighter;
                 }
             }
         }
         &.slick-active button {
-                border: 1px solid @blue-lighter;
-                background-color: @blue-lighter;
+                border: 1px solid #4178da; //@blue-lighter;
+                background-color: #4178da; //@blue-lighter;
         }
     }
 }
+
+
+
+// Carousel with text 
+.carousel {
+    .slick-slide {
+        position: relative;
+        img {
+            width:100%;
+        }
+    }
+    .carousel-text-area {
+        position: absolute;
+        top: 30px;
+        left: 60px;
+        color: #fff; //@white;
+        text-shadow: 0px 0px 5px #323334;
+        display: none;
+        @media screen and (min-width: 768px) {
+            display:block;
+            left: 60px;
+        }
+        @media screen and (min-width: 992px) {
+   
+            left: 60px;
+        }
+        h1 {
+            text-transform:uppercase;
+            color:inherit;
+            line-height: 1;
+        }
+
+        p {
+            line-height: 1.4;
+            a {
+                font-size: 18px; //@font-size-large
+            }
+        }
+    }
+}
+
 
