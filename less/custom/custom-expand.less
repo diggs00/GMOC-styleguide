@@ -83,28 +83,23 @@
 
 // EXPAND/COLLAPSE contained within a Container (DB)
 // -------------------------
-// .expand-contained {
-//     border-color: @border;
-//     border-left:0px;
-//     border-right:0px;
-//   & > .panel-heading-expand {
-//     padding: 0px 0px 0px 0px;
-//     color: @heading-text-color;
-//     background-color: @heading-bg-color;
-//     border-color: @heading-border;
-//     + .panel-collapse .panel-body {
-//       border-top-color: @border;
-//       background-color: @panel-expanded-bg-color;
-//     }
-//   }
-//   & > .panel-footer {
-//     + .panel-collapse .panel-body {
-//       border-bottom-color: @border;
-//     }
-//   }
-// }
 
-
+.panel {
+  .expand-group {
+    .expand+.expand {
+      margin-top: 0px;
+    }
+  }
+  .expand {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid @gray;
+    &:last-child {
+      border-bottom: 0px;
+    }
+  }
+}
 
 
 
