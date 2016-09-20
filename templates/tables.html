@@ -201,9 +201,157 @@
 
 
 
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1><small>Data</small></h1>
 
+			<div class="responsiveTableWrap" data-ng-cloak>
 
+				<div class="panel panel-default">
+					<!--Panel Body-->
+					<div class="row panel-body">
+						<!--Table Content Header-->
+						<div class="col-xs-12 padding-bottom-medium">
+							<h4>Title H4</h4>
+						</div>
+						<!--END Table Content Header-->
 
+						<!--Table body-->
+						<div class="vehicle-preferences-wrapper">
+							<div class="col-xs-12">
+								<!--Table Categories - hidden in mobile-->
+								<div class="row padding-bottom-medium padding-top-medium gray-light sectionHeading">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-3">Category 1</div>
+									<div class="col-sm-3">Category 2</div>
+									<div class="col-sm-3">Category 3</div>
+								</div>
+								<!--END Table Categories-->
+
+								<!--Row 1-->
+								<div class="row commPrefRow panelBottomBorder padding-top-medium padding-bottom-small">
+									<!--Type 1-->
+									<div class="col-xs-12 col-sm-3">
+										<span>Type 1</span>
+										<a class="btnPop" ata-toggle="popover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title"><span class="icon-ui-infofill"></span></a>
+									</div>
+									<!--End Type 1-->
+
+									<!--Value 1a-->
+									<div data-title="Category 1" class="col-xs-12 col-sm-3 contactOption">
+										<span>Value 1a</span>
+									</div>
+									<!--END Value 1a-->
+
+									<!--Value 2a-->
+									<div data-title="Category 2" class="col-xs-12 col-sm-3 contactOption">
+										<div class="table">
+											<span>Value 2a</span>
+										</div>
+									</div>
+									<!--END Value 2a-->
+
+									<!--Value 3a-->
+									<div data-title="Category 3" class="col-xs-12 col-sm-3 contactOption">
+										<span>Value 3a</span>
+									</div>
+									<!--END Value 3a-->
+								</div>
+								<!--END Row 1-->
+
+								<!--Row 2-->
+								<div class="row commPrefRow panelBottomBorder padding-top-medium padding-bottom-small">
+									<!--Type 2-->
+									<div class="col-xs-12 col-sm-3">
+										<span>Type 2</span>
+										<a class="btnPop" ata-toggle="popover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title"><span class="icon-ui-infofill"></span></a>
+									</div>
+									<!--End Type 2-->
+
+									<!--Value 1b-->
+									<div data-title="Category 1" class="col-xs-12 col-sm-3 contactOption">
+										<span>Value 1b</span>
+									</div>
+									<!--END Value 1b-->
+
+									<!--Value 2b-->
+									<div data-title="Category 2" class="col-xs-12 col-sm-3 contactOption">
+										<span>Value 2b</span>
+									</div>
+									<!--END Value 2b-->
+
+									<!--Value 3b-->
+									<div class="col-xs-12 col-sm-3">
+										<!--empty value hides in mobile-->
+									</div>
+									<!--END Value 3b-->
+								</div>
+								<!--END Row 2-->
+
+								<!--Row 3-->
+								<div class="row commPrefRow padding-top-medium padding-bottom-small">
+									<!--Type 3-->
+									<div class="col-xs-12 col-sm-3">
+										<span>Type 3</span>
+										<a class="btnPop" ata-toggle="popover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title"><span class="icon-ui-infofill"></span></a>
+									</div>
+									<!--END Type 3-->
+
+									<!--Value 1c-->
+									<div data-title="Category 1" class="col-xs-12 col-sm-3 contactOption">
+										<span>Value 1c</span>
+									</div>
+									<!--END Value 1c-->
+
+									<!--Value 2c-->
+									<div data-title="Category 2" class="col-xs-12 col-sm-3 contactOption">
+										<span>Value 2c</span>
+									</div>
+									<!--END Value 2c-->
+
+									<!--Value 3c-->
+									<div data-title="Category 3" class="col-xs-12 col-sm-3 contactOption">
+										<span>Value 3c</span>
+									</div>
+									<!--END Value 3c-->
+								</div>
+								<!--END Row 3-->
+
+								<!--Footnotes-->
+								<div class="footNotes">
+									<p>
+										<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</small>
+									</p>
+								</div>
+								<!--END Footnotes-->
+
+							</div>
+						</div>
+						<!--END Table body-->
+					</div>
+					<!--END Panel Body-->
+				</div>
+			</div>
+		</div>
+	</div>
+    <script>
+        $('.btnPop').popover();
+        $('.btnTool').tooltip();
+        
+        $(document).click(function(e) {
+            if ( $('.popover:visible').length) {
+                
+              setTimeout( function(){       
+                $('.popover').remove();
+                }, 5000);     
+                
+            }
+        });
+    </script>
+    
+    
+</div>
 
 
 

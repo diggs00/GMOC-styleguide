@@ -234,7 +234,47 @@
 
 
 
-
+// Responsive Table //
+.responsiveTableWrap {
+  .primaryColorBrandColor {
+    color: @brand-primary;
+  }
+  .panel-header {
+    padding: 20px 15px;
+  }
+  .panel-body {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 0;
+  }
+  .sectionHeading {
+    font-weight: bold;
+  }
+  @media screen and (max-width: @screen-xs-max) {
+    .sectionHeading {
+      display: none;
+    }
+    .commPrefRow {
+      div[data-title]:before {
+        content: attr(data-title) ":\A";/*:\00A0*/
+        font-weight: bold;
+        white-space: pre;
+      }
+      div:first-child:before {
+        content: '';
+      }
+      div:empty {
+        display: none;
+      }
+      .contactOption {
+        padding-top: 20px;
+      }
+    }
+    .displayBlock {
+      display: block;
+    }
+  }
+}
 
 
 
