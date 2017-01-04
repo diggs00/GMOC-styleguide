@@ -118,3 +118,42 @@ ul.list-inline{
 .pagination-sm {
   .pagination-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @border-radius-small);
 }
+
+
+
+// Pagination STATUS
+// --------------------------------------------------
+
+
+ul.list-inline{
+  &.status {
+  padding:0px;
+    > li{
+      margin-bottom: 0px;
+      padding:0px 15px 0px 0px;
+      a {
+        padding: 0px;
+        font-size: 40px;
+        color:@blue;
+        .active {
+          position: relative;
+          cursor: default;
+          &:after {
+            content: " ";
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            position: absolute;
+            top: -7px;
+            left: -8px;
+            border: 4px solid @gray;
+          }
+        }
+        .inactive {
+          color: @gray;
+        }
+      }
+    }
+  }
+}
+
