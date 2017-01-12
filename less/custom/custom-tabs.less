@@ -1,16 +1,43 @@
+// Clear any floats
+.tabbable {
+  .clearfix();
+}
+
+// Show/hide tabbable areas
+.tab-content > .tab-pane,
+.tab-content-button > .tab-pane-button,
+.pill-content > .pill-pane {
+  display: none;
+}
+.tab-content,
+.tab-content-button,
+.pill-content {
+  > .active {
+    display: block;
+  }
+}
+
 /* DEfault tabs For Owner Center
  * ---------------------------------- */
+
+.tabs {
+  display: none;
+  @media (min-width: @screen-tablet) {
+    display: inline-block;
+  }
+}
+
 
 ul.tabs {
   margin: 0;
   padding: 0;
   list-style: none;
-  height: 32px; 
   width: 100%;
 }
 
 ul.tabs li {
   float: left;
+  position: relative;
   margin: 0;
   cursor: pointer;
   padding: 20px;
@@ -23,6 +50,16 @@ ul.tabs li {
 //   overflow: hidden;
 //   position: relative;
 //
+  span {
+    font-size: 40px;
+    color: @blue;
+    &.disabled {
+      color: @blue-lightest;
+    }
+  }
+  p {
+    margin-bottom: 0px;
+  }
 }
 
 .tab_last { border-right: 1px solid @gray;
@@ -42,21 +79,23 @@ ul.tabs li.active {
   cursor: default;
 }
 
-.tab_container {
-  border: 1px solid @gray;
+// .tab_container {
+//   border: 1px solid @gray;
+//   border-top: none;
+//   clear: both;
+//   float: left;
+//   width: 100%;
+//   background: #fff;
+//   overflow: auto;
+// }
 
-  border-top: none;
-  clear: both;
-  float: left;
-  width: 100%;
-  background: #fff;
-  overflow: auto;
-}
 
 .tab-content {
   border-bottom: 1px solid @gray;
   @media (min-width: @screen-tablet) {
     border-bottom: none;
+    margin-top: -6px;
+
   }
 }
 
@@ -68,7 +107,7 @@ ul.tabs li.active {
   border-left: 1px solid @gray;
   @media (min-width: @screen-tablet) {
     display: block;
-    margin-top: 40px;
+    margin-top: -1px;
     border-top: 1px solid @gray;
     border-right: 1px solid @gray;
     border-left: 1px solid @gray;
@@ -77,15 +116,10 @@ ul.tabs li.active {
 }
 
 
-.tabs {
-  display: none;
-  @media (min-width: @screen-tablet) {
-    display: block;
-  }
-}
 
 .accordian-tab-title {
   display: block;
+  position: relative;
   // background-color: red;
   // color: #fff;
   padding:20px;
@@ -101,9 +135,29 @@ ul.tabs li.active {
   -ms-user-select: none;
   user-select: none;
   font-weight: 700;
-  &.dave {
+  width:100%;
+  span {
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    color: @blue;
+    &.disabled {
+      color: @blue-lightest;
+    }
+  }
+  p {
+    margin-left: 40px;
+    margin-bottom: 0px;
+  }
+  &.selected {
     background-color: @gray-darker;
     color: @white;
+    // span {
+    //   color: @white;
+    //   &.disabled {
+    //     color: @white;
+    //   }
+    // }
   }
   @media (min-width: @screen-tablet) {
     display: none;
@@ -116,56 +170,33 @@ ul.tabs li.active {
 // }
 
 
-/* TABS and PILLS
+
+
+
+/* Button Tabs
  * ---------------------------------- */
-
-// Tabbable tabs
-// -------------------------
-
-// Clear any floats
-.tabbable {
-  .clearfix();
-}
-
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content,
-.pill-content {
-  > .active {
+ .tab-pane-button {
+  padding:20px;
+  border: 1px solid @gray;
+  width: 100%;
+  @media (min-width: @screen-tablet) {
     display: block;
+    margin-top: 0px;
   }
 }
 
 
 
 
-
-
-/* ---Button Pill Pane--- */
-.pill-pane {
-    padding: 0px;
-    border: none;
-    margin: 20px 0px;
-@media (min-width: @screen-tablet) {
-    padding:0px;
-  }
-}
-
-
-
-/* ---Button Tabs--- */
 .btn-tab {
   color: @btn-info-color;
   border: 1px solid;
   border-color: @btn-info-border;
   background-color: @btn-info-bg;
   width: 50%;
-    @media (min-width: @screen-tablet) {
-      width: auto;
-    }
+  @media (min-width: @screen-tablet) {
+    width: auto;
+  }
 
 
   &:hover,
@@ -206,68 +237,9 @@ ul.tabs li.active {
 }
 
 
-/* ---Button Pill TAB--- */
-.btn-pill-tab {
-   color: @btn-info-color;
-   border: 1px solid;
-   border-color: @btn-info-border;
-   background-color: @btn-info-bg;
-   margin-bottom:5px;
-   width: 100%;
-   @media (min-width: @screen-tablet) {
-      width: auto;
-   }
-
-
-
-  &:hover {
-    color: @btn-info-color;
-    background-color: @gray;
-  }
-
-
-  &:focus,
-  .open .dropdown-toggle& {
-    color: @btn-info-color;
-    background-color: @white;
-  }
-
-
-
-
-  &:active,
-  &.active,
-  .open .dropdown-toggle& {
-    background-color: @input-bg;
-  .box-shadow(inset 0 0px 0px rgba(0,0,0,0));
-  }
-
-
-  &:active,
-  &.active,
-  .open .dropdown-toggle& {
-    background-image: none;
-  }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &,
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      background-color: @gray;
-    }
-  }
-}
-
-
-
-
-
-
 // Make the div behave like a button
 .btn-group-tab {
+  margin-bottom: -1px;
   width: 100%;
   position: relative;
   display: inline-block;
@@ -355,3 +327,79 @@ ul.tabs li.active {
 .btn-group-tab.open .dropdown-toggle {
   outline: 0;
 }
+
+
+
+/* PILL Tabs
+ * ---------------------------------- */
+
+
+.pill-pane {
+    padding: 0px;
+    border: none;
+    margin: 20px 0px;
+@media (min-width: @screen-tablet) {
+    padding:0px;
+  }
+}
+
+
+.btn-pill-tab {
+   color: @btn-info-color;
+   border: 1px solid;
+   border-color: @btn-info-border;
+   background-color: @btn-info-bg;
+   margin-bottom:5px;
+   width: 100%;
+   @media (min-width: @screen-tablet) {
+      width: auto;
+   }
+
+
+
+  &:hover {
+    color: @btn-info-color;
+    background-color: @gray;
+  }
+
+
+  &:focus,
+  .open .dropdown-toggle& {
+    color: @btn-info-color;
+    background-color: @white;
+  }
+
+
+
+
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-color: @input-bg;
+  .box-shadow(inset 0 0px 0px rgba(0,0,0,0));
+  }
+
+
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @gray;
+    }
+  }
+}
+
+
+
+
+
+
