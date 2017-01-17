@@ -36,12 +36,13 @@ ul.tabs {
 }
 
 ul.tabs li {
-  float: left;
-  position: relative;
+  display: table-cell;
+  text-align: center;
+  width: 1%;
   margin: 0;
   cursor: pointer;
   padding: 20px;
-  line-height: 31px;
+  // line-height: 31px;
   border-top: 1px solid @gray;
   border-right: 1px solid @gray;
   border-left: 1px solid @gray;
@@ -53,6 +54,9 @@ ul.tabs li {
   span {
     font-size: 40px;
     color: @blue;
+    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 5px;
     &.disabled {
       color: @blue-lightest;
     }
@@ -75,8 +79,9 @@ ul.tabs li.active {
   background-color: #fff;
   // color: @gray;
   border-bottom: 1px solid #fff;
-  display: block;
+  // display: block;
   cursor: default;
+      position: relative;
 }
 
 // .tab_container {
@@ -145,8 +150,11 @@ ul.tabs li.active {
       color: @blue-lightest;
     }
   }
-  p {
+  span + p {
     margin-left: 40px;
+    margin-bottom: 0px;
+  }
+  p {
     margin-bottom: 0px;
   }
   &.selected {
