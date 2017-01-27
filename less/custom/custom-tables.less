@@ -411,3 +411,83 @@
 //   }
 // }
 
+
+
+//   Tables COMPARE
+// ----------------------------------------- */
+.compare-table-wrapper {
+  position:relative;
+  overflow:auto;
+  width:100%;
+  table#compare-table{
+    width:100%;
+    tr {
+      border-bottom: 1px solid @gray-dark;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    th {
+      &:first-child {
+        text-align: left;
+      }
+    }
+    td {
+      // &:first-child {
+      //   padding:20px;
+      // }
+      padding:20px 10px;
+      text-align: center;
+      // @media (min-width: 480px) {
+      //   padding:20px;
+      // }
+    }
+    .btn {
+      width: auto;
+    }
+  }
+  .floatThead-table, #compare-table {
+    thead {
+      background-color: @gray-light;
+      overflow: hidden;
+      vertical-align: top;
+    }
+    th {
+      padding:20px;
+        &:first-child {
+          vertical-align: middle;
+          text-align: left;
+        }
+      // h5 {
+      //   font-size: 16px;
+      //   @media (min-width: 480px) {
+      //      font-size: 20px;
+      //   }
+      // }
+      p {
+        font-weight: 100;
+        margin-bottom: 0px;
+        font-size: 12px;
+        @media (min-width: 480px) {
+          font-size: 16px;
+        }
+      }
+    }
+    td {
+      padding:20px 10px;
+      text-align: center;
+      &:first-child {
+        text-align: left;
+        padding-left:20px
+      }
+      p {
+        margin-bottom: 0px;
+      }
+    }
+    .btn {
+      width: auto;
+    }
+
+  }
+}
