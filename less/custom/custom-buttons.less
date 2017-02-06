@@ -454,15 +454,25 @@ input[type="button"] {
 
 // MAinly used for link left and two inline Buttons on the right 6-24-16 DB
 .inline-buttons-right {
-  margin-top: 10px;
+    float: none;
   @media (min-width: @screen-tablet) {
     margin-top: 0px;
     float: right;
   }
+
   a.btn {
-    margin-right: 10px;
+    margin-bottom: 10px;
+    width:100%;
+    margin-top: 10px;
+    @media (min-width: @screen-tablet) {
+      width: auto;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      margin-top: 0px;
+    }
     &:last-child {
       margin-right: 0px;
+      margin-top: 0px;
     }
   }
   &:last-child {
