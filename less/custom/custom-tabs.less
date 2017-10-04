@@ -353,27 +353,29 @@ ul.tabs li.active {
 
 
 .btn-pill-tab {
-   color: @btn-info-color;
+   color: @blue-lighter;
    border: 1px solid;
    border-color: @btn-info-border;
    background-color: @btn-info-bg;
    margin-bottom:5px;
    width: 100%;
+   margin-right: 0px;
    @media (min-width: @screen-tablet) {
       width: auto;
+      margin-right: 20px;
    }
 
 
 
   &:hover {
-    color: @btn-info-color;
+    color: @blue-lighter;
     background-color: @gray;
   }
 
 
   &:focus,
   .open .dropdown-toggle& {
-    color: @btn-info-color;
+    color: @blue-lighter;
     background-color: @white;
   }
 
