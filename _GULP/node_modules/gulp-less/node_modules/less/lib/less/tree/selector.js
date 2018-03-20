@@ -1,14 +1,17 @@
-var Node = require("./node");
+var Node = require("./node"),
+    Element = require("./element"),
+    LessError = require("../less-error");
 
-var Selector = function (elements, extendList, condition, index, currentFileInfo, isReferenced) {
-    this.elements = elements;
+var Selector = function (elements, extendList, condition, index, currentFileInfo, visibilityInfo) {
     this.extendList = extendList;
     this.condition = condition;
-    this.currentFileInfo = currentFileInfo || {};
-    this.isReferenced = isReferenced;
-    if (!condition) {
-        this.evaldCondition = true;
-    }
+    this.evaldCondition = !condition;
+    this._index = index;
+    this._fileInfo = currentFileInfo;
+    this.elements = this.getElements(elements);
+    this.mixinElements_ = undefined;
+    this.copyVisibilityInfo(visibilityInfo);
+    this.setParent(this.elements, this);
 };
 Selector.prototype = new Node();
 Selector.prototype.type = "Selector";
@@ -24,25 +27,50 @@ Selector.prototype.accept = function (visitor) {
     }
 };
 Selector.prototype.createDerived = function(elements, extendList, evaldCondition) {
-    evaldCondition = (evaldCondition != null) ? evaldCondition : this.evaldCondition;
-    var newSelector = new Selector(elements, extendList || this.extendList, null, this.index, this.currentFileInfo, this.isReferenced);
-    newSelector.evaldCondition = evaldCondition;
+    elements = this.getElements(elements);
+    var newSelector = new Selector(elements, extendList || this.extendList,
+        null, this.getIndex(), this.fileInfo(), this.visibilityInfo());
+    newSelector.evaldCondition = (evaldCondition != null) ? evaldCondition : this.evaldCondition;
     newSelector.mediaEmpty = this.mediaEmpty;
     return newSelector;
+};
+Selector.prototype.getElements = function(els) {
+    if (typeof els === "string") {
+        this.parse.parseNode(
+            els, 
+            ["selector"],
+            this._index, 
+            this._fileInfo, 
+            function(err, result) {
+                if (err) {
+                    throw new LessError({
+                        index: err.index,
+                        message: err.message
+                    }, this.parse.imports, this._fileInfo.filename);
+                }
+                els = result[0].elements;
+            });
+    }
+    return els;
+};
+Selector.prototype.createEmptySelectors = function() {
+    var el = new Element('', '&', this._index, this._fileInfo),
+        sels = [new Selector([el], null, null, this._index, this._fileInfo)];
+    sels[0].mediaEmpty = true;
+    return sels;
 };
 Selector.prototype.match = function (other) {
     var elements = this.elements,
         len = elements.length,
         olen, i;
 
-    other.CacheElements();
-
-    olen = other._elements.length;
+    other = other.mixinElements();
+    olen = other.length;
     if (olen === 0 || len < olen) {
         return 0;
     } else {
         for (i = 0; i < olen; i++) {
-            if (elements[i].value !== other._elements[i]) {
+            if (elements[i].value !== other[i]) {
                 return 0;
             }
         }
@@ -50,9 +78,10 @@ Selector.prototype.match = function (other) {
 
     return olen; // return number of matched elements
 };
-Selector.prototype.CacheElements = function() {
-    if (this._elements)
-        return;
+Selector.prototype.mixinElements = function() {
+    if (this.mixinElements_) {
+        return this.mixinElements_;
+    }
 
     var elements = this.elements.map( function(v) {
         return v.combinator.value + (v.value.value || v.value);
@@ -66,7 +95,7 @@ Selector.prototype.CacheElements = function() {
         elements = [];
     }
 
-    this._elements = elements;
+    return (this.mixinElements_ = elements);
 };
 Selector.prototype.isJustParentSelector = function() {
     return !this.mediaEmpty &&
@@ -86,21 +115,12 @@ Selector.prototype.eval = function (context) {
 Selector.prototype.genCSS = function (context, output) {
     var i, element;
     if ((!context || !context.firstSelector) && this.elements[0].combinator.value === "") {
-        output.add(' ', this.currentFileInfo, this.index);
+        output.add(' ', this.fileInfo(), this.getIndex());
     }
-    if (!this._css) {
-        //TODO caching? speed comparison?
-        for(i = 0; i < this.elements.length; i++) {
-            element = this.elements[i];
-            element.genCSS(context, output);
-        }
+    for (i = 0; i < this.elements.length; i++) {
+        element = this.elements[i];
+        element.genCSS(context, output);
     }
-};
-Selector.prototype.markReferenced = function () {
-    this.isReferenced = true;
-};
-Selector.prototype.getIsReferenced = function() {
-    return !this.currentFileInfo.reference || this.isReferenced;
 };
 Selector.prototype.getIsOutput = function() {
     return this.evaldCondition;

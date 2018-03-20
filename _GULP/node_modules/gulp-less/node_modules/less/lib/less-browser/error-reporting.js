@@ -24,7 +24,7 @@ module.exports = function(window, less, options) {
             }
         };
 
-        if (e.extract) {
+        if (e.line) {
             errorline(e, 0, '');
             errorline(e, 1, 'line');
             errorline(e, 2, '');
@@ -104,16 +104,6 @@ module.exports = function(window, less, options) {
         }
     }
 
-    function error(e, rootHref) {
-        if (!options.errorReporting || options.errorReporting === "html") {
-            errorHTML(e, rootHref);
-        } else if (options.errorReporting === "console") {
-            errorConsole(e, rootHref);
-        } else if (typeof options.errorReporting === 'function') {
-            options.errorReporting("add", e, rootHref);
-        }
-    }
-
     function removeErrorHTML(path) {
         var node = window.document.getElementById('less-error-message:' + utils.extractId(path));
         if (node) {
@@ -122,7 +112,7 @@ module.exports = function(window, less, options) {
     }
 
     function removeErrorConsole(path) {
-        //no action
+        // no action
     }
 
     function removeError(path) {
@@ -140,7 +130,7 @@ module.exports = function(window, less, options) {
         var filename = e.filename || rootHref;
         var errors = [];
         var content = (e.type || "Syntax") + "Error: " + (e.message || 'There is an error in your .less file') +
-            " in " + filename + " ";
+            " in " + filename;
 
         var errorline = function (e, i, classname) {
             if (e.extract[i] !== undefined) {
@@ -150,17 +140,27 @@ module.exports = function(window, less, options) {
             }
         };
 
-        if (e.extract) {
+        if (e.line) {
             errorline(e, 0, '');
             errorline(e, 1, 'line');
             errorline(e, 2, '');
-            content += 'on line ' + e.line + ', column ' + (e.column + 1) + ':\n' +
+            content += ' on line ' + e.line + ', column ' + (e.column + 1) + ':\n' +
                 errors.join('\n');
         }
         if (e.stack && (e.extract || options.logLevel >= 4)) {
             content += '\nStack Trace\n' + e.stack;
         }
         less.logger.error(content);
+    }
+
+    function error(e, rootHref) {
+        if (!options.errorReporting || options.errorReporting === "html") {
+            errorHTML(e, rootHref);
+        } else if (options.errorReporting === "console") {
+            errorConsole(e, rootHref);
+        } else if (typeof options.errorReporting === 'function') {
+            options.errorReporting("add", e, rootHref);
+        }
     }
 
     return {

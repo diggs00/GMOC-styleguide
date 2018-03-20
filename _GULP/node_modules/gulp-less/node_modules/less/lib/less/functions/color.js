@@ -14,7 +14,7 @@ function hsla(color) {
 function number(n) {
     if (n instanceof Dimension) {
         return parseFloat(n.unit.is('%') ? n.value / 100 : n.value);
-    } else if (typeof(n) === 'number') {
+    } else if (typeof n === 'number') {
         return n;
     } else {
         throw {
@@ -43,23 +43,34 @@ colorFunctions = {
         return colorFunctions.hsla(h, s, l, 1.0);
     },
     hsla: function (h, s, l, a) {
+
+        var m1, m2;
+
         function hue(h) {
             h = h < 0 ? h + 1 : (h > 1 ? h - 1 : h);
-            if      (h * 6 < 1) { return m1 + (m2 - m1) * h * 6; }
-            else if (h * 2 < 1) { return m2; }
-            else if (h * 3 < 2) { return m1 + (m2 - m1) * (2/3 - h) * 6; }
-            else                { return m1; }
+            if (h * 6 < 1) {
+                return m1 + (m2 - m1) * h * 6;
+            }
+            else if (h * 2 < 1) {
+                return m2;
+            }
+            else if (h * 3 < 2) {
+                return m1 + (m2 - m1) * (2 / 3 - h) * 6;
+            }
+            else {
+                return m1;
+            }
         }
 
         h = (number(h) % 360) / 360;
         s = clamp(number(s)); l = clamp(number(l)); a = clamp(number(a));
 
-        var m2 = l <= 0.5 ? l * (s + 1) : l + s - l * s;
-        var m1 = l * 2 - m2;
+        m2 = l <= 0.5 ? l * (s + 1) : l + s - l * s;
+        m1 = l * 2 - m2;
 
-        return colorFunctions.rgba(hue(h + 1/3) * 255,
+        return colorFunctions.rgba(hue(h + 1 / 3) * 255,
             hue(h)       * 255,
-            hue(h - 1/3) * 255,
+            hue(h - 1 / 3) * 255,
             a);
     },
 
@@ -127,13 +138,13 @@ colorFunctions = {
     },
     luminance: function (color) {
         var luminance =
-            (0.2126 * color.rgb[0] / 255)
-                + (0.7152 * color.rgb[1] / 255)
-                + (0.0722 * color.rgb[2] / 255);
+            (0.2126 * color.rgb[0] / 255) +
+                (0.7152 * color.rgb[1] / 255) +
+                (0.0722 * color.rgb[2] / 255);
 
         return new Dimension(luminance * color.alpha * 100, '%');
     },
-    saturate: function (color, amount) {
+    saturate: function (color, amount, method) {
         // filter: saturate(3.2);
         // should be kept as is, so check for color
         if (!color.rgb) {
@@ -141,42 +152,72 @@ colorFunctions = {
         }
         var hsl = color.toHSL();
 
-        hsl.s += amount.value / 100;
+        if (typeof method !== "undefined" && method.value === "relative") {
+            hsl.s +=  hsl.s * amount.value / 100;
+        }
+        else {
+            hsl.s += amount.value / 100;
+        }
         hsl.s = clamp(hsl.s);
         return hsla(hsl);
     },
-    desaturate: function (color, amount) {
+    desaturate: function (color, amount, method) {
         var hsl = color.toHSL();
 
-        hsl.s -= amount.value / 100;
+        if (typeof method !== "undefined" && method.value === "relative") {
+            hsl.s -=  hsl.s * amount.value / 100;
+        }
+        else {
+            hsl.s -= amount.value / 100;
+        }
         hsl.s = clamp(hsl.s);
         return hsla(hsl);
     },
-    lighten: function (color, amount) {
+    lighten: function (color, amount, method) {
         var hsl = color.toHSL();
 
-        hsl.l += amount.value / 100;
+        if (typeof method !== "undefined" && method.value === "relative") {
+            hsl.l +=  hsl.l * amount.value / 100;
+        }
+        else {
+            hsl.l += amount.value / 100;
+        }
         hsl.l = clamp(hsl.l);
         return hsla(hsl);
     },
-    darken: function (color, amount) {
+    darken: function (color, amount, method) {
         var hsl = color.toHSL();
 
-        hsl.l -= amount.value / 100;
+        if (typeof method !== "undefined" && method.value === "relative") {
+            hsl.l -=  hsl.l * amount.value / 100;
+        }
+        else {
+            hsl.l -= amount.value / 100;
+        }
         hsl.l = clamp(hsl.l);
         return hsla(hsl);
     },
-    fadein: function (color, amount) {
+    fadein: function (color, amount, method) {
         var hsl = color.toHSL();
 
-        hsl.a += amount.value / 100;
+        if (typeof method !== "undefined" && method.value === "relative") {
+            hsl.a +=  hsl.a * amount.value / 100;
+        }
+        else {
+            hsl.a += amount.value / 100;
+        }
         hsl.a = clamp(hsl.a);
         return hsla(hsl);
     },
-    fadeout: function (color, amount) {
+    fadeout: function (color, amount, method) {
         var hsl = color.toHSL();
 
-        hsl.a -= amount.value / 100;
+        if (typeof method !== "undefined" && method.value === "relative") {
+            hsl.a -=  hsl.a * amount.value / 100;
+        }
+        else {
+            hsl.a -= amount.value / 100;
+        }
         hsl.a = clamp(hsl.a);
         return hsla(hsl);
     },
@@ -196,10 +237,14 @@ colorFunctions = {
         return hsla(hsl);
     },
     //
-    // Copyright (c) 2006-2009 Hampton Catlin, Nathan Weizenbaum, and Chris Eppstein
+    // Copyright (c) 2006-2009 Hampton Catlin, Natalie Weizenbaum, and Chris Eppstein
     // http://sass-lang.com
     //
     mix: function (color1, color2, weight) {
+        if (!color1.toHSL || !color2.toHSL) {
+            console.log(color2.type);
+            console.dir(color2);
+        }
         if (!weight) {
             weight = new Dimension(50);
         }
@@ -233,7 +278,7 @@ colorFunctions = {
         if (typeof dark === 'undefined') {
             dark = colorFunctions.rgba(0, 0, 0, 1.0);
         }
-        //Figure out which is actually light and dark!
+        // Figure out which is actually light and dark:
         if (dark.luma() > light.luma()) {
             var t = light;
             light = dark;
@@ -250,6 +295,44 @@ colorFunctions = {
             return dark;
         }
     },
+    // Changes made in 2.7.0 - Reverted in 3.0.0
+    // contrast: function (color, color1, color2, threshold) {
+    //     // Return which of `color1` and `color2` has the greatest contrast with `color`
+    //     // according to the standard WCAG contrast ratio calculation.
+    //     // http://www.w3.org/TR/WCAG20/#contrast-ratiodef
+    //     // The threshold param is no longer used, in line with SASS.
+    //     // filter: contrast(3.2);
+    //     // should be kept as is, so check for color
+    //     if (!color.rgb) {
+    //         return null;
+    //     }
+    //     if (typeof color1 === 'undefined') {
+    //         color1 = colorFunctions.rgba(0, 0, 0, 1.0);
+    //     }
+    //     if (typeof color2 === 'undefined') {
+    //         color2 = colorFunctions.rgba(255, 255, 255, 1.0);
+    //     }
+    //     var contrast1, contrast2;
+    //     var luma = color.luma();
+    //     var luma1 = color1.luma();
+    //     var luma2 = color2.luma();
+    //     // Calculate contrast ratios for each color
+    //     if (luma > luma1) {
+    //         contrast1 = (luma + 0.05) / (luma1 + 0.05);
+    //     } else {
+    //         contrast1 = (luma1 + 0.05) / (luma + 0.05);
+    //     }
+    //     if (luma > luma2) {
+    //         contrast2 = (luma + 0.05) / (luma2 + 0.05);
+    //     } else {
+    //         contrast2 = (luma2 + 0.05) / (luma + 0.05);
+    //     }
+    //     if (contrast1 > contrast2) {
+    //         return color1;
+    //     } else {
+    //         return color2;
+    //     }
+    // },
     argb: function (color) {
         return new Anonymous(color.toARGB());
     },
@@ -259,7 +342,7 @@ colorFunctions = {
             return new Color(c.value.slice(1));
         }
         if ((c instanceof Color) || (c = Color.fromKeyword(c.value))) {
-            c.keyword = undefined;
+            c.value = undefined;
             return c;
         }
         throw {
@@ -268,7 +351,7 @@ colorFunctions = {
         };
     },
     tint: function(color, amount) {
-        return colorFunctions.mix(colorFunctions.rgb(255,255,255), color, amount);
+        return colorFunctions.mix(colorFunctions.rgb(255, 255, 255), color, amount);
     },
     shade: function(color, amount) {
         return colorFunctions.mix(colorFunctions.rgb(0, 0, 0), color, amount);

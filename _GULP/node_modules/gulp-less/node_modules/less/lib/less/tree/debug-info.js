@@ -1,7 +1,7 @@
 var debugInfo = function(context, ctx, lineSeparator) {
-    var result="";
+    var result = "";
     if (context.dumpLineNumbers && !context.compress) {
-        switch(context.dumpLineNumbers) {
+        switch (context.dumpLineNumbers) {
             case 'comments':
                 result = debugInfo.asComment(ctx);
                 break;
@@ -21,8 +21,12 @@ debugInfo.asComment = function(ctx) {
 };
 
 debugInfo.asMediaQuery = function(ctx) {
+    var filenameWithProtocol = ctx.debugInfo.fileName;
+    if (!/^[a-z]+:\/\//i.test(filenameWithProtocol)) {
+        filenameWithProtocol = 'file://' + filenameWithProtocol;
+    }
     return '@media -sass-debug-info{filename{font-family:' +
-        ('file://' + ctx.debugInfo.fileName).replace(/([.:\/\\])/g, function (a) {
+        filenameWithProtocol.replace(/([.:\/\\])/g, function (a) {
             if (a == '\\') {
                 a = '\/';
             }

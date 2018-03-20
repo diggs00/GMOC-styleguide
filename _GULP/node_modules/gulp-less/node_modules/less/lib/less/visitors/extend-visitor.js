@@ -1,7 +1,9 @@
 var tree = require("../tree"),
-    Visitor = require("./visitor");
+    Visitor = require("./visitor"),
+    logger = require("../logger"),
+    utils = require("../utils");
 
-/*jshint loopfunc:true */
+/* jshint loopfunc:true */
 
 var ExtendFinderVisitor = function() {
     this._visitor = new Visitor(this);
@@ -15,7 +17,7 @@ ExtendFinderVisitor.prototype = {
         root.allExtends = this.allExtendsStack[0];
         return root;
     },
-    visitRule: function (ruleNode, visitArgs) {
+    visitDeclaration: function (declNode, visitArgs) {
         visitArgs.visitDeeper = false;
     },
     visitMixinDefinition: function (mixinDefinitionNode, visitArgs) {
@@ -30,7 +32,7 @@ ExtendFinderVisitor.prototype = {
 
         // get &:extend(.a); rules which apply to all selectors in this ruleset
         var rules = rulesetNode.rules, ruleCnt = rules ? rules.length : 0;
-        for(i = 0; i < ruleCnt; i++) {
+        for (i = 0; i < ruleCnt; i++) {
             if (rulesetNode.rules[i] instanceof tree.Extend) {
                 allSelectorsExtendList.push(rules[i]);
                 rulesetNode.extendOnEveryPath = true;
@@ -40,12 +42,12 @@ ExtendFinderVisitor.prototype = {
         // now find every selector and apply the extends that apply to all extends
         // and the ones which apply to an individual extend
         var paths = rulesetNode.paths;
-        for(i = 0; i < paths.length; i++) {
+        for (i = 0; i < paths.length; i++) {
             var selectorPath = paths[i],
                 selector = selectorPath[selectorPath.length - 1],
                 selExtendList = selector.extendList;
 
-            extendList = selExtendList ? selExtendList.slice(0).concat(allSelectorsExtendList)
+            extendList = selExtendList ? utils.copyArray(selExtendList).concat(allSelectorsExtendList)
                                        : allSelectorsExtendList;
 
             if (extendList) {
@@ -54,13 +56,13 @@ ExtendFinderVisitor.prototype = {
                 });
             }
 
-            for(j = 0; j < extendList.length; j++) {
+            for (j = 0; j < extendList.length; j++) {
                 this.foundExtends = true;
                 extend = extendList[j];
                 extend.findSelfSelectors(selectorPath);
                 extend.ruleset = rulesetNode;
                 if (j === 0) { extend.firstExtendOnThisSelectorPath = true; }
-                this.allExtendsStack[this.allExtendsStack.length-1].push(extend);
+                this.allExtendsStack[this.allExtendsStack.length - 1].push(extend);
             }
         }
 
@@ -78,11 +80,11 @@ ExtendFinderVisitor.prototype = {
     visitMediaOut: function (mediaNode) {
         this.allExtendsStack.length = this.allExtendsStack.length - 1;
     },
-    visitDirective: function (directiveNode, visitArgs) {
-        directiveNode.allExtends = [];
-        this.allExtendsStack.push(directiveNode.allExtends);
+    visitAtRule: function (atRuleNode, visitArgs) {
+        atRuleNode.allExtends = [];
+        this.allExtendsStack.push(atRuleNode.allExtends);
     },
-    visitDirectiveOut: function (directiveNode) {
+    visitAtRuleOut: function (atRuleNode) {
         this.allExtendsStack.length = this.allExtendsStack.length - 1;
     }
 };
@@ -94,59 +96,82 @@ var ProcessExtendsVisitor = function() {
 ProcessExtendsVisitor.prototype = {
     run: function(root) {
         var extendFinder = new ExtendFinderVisitor();
+        this.extendIndices = {};
         extendFinder.run(root);
         if (!extendFinder.foundExtends) { return root; }
         root.allExtends = root.allExtends.concat(this.doExtendChaining(root.allExtends, root.allExtends));
         this.allExtendsStack = [root.allExtends];
-        return this._visitor.visit(root);
+        var newRoot = this._visitor.visit(root);
+        this.checkExtendsForNonMatched(root.allExtends);
+        return newRoot;
+    },
+    checkExtendsForNonMatched: function(extendList) {
+        var indices = this.extendIndices;
+        extendList.filter(function(extend) {
+            return !extend.hasFoundMatches && extend.parent_ids.length == 1;
+        }).forEach(function(extend) {
+            var selector = "_unknown_";
+            try {
+                selector = extend.selector.toCSS({});
+            }
+            catch (_) {}
+
+            if (!indices[extend.index + ' ' + selector]) {
+                indices[extend.index + ' ' + selector] = true;
+                logger.warn("extend '" + selector + "' has no matches");
+            }
+        });
     },
     doExtendChaining: function (extendsList, extendsListTarget, iterationCount) {
         //
-        // chaining is different from normal extension.. if we extend an extend then we are not just copying, altering and pasting
-        // the selector we would do normally, but we are also adding an extend with the same target selector
+        // chaining is different from normal extension.. if we extend an extend then we are not just copying, altering
+        // and pasting the selector we would do normally, but we are also adding an extend with the same target selector
         // this means this new extend can then go and alter other extends
         //
         // this method deals with all the chaining work - without it, extend is flat and doesn't work on other extend selectors
-        // this is also the most expensive.. and a match on one selector can cause an extension of a selector we had already processed if
-        // we look at each selector at a time, as is done in visitRuleset
+        // this is also the most expensive.. and a match on one selector can cause an extension of a selector we had already
+        // processed if we look at each selector at a time, as is done in visitRuleset
 
-        var extendIndex, targetExtendIndex, matches, extendsToAdd = [], newSelector, extendVisitor = this, selectorPath, extend, targetExtend, newExtend;
+        var extendIndex, targetExtendIndex, matches, extendsToAdd = [], newSelector, extendVisitor = this, selectorPath,
+            extend, targetExtend, newExtend;
 
         iterationCount = iterationCount || 0;
 
-        //loop through comparing every extend with every target extend.
+        // loop through comparing every extend with every target extend.
         // a target extend is the one on the ruleset we are looking at copy/edit/pasting in place
         // e.g.  .a:extend(.b) {}  and .b:extend(.c) {} then the first extend extends the second one
         // and the second is the target.
-        // the seperation into two lists allows us to process a subset of chains with a bigger set, as is the
+        // the separation into two lists allows us to process a subset of chains with a bigger set, as is the
         // case when processing media queries
-        for(extendIndex = 0; extendIndex < extendsList.length; extendIndex++){
-            for(targetExtendIndex = 0; targetExtendIndex < extendsListTarget.length; targetExtendIndex++){
+        for (extendIndex = 0; extendIndex < extendsList.length; extendIndex++) {
+            for (targetExtendIndex = 0; targetExtendIndex < extendsListTarget.length; targetExtendIndex++) {
 
                 extend = extendsList[extendIndex];
                 targetExtend = extendsListTarget[targetExtendIndex];
 
                 // look for circular references
-                if( extend.parent_ids.indexOf( targetExtend.object_id ) >= 0 ){ continue; }
+                if ( extend.parent_ids.indexOf( targetExtend.object_id ) >= 0 ) { continue; }
 
                 // find a match in the target extends self selector (the bit before :extend)
                 selectorPath = [targetExtend.selfSelectors[0]];
                 matches = extendVisitor.findMatch(extend, selectorPath);
 
                 if (matches.length) {
+                    extend.hasFoundMatches = true;
 
                     // we found a match, so for each self selector..
                     extend.selfSelectors.forEach(function(selfSelector) {
+                        var info = targetExtend.visibilityInfo();
 
                         // process the extend as usual
-                        newSelector = extendVisitor.extendSelector(matches, selectorPath, selfSelector);
+                        newSelector = extendVisitor.extendSelector(matches, selectorPath, selfSelector, extend.isVisible());
 
                         // but now we create a new extend from it
-                        newExtend = new(tree.Extend)(targetExtend.selector, targetExtend.option, 0);
+                        newExtend = new(tree.Extend)(targetExtend.selector, targetExtend.option, 0, targetExtend.fileInfo(), info);
                         newExtend.selfSelectors = newSelector;
 
                         // add the extend onto the list of extends for that selector
-                        newSelector[newSelector.length-1].extendList = [newExtend];
+                        newSelector[newSelector.length - 1].extendList = [newExtend];
 
                         // record that we need to add it.
                         extendsToAdd.push(newExtend);
@@ -174,22 +199,23 @@ ProcessExtendsVisitor.prototype = {
             if (iterationCount > 100) {
                 var selectorOne = "{unable to calculate}";
                 var selectorTwo = "{unable to calculate}";
-                try
-                {
+                try {
                     selectorOne = extendsToAdd[0].selfSelectors[0].toCSS();
                     selectorTwo = extendsToAdd[0].selector.toCSS();
                 }
-                catch(e) {}
-                throw {message: "extend circular reference detected. One of the circular extends is currently:"+selectorOne+":extend(" + selectorTwo+")"};
+                catch (e) {}
+                throw { message: "extend circular reference detected. One of the circular extends is currently:" +
+                    selectorOne + ":extend(" + selectorTwo + ")"};
             }
 
-            // now process the new extends on the existing rules so that we can handle a extending b extending c ectending d extending e...
-            return extendsToAdd.concat(extendVisitor.doExtendChaining(extendsToAdd, extendsListTarget, iterationCount+1));
+            // now process the new extends on the existing rules so that we can handle a extending b extending c extending
+            // d extending e...
+            return extendsToAdd.concat(extendVisitor.doExtendChaining(extendsToAdd, extendsListTarget, iterationCount + 1));
         } else {
             return extendsToAdd;
         }
     },
-    visitRule: function (ruleNode, visitArgs) {
+    visitDeclaration: function (ruleNode, visitArgs) {
         visitArgs.visitDeeper = false;
     },
     visitMixinDefinition: function (mixinDefinitionNode, visitArgs) {
@@ -202,25 +228,29 @@ ProcessExtendsVisitor.prototype = {
         if (rulesetNode.root) {
             return;
         }
-        var matches, pathIndex, extendIndex, allExtends = this.allExtendsStack[this.allExtendsStack.length-1], selectorsToAdd = [], extendVisitor = this, selectorPath;
+        var matches, pathIndex, extendIndex, allExtends = this.allExtendsStack[this.allExtendsStack.length - 1],
+            selectorsToAdd = [], extendVisitor = this, selectorPath;
 
         // look at each selector path in the ruleset, find any extend matches and then copy, find and replace
 
-        for(extendIndex = 0; extendIndex < allExtends.length; extendIndex++) {
-            for(pathIndex = 0; pathIndex < rulesetNode.paths.length; pathIndex++) {
+        for (extendIndex = 0; extendIndex < allExtends.length; extendIndex++) {
+            for (pathIndex = 0; pathIndex < rulesetNode.paths.length; pathIndex++) {
                 selectorPath = rulesetNode.paths[pathIndex];
 
                 // extending extends happens initially, before the main pass
                 if (rulesetNode.extendOnEveryPath) { continue; }
-                var extendList = selectorPath[selectorPath.length-1].extendList;
+                var extendList = selectorPath[selectorPath.length - 1].extendList;
                 if (extendList && extendList.length) { continue; }
 
                 matches = this.findMatch(allExtends[extendIndex], selectorPath);
 
                 if (matches.length) {
+                    allExtends[extendIndex].hasFoundMatches = true;
 
                     allExtends[extendIndex].selfSelectors.forEach(function(selfSelector) {
-                        selectorsToAdd.push(extendVisitor.extendSelector(matches, selectorPath, selfSelector));
+                        var extendedSelectors;
+                        extendedSelectors = extendVisitor.extendSelector(matches, selectorPath, selfSelector, allExtends[extendIndex].isVisible());
+                        selectorsToAdd.push(extendedSelectors);
                     });
                 }
             }
@@ -239,24 +269,25 @@ ProcessExtendsVisitor.prototype = {
             potentialMatches = [], potentialMatch, matches = [];
 
         // loop through the haystack elements
-        for(haystackSelectorIndex = 0; haystackSelectorIndex < haystackSelectorPath.length; haystackSelectorIndex++) {
+        for (haystackSelectorIndex = 0; haystackSelectorIndex < haystackSelectorPath.length; haystackSelectorIndex++) {
             hackstackSelector = haystackSelectorPath[haystackSelectorIndex];
 
-            for(hackstackElementIndex = 0; hackstackElementIndex < hackstackSelector.elements.length; hackstackElementIndex++) {
+            for (hackstackElementIndex = 0; hackstackElementIndex < hackstackSelector.elements.length; hackstackElementIndex++) {
 
                 haystackElement = hackstackSelector.elements[hackstackElementIndex];
 
                 // if we allow elements before our match we can add a potential match every time. otherwise only at the first element.
                 if (extend.allowBefore || (haystackSelectorIndex === 0 && hackstackElementIndex === 0)) {
-                    potentialMatches.push({pathIndex: haystackSelectorIndex, index: hackstackElementIndex, matched: 0, initialCombinator: haystackElement.combinator});
+                    potentialMatches.push({pathIndex: haystackSelectorIndex, index: hackstackElementIndex, matched: 0,
+                        initialCombinator: haystackElement.combinator});
                 }
 
-                for(i = 0; i < potentialMatches.length; i++) {
+                for (i = 0; i < potentialMatches.length; i++) {
                     potentialMatch = potentialMatches[i];
 
                     // selectors add " " onto the first element. When we use & it joins the selectors together, but if we don't
-                    // then each selector in haystackSelectorPath has a space before it added in the toCSS phase. so we need to work out
-                    // what the resulting combinator will be
+                    // then each selector in haystackSelectorPath has a space before it added in the toCSS phase. so we need to
+                    // work out what the resulting combinator will be
                     targetCombinator = haystackElement.combinator.value;
                     if (targetCombinator === '' && hackstackElementIndex === 0) {
                         targetCombinator = ' ';
@@ -274,7 +305,8 @@ ProcessExtendsVisitor.prototype = {
                     if (potentialMatch) {
                         potentialMatch.finished = potentialMatch.matched === needleElements.length;
                         if (potentialMatch.finished &&
-                            (!extend.allowAfter && (hackstackElementIndex+1 < hackstackSelector.elements.length || haystackSelectorIndex+1 < haystackSelectorPath.length))) {
+                            (!extend.allowAfter &&
+                                (hackstackElementIndex + 1 < hackstackSelector.elements.length || haystackSelectorIndex + 1 < haystackSelectorPath.length))) {
                             potentialMatch = null;
                         }
                     }
@@ -320,7 +352,7 @@ ProcessExtendsVisitor.prototype = {
             if (!(elementValue2 instanceof tree.Selector) || elementValue1.elements.length !== elementValue2.elements.length) {
                 return false;
             }
-            for(var i = 0; i <elementValue1.elements.length; i++) {
+            for (var i = 0; i  < elementValue1.elements.length; i++) {
                 if (elementValue1.elements[i].combinator.value !== elementValue2.elements[i].combinator.value) {
                     if (i !== 0 || (elementValue1.elements[i].combinator.value || ' ') !== (elementValue2.elements[i].combinator.value || ' ')) {
                         return false;
@@ -334,9 +366,9 @@ ProcessExtendsVisitor.prototype = {
         }
         return false;
     },
-    extendSelector:function (matches, selectorPath, replacementSelector) {
+    extendSelector:function (matches, selectorPath, replacementSelector, isVisible) {
 
-        //for a set of matches, replace each match with the replacement selector
+        // for a set of matches, replace each match with the replacement selector
 
         var currentSelectorPathIndex = 0,
             currentSelectorPathElementIndex = 0,
@@ -353,12 +385,13 @@ ProcessExtendsVisitor.prototype = {
             firstElement = new tree.Element(
                 match.initialCombinator,
                 replacementSelector.elements[0].value,
-                replacementSelector.elements[0].index,
-                replacementSelector.elements[0].currentFileInfo
+                replacementSelector.elements[0].getIndex(),
+                replacementSelector.elements[0].fileInfo()
             );
 
             if (match.pathIndex > currentSelectorPathIndex && currentSelectorPathElementIndex > 0) {
-                path[path.length - 1].elements = path[path.length - 1].elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
+                path[path.length - 1].elements = path[path.length - 1]
+                    .elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
                 currentSelectorPathElementIndex = 0;
                 currentSelectorPathIndex++;
             }
@@ -387,31 +420,41 @@ ProcessExtendsVisitor.prototype = {
         }
 
         if (currentSelectorPathIndex < selectorPath.length && currentSelectorPathElementIndex > 0) {
-            path[path.length - 1].elements = path[path.length - 1].elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
+            path[path.length - 1].elements = path[path.length - 1]
+                .elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
             currentSelectorPathIndex++;
         }
 
         path = path.concat(selectorPath.slice(currentSelectorPathIndex, selectorPath.length));
-
+        path = path.map(function (currentValue) {
+            // we can re-use elements here, because the visibility property matters only for selectors
+            var derived = currentValue.createDerived(currentValue.elements);
+            if (isVisible) {
+                derived.ensureVisibility();
+            } else {
+                derived.ensureInvisibility();
+            }
+            return derived;
+        });
         return path;
     },
-    visitRulesetOut: function (rulesetNode) {
-    },
     visitMedia: function (mediaNode, visitArgs) {
-        var newAllExtends = mediaNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length-1]);
+        var newAllExtends = mediaNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length - 1]);
         newAllExtends = newAllExtends.concat(this.doExtendChaining(newAllExtends, mediaNode.allExtends));
         this.allExtendsStack.push(newAllExtends);
     },
     visitMediaOut: function (mediaNode) {
-        this.allExtendsStack.length = this.allExtendsStack.length - 1;
+        var lastIndex = this.allExtendsStack.length - 1;
+        this.allExtendsStack.length = lastIndex;
     },
-    visitDirective: function (directiveNode, visitArgs) {
-        var newAllExtends = directiveNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length-1]);
-        newAllExtends = newAllExtends.concat(this.doExtendChaining(newAllExtends, directiveNode.allExtends));
+    visitAtRule: function (atRuleNode, visitArgs) {
+        var newAllExtends = atRuleNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length - 1]);
+        newAllExtends = newAllExtends.concat(this.doExtendChaining(newAllExtends, atRuleNode.allExtends));
         this.allExtendsStack.push(newAllExtends);
     },
-    visitDirectiveOut: function (directiveNode) {
-        this.allExtendsStack.length = this.allExtendsStack.length - 1;
+    visitAtRuleOut: function (atRuleNode) {
+        var lastIndex = this.allExtendsStack.length - 1;
+        this.allExtendsStack.length = lastIndex;
     }
 };
 

@@ -8,8 +8,12 @@ var Node = require("./node"),
 //
 var Dimension = function (value, unit) {
     this.value = parseFloat(value);
+    if (isNaN(this.value)) {
+        throw new Error("Dimension is not a number.");
+    }
     this.unit = (unit && unit instanceof Unit) ? unit :
       new Unit(unit ? [unit] : undefined);
+    this.setParent(this.unit, this);
 };
 
 Dimension.prototype = new Node();
@@ -25,7 +29,7 @@ Dimension.prototype.toColor = function () {
 };
 Dimension.prototype.genCSS = function (context, output) {
     if ((context && context.strictUnits) && !this.unit.isSingular()) {
-        throw new Error("Multiple units in dimension. Correct the units or use the unit function. Bad unit: "+this.unit.toString());
+        throw new Error("Multiple units in dimension. Correct the units or use the unit function. Bad unit: " + this.unit.toString());
     }
 
     var value = this.fround(context, this.value),
@@ -57,22 +61,24 @@ Dimension.prototype.genCSS = function (context, output) {
 // we default to the first Dimension's unit,
 // so `1px + 2` will yield `3px`.
 Dimension.prototype.operate = function (context, op, other) {
-    /*jshint noempty:false */
+    /* jshint noempty:false */
     var value = this._operate(context, op, this.value, other.value),
         unit = this.unit.clone();
 
     if (op === '+' || op === '-') {
         if (unit.numerator.length === 0 && unit.denominator.length === 0) {
-            unit.numerator = other.unit.numerator.slice(0);
-            unit.denominator = other.unit.denominator.slice(0);
+            unit = other.unit.clone();
+            if (this.unit.backupUnit) {
+                unit.backupUnit = this.unit.backupUnit;
+            }
         } else if (other.unit.numerator.length === 0 && unit.denominator.length === 0) {
             // do nothing
         } else {
             other = other.convertTo(this.unit.usedUnits());
 
-            if(context.strictUnits && other.unit.toString() !== unit.toString()) {
-              throw new Error("Incompatible units. Change the units or use the unit function. Bad units: '" + unit.toString() +
-                "' and '" + other.unit.toString() + "'.");
+            if (context.strictUnits && other.unit.toString() !== unit.toString()) {
+                throw new Error("Incompatible units. Change the units or use the unit function. Bad units: '" + unit.toString() +
+                    "' and '" + other.unit.toString() + "'.");
             }
 
             value = this._operate(context, op, this.value, other.value);
@@ -116,7 +122,7 @@ Dimension.prototype.convertTo = function (conversions) {
         i, groupName, group, targetUnit, derivedConversions = {}, applyUnit;
 
     if (typeof conversions === 'string') {
-        for(i in unitConversions) {
+        for (i in unitConversions) {
             if (unitConversions[i].hasOwnProperty(conversions)) {
                 derivedConversions = {};
                 derivedConversions[i] = conversions;
@@ -125,7 +131,7 @@ Dimension.prototype.convertTo = function (conversions) {
         conversions = derivedConversions;
     }
     applyUnit = function (atomicUnit, denominator) {
-      /*jshint loopfunc:true */
+        /* jshint loopfunc:true */
         if (group.hasOwnProperty(atomicUnit)) {
             if (denominator) {
                 value = value / (group[atomicUnit] / group[targetUnit]);

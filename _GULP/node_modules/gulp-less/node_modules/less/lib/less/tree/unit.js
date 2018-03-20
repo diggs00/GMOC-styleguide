@@ -1,9 +1,10 @@
 var Node = require("./node"),
-    unitConversions = require("../data/unit-conversions");
+    unitConversions = require("../data/unit-conversions"),
+    utils = require("../utils");
 
 var Unit = function (numerator, denominator, backupUnit) {
-    this.numerator = numerator ? numerator.slice(0).sort() : [];
-    this.denominator = denominator ? denominator.slice(0).sort() : [];
+    this.numerator = numerator ? utils.copyArray(numerator).sort() : [];
+    this.denominator = denominator ? utils.copyArray(denominator).sort() : [];
     if (backupUnit) {
         this.backupUnit = backupUnit;
     } else if (numerator && numerator.length) {
@@ -14,7 +15,7 @@ var Unit = function (numerator, denominator, backupUnit) {
 Unit.prototype = new Node();
 Unit.prototype.type = "Unit";
 Unit.prototype.clone = function () {
-    return new Unit(this.numerator.slice(0), this.denominator.slice(0), this.backupUnit);
+    return new Unit(utils.copyArray(this.numerator), utils.copyArray(this.denominator), this.backupUnit);
 };
 Unit.prototype.genCSS = function (context, output) {
     // Dimension checks the unit is singular and throws an error if in strict math mode.
@@ -23,6 +24,8 @@ Unit.prototype.genCSS = function (context, output) {
         output.add(this.numerator[0]); // the ideal situation
     } else if (!strictUnits && this.backupUnit) {
         output.add(this.backupUnit);
+    } else if (!strictUnits && this.denominator.length) {
+        output.add(this.denominator[0]);
     }
 };
 Unit.prototype.toString = function () {
@@ -59,10 +62,10 @@ Unit.prototype.map = function(callback) {
     }
 };
 Unit.prototype.usedUnits = function() {
-    var group, result = {}, mapUnit;
+    var group, result = {}, mapUnit, groupName;
 
     mapUnit = function (atomicUnit) {
-        /*jshint loopfunc:true */
+        /* jshint loopfunc:true */
         if (group.hasOwnProperty(atomicUnit) && !result[groupName]) {
             result[groupName] = atomicUnit;
         }
@@ -70,7 +73,7 @@ Unit.prototype.usedUnits = function() {
         return atomicUnit;
     };
 
-    for (var groupName in unitConversions) {
+    for (groupName in unitConversions) {
         if (unitConversions.hasOwnProperty(groupName)) {
             group = unitConversions[groupName];
 

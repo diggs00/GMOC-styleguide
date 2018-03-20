@@ -1,10 +1,11 @@
 var Dimension = require("../tree/dimension"),
     Anonymous = require("../tree/anonymous"),
-    functionRegistry = require("./function-registry");
+    functionRegistry = require("./function-registry"),
+    mathHelper = require("./math-helper.js");
 
 var minMax = function (isMin, args) {
     args = Array.prototype.slice.call(args);
-    switch(args.length) {
+    switch (args.length) {
         case 0: throw { type: "Argument", message: "one or more arguments required" };
     }
     var i, j, current, currentUnified, referenceUnified, unit, unitStatic, unitClone,
@@ -14,7 +15,7 @@ var minMax = function (isMin, args) {
     for (i = 0; i < args.length; i++) {
         current = args[i];
         if (!(current instanceof Dimension)) {
-            if(Array.isArray(args[i].value)) {
+            if (Array.isArray(args[i].value)) {
                 Array.prototype.push.apply(args, Array.prototype.slice.call(args[i].value));
             }
             continue;
@@ -25,8 +26,8 @@ var minMax = function (isMin, args) {
         unitClone = unit !== "" && unitClone === undefined ? current.unit.toString() : unitClone;
         j = values[""] !== undefined && unit !== "" && unit === unitStatic ? values[""] : values[unit];
         if (j === undefined) {
-            if(unitStatic !== undefined && unit !== unitStatic) {
-                throw{ type: "Argument", message: "incompatible types" };
+            if (unitStatic !== undefined && unit !== unitStatic) {
+                throw { type: "Argument", message: "incompatible types" };
             }
             values[unit] = order.length;
             order.push(current);
@@ -71,6 +72,10 @@ functionRegistry.addMultiple({
         return new Dimension(Math.pow(x.value, y.value), x.unit);
     },
     percentage: function (n) {
-        return new Dimension(n.value * 100, '%');
+        var result = mathHelper._math(function(num) {
+            return num * 100;
+        }, '%', n);
+
+        return result;
     }
 });

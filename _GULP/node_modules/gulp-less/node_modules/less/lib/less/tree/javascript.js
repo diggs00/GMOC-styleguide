@@ -6,18 +6,18 @@ var JsEvalNode = require("./js-eval-node"),
 var JavaScript = function (string, escaped, index, currentFileInfo) {
     this.escaped = escaped;
     this.expression = string;
-    this.index = index;
-    this.currentFileInfo = currentFileInfo;
+    this._index = index;
+    this._fileInfo = currentFileInfo;
 };
 JavaScript.prototype = new JsEvalNode();
 JavaScript.prototype.type = "JavaScript";
 JavaScript.prototype.eval = function(context) {
     var result = this.evaluateJavaScript(this.expression, context);
 
-    if (typeof(result) === 'number') {
+    if (typeof result === 'number') {
         return new Dimension(result);
-    } else if (typeof(result) === 'string') {
-        return new Quoted('"' + result + '"', result, this.escaped, this.index);
+    } else if (typeof result === 'string') {
+        return new Quoted('"' + result + '"', result, this.escaped, this._index);
     } else if (Array.isArray(result)) {
         return new Anonymous(result.join(', '));
     } else {

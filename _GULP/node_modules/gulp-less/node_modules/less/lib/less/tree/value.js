@@ -1,9 +1,14 @@
 var Node = require("./node");
 
 var Value = function (value) {
-    this.value = value;
     if (!value) {
         throw new Error("Value requires an array argument");
+    }
+    if (!Array.isArray(value)) {
+        this.value = [ value ];
+    }
+    else {
+        this.value = value;
     }
 };
 Value.prototype = new Node();
@@ -24,9 +29,9 @@ Value.prototype.eval = function (context) {
 };
 Value.prototype.genCSS = function (context, output) {
     var i;
-    for(i = 0; i < this.value.length; i++) {
+    for (i = 0; i < this.value.length; i++) {
         this.value[i].genCSS(context, output);
-        if (i+1 < this.value.length) {
+        if (i + 1 < this.value.length) {
             output.add((context && context.compress) ? ',' : ', ');
         }
     }

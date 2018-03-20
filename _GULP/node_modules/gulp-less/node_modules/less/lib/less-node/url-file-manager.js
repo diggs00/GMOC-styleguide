@@ -1,7 +1,7 @@
 var isUrlRe = /^(?:https?:)?\/\//i,
     url = require('url'),
     request,
-    PromiseConstructor = typeof Promise === 'undefined' ? require('promise') : Promise,
+    PromiseConstructor,
     AbstractFileManager = require("../less/environment/abstract-file-manager.js"),
     logger = require("../less/logger");
 
@@ -15,10 +15,13 @@ UrlFileManager.prototype.supports = function(filename, currentDirectory, options
 };
 
 UrlFileManager.prototype.loadFile = function(filename, currentDirectory, options, environment) {
+    if (!PromiseConstructor) {
+        PromiseConstructor = typeof Promise === 'undefined' ? require('promise') : Promise;
+    }
     return new PromiseConstructor(function(fulfill, reject) {
         if (request === undefined) {
             try { request = require('request'); }
-            catch(e) { request = null; }
+            catch (e) { request = null; }
         }
         if (!request) {
             reject({ type: 'File', message: "optional dependency 'request' required to import over http(s)\n" });
@@ -35,7 +38,7 @@ UrlFileManager.prototype.loadFile = function(filename, currentDirectory, options
 
         request.get({uri: urlStr, strictSSL: !options.insecure }, function (error, res, body) {
             if (error) {
-                reject({ type: 'File', message: "resource '" + urlStr + "' gave this Error:\n  "+ error +"\n" });
+                reject({ type: 'File', message: "resource '" + urlStr + "' gave this Error:\n  " + error + "\n" });
                 return;
             }
             if (res && res.statusCode === 404) {
@@ -43,7 +46,7 @@ UrlFileManager.prototype.loadFile = function(filename, currentDirectory, options
                 return;
             }
             if (!body) {
-                logger.warn('Warning: Empty body (HTTP '+ res.statusCode + ') returned by "' + urlStr +'"');
+                logger.warn('Warning: Empty body (HTTP ' + res.statusCode + ') returned by "' + urlStr + '"');
             }
             fulfill({ contents: body, filename: urlStr });
         });
