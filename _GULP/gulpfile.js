@@ -1,65 +1,50 @@
-// Include gulp
 var gulp = require('gulp');
-
-// Include Plugins
-var express = require('express');
-var browserSync = require('browser-sync');
-var gutil = require('gulp-util');
+var browserSync = require('browser-sync').create();
 var less = require('gulp-less');
-var minifyCSS = require('gulp-minify-css');
-var watch = require('gulp-watch');
+var sourcemaps = require('gulp-sourcemaps');
+var cleanCss = require('gulp-clean-css');
 var notify = require('gulp-notify');
-var server;
-var html;
 
 
-gulp.task('server' , function() {
-    server = new express();
-    server.use(express.static('../'));
-    server.listen(6000);
-    browserSync({proxy: 'localhost:6000'});
-})
-
-
-function reload() {
-    if(server) {
-        return browserSync.reload({stream: true});
-    }
-    return gutil.noop();
-}
-
-
-// Watch TASK
-gulp.task('watch', function() {
-    gulp.watch('../less/custom/*.less', ['less'])  // Watch all the .less files, then run the less task
-    gulp.watch('../**/*.html', ['html']);  // Watch all the .html files, then run the RELOAD HTML task
+// Spins up server, loads index.html (baseDir)
+// Watches SASS changes and compiles sass to CSS using the sass task
+// Watches HTML changes and reloads 
+gulp.task('serve', ['less'], function() {
+    browserSync.init({
+      server: {
+        baseDir: '../'
+      }
+    })
+    // Watches SASS changes and tuns compiles sass to CSS using the sass task
+    gulp.watch('../less/custom/*.less', ['less'])
+    // Watches HTML changes and reloads 
+    gulp.watch('../**/*.html').on('change', browserSync.reload);
 });
 
 
-// Compile LESS TASK
-gulp.task('less', function () {
-    gulp.src('../less/custom/custom-bootstrap.less') //path to your main less files
+// Compiles SASS files to CSS
+// Creates sourcemaps
+// Provides SASS error in terminal if there is one
+// Minimizes CSS
+// Streams CSS changes
+// Notify of SASS task complete
+
+gulp.task('less', function(){
+    gulp.src('../less/custom/custom-bootstrap.less')
+  	// .pipe(sourcemaps.init())
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(less())
-    .pipe(minifyCSS())
-    .pipe(gulp.dest('../css')) // css output folder
-    .pipe(reload())
-    .pipe(notify({ message: 'LESS task complete' }));
-
+    .pipe(cleanCss())
+    .pipe(sourcemaps.write('./css'))
+    .pipe(gulp.dest('../css', {overwrite: true}))
+    .pipe(browserSync.reload({stream: true}))
+    .pipe(notify({ message: 'SASS task complete' }));
 });
 
 
 
 
-
-
-// RELOAD HTML TASK
-gulp.task('html' , function() {
-    gulp.src('../**/*.html')
-    .pipe(reload());
-})
+gulp.task('default', ['serve']);
 
 
 
-
-
-gulp.task('default', ['server', 'watch', 'less', 'html']); // Default will run the 'entry' watch task
